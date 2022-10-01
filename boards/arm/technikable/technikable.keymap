@@ -137,7 +137,7 @@
         combo_del2              { timeout-ms = <COMBO_TIMEOUT>; key-positions = <9 10 40>;      bindings = <&kp DELETE>;      };
         combo_l_sq_curly        { timeout-ms = <28>;            key-positions = <19 31>;        bindings = <&mas LBRC LBKT>;  };
         combo_r_sq_curly        { timeout-ms = <28>;            key-positions = <20 32>;        bindings = <&mas RBRC RBKT>;  };
-        combo_fslash            { timeout-ms = <28>;            key-positions = <2 13>;         bindings = <&kp FSLH>;        };
+        combo_fslash            { timeout-ms = <28>;            key-positions = <1 14>;         bindings = <&kp FSLH>;        };
         combo_bslash            { timeout-ms = <28>;            key-positions = <2 15>;         bindings = <&kp BSLH>;        };
         combo_boot_left         { timeout-ms = <COMBO_TIMEOUT>; key-positions = <24 25 26 27>;  bindings = <&bootloader>;     };
         combo_boot_right        { timeout-ms = <COMBO_TIMEOUT>; key-positions = <32 33 34 35>;  bindings = <&bootloader>;     };
