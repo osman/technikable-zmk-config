@@ -135,8 +135,8 @@
         combo_backspace         { timeout-ms = <28>;            key-positions = <9 10>;         bindings = <&kp BSPC>;        };
         combo_del1              { timeout-ms = <COMBO_TIMEOUT>; key-positions = <9 10 39>;      bindings = <&kp DELETE>;      };
         combo_del2              { timeout-ms = <COMBO_TIMEOUT>; key-positions = <9 10 40>;      bindings = <&kp DELETE>;      };
-        combo_l_sq_curly        { timeout-ms = <28>;            key-positions = <19 31>;        bindings = <&mas LT LBKT>;    };
-        combo_r_sq_curly        { timeout-ms = <28>;            key-positions = <20 32>;        bindings = <&mas GT RBKT>;    };
+        combo_l_sq_curly        { timeout-ms = <28>;            key-positions = <19 31>;        bindings = <&mas LBRC LBKT>;  };
+        combo_r_sq_curly        { timeout-ms = <28>;            key-positions = <20 32>;        bindings = <&mas RBRC RBKT>;  };
         combo_fslash            { timeout-ms = <28>;            key-positions = <2 13>;         bindings = <&kp FSLH>;        };
         combo_bslash            { timeout-ms = <28>;            key-positions = <2 15>;         bindings = <&kp BSLH>;        };
         combo_boot_left         { timeout-ms = <COMBO_TIMEOUT>; key-positions = <24 25 26 27>;  bindings = <&bootloader>;     };
@@ -183,7 +183,7 @@
         modifiers_layer {
             label = "MODIFIER";
             bindings = <
-/**/&sas AS(GRAVE) &sk LSHFT      &caps_word     &none          &key_repeat       &none &none  &key_repeat     &mas LT LBKT   &kp PG_UP    &mas GT RBKT   &sas AS(EQUAL)
+/**/&sas AS(GRAVE) &sk LSHFT      &caps_word     &none          &key_repeat       &none &none  &key_repeat     &mas LT LPAR   &kp PG_UP    &mas GT RPAR   &sas AS(EQUAL)
 /**/&kp EXCL       &sk LCTRL      &sk LALT       &sk LCMD       &fas QMARK FSLH   &none &none  &fas QMARK FSLH &kp HOME       &kp PG_DN    &kp END        &sas AS(SQT)
 /**/&kp AT         &sas AS(SQT)   &mas AS(SQT)   &fas AS(SQT)   &fas PIPE BSLH    &none &none  &fas PIPE BSLH  &fas AS(SQT)   &trans       &trans         &trans
 /*  &              &*/            &none          &none          &to CD_1       /* &     &*/    &to CD_1        &none          &none
