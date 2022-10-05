@@ -177,18 +177,18 @@
         symbols_layer {
             label = "SYMBOL";
             bindings = <
-/**/&sas AS(GRAVE) &kp N1         &kp N2         &kp N3         &kp CARET         &none &none  &kp STAR        &mas LBRC LPAR &kp UP       &mas RBRC RPAR &sas AS(EQUAL)
+/**/&key_repeat    &kp N1         &kp N2         &kp N3         &kp CARET         &none &none  &none           &mas LBRC LPAR &kp UP       &mas RBRC RPAR &kp STAR
 /**/&kp EXCL       &kp N4         &kp N5         &kp N6         &kp DLLR          &none &none  &kp AMPS        &kp LEFT       &kp DOWN     &kp RIGHT      &sas AS(SQT)
-/**/&kp AT         &kp N7         &kp N8         &kp N9         &kp PRCNT         &none &none  &kp HASH        &fas AS(SQT)   &trans       &trans         &trans
+/**/&kp AT         &kp N7         &kp N8         &kp N9         &kp PRCNT         &none &none  &kp HASH        &kp STAR       &trans       &trans         &trans
 /*  &              &*/            &kp N0         &none          &lt ADJT_SPC() /* &     &*/    &lt ADJT_SPC()  &kp SPACE      &none
             >;
         };
         modifiers_layer {
             label = "MODIFIER";
             bindings = <
-/**/&sas AS(GRAVE) &sk LSHFT      &caps_word     &none          &key_repeat       &none &none  &key_repeat     &mas LT LPAR   &kp PG_UP    &mas GT RPAR   &sas AS(EQUAL)
-/**/&kp EXCL       &sk LCTRL      &sk LALT       &sk LCMD       &fas QMARK FSLH   &none &none  &fas QMARK FSLH &kp HOME       &kp PG_DN    &kp END        &sas AS(SQT)
-/**/&kp AT         &sas AS(SQT)   &mas AS(SQT)   &fas AS(SQT)   &fas PIPE BSLH    &none &none  &fas PIPE BSLH  &fas AS(SQT)   &trans       &trans         &trans
+/**/&key_repeat    &sk LSHFT      &caps_word     &none          &kp CARET         &none &none  &none           &mas LT LPAR   &kp PG_UP    &mas GT RPAR   &kp STAR
+/**/&kp EXCL       &sk LCTRL      &sk LALT       &sk LCMD       &kp DLLR          &none &none  &kp AMPS        &kp HOME       &kp PG_DN    &kp END        &sas AS(SQT)
+/**/&kp AT         &none          &none          &none          &kp PRCNT         &none &none  &kp HASH        &fas STAR      &trans       &trans         &trans
 /*  &              &*/            &none          &none          &to CD_1       /* &     &*/    &to CD_1        &none          &none
             >;
         };
