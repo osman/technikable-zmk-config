@@ -18,7 +18,7 @@
 #define SYMS_SPC() SYMS SPACE
 #define ADJT_SPC() ADJT SPACE
 
-// Layer Taps
+// Mod Taps
 #define LG_SPC() LGUI SPACE
 #define LC_SPC() LCTRL SPACE
 #define LA_SPC() LALT SPACE
