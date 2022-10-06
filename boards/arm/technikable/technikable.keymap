@@ -14,13 +14,15 @@
 #define AS(kc) LS(kc) kc
 #define BT(n) BT_SEL n
 
-// Abbreviations
-#define SPC SPACE
-
 // Layer Taps
-#define MODS_SPC() MODS SPACE
 #define SYMS_SPC() SYMS SPACE
 #define ADJT_SPC() ADJT SPACE
+
+// Layer Taps
+#define LG_SPC() LGUI SPACE
+#define LC_SPC() LCTRL SPACE
+#define LA_SPC() LALT SPACE
+#define RG_SPC() RGUI SPACE
 
 // Modifier Combos
 #define LSG(kc) LS(LG(kc))
@@ -105,6 +107,14 @@
             #binding-cells = <2>;
             bindings = <&kp>, <&kp>;
         };
+        cd: code_hold_tap {
+            compatible = "zmk,behavior-hold-tap";
+            label = "CODE_HOLD_TAP";
+            flavor = "tap-preferred";
+            tapping-term-ms = <180>;
+            #binding-cells = <2>;
+            bindings = <&kp>, <&kp>;
+        };
         bspc: delete_backspace {
             compatible = "zmk,behavior-mod-morph";
             label = "DELETE_BACKSPACE";
@@ -183,46 +193,46 @@
         base_layer {
             label = "BASE";
             bindings = <
-/**/&sas AS(Q)   &mas AS(W)     &fas AS(F)     &fas AS(P)     &mas AS(D)      &none &none    &mas AS(J)    &fas AS(L)    &fas AS(U)    &mas AS(Y)     &sas AS(MINUS)
-/**/&sas AS(A)   &mas AS(R)     &fas AS(S)     &fas AS(T)     &fas AS(G)      &none &none    &fas AS(M)    &fas AS(N)    &fas AS(E)    &mas AS(I)     &sas AS(O)
-/**/&sas AS(Z)   &mas AS(X)     &fas AS(C)     &fas AS(V)     &fas AS(B)      &none &none    &fas AS(K)    &fas AS(H)    &kp COMMA     &kp DOT        &sas AS(SEMI)
-/*  &            &*/            &mt LCTRL SPC  &mt LCMD SPC   &lt SYMS SPC  /*&none &none*/  &lt SYMS SPC  &mt RCMD SPC  &mt LALT SPC
+/**/&sas AS(Q)   &mas AS(W)     &fas AS(F)     &fas AS(P)     &mas AS(D)       &none &none    &mas AS(J)     &fas AS(L)    &fas AS(U)    &mas AS(Y)     &sas AS(MINUS)
+/**/&sas AS(A)   &mas AS(R)     &fas AS(S)     &fas AS(T)     &fas AS(G)       &none &none    &fas AS(M)     &fas AS(N)    &fas AS(E)    &mas AS(I)     &sas AS(O)
+/**/&sas AS(Z)   &mas AS(X)     &fas AS(C)     &fas AS(V)     &fas AS(B)       &none &none    &fas AS(K)     &fas AS(H)    &kp COMMA     &kp DOT        &sas AS(SEMI)
+/*  &            &*/            &mt LC_SPC()   &mt LG_SPC()   &lt SYMS_SPC() /*&none &none*/  &lt SYMS_SPC() &mt RG_SPC()  &mt LA_SPC()
             >;
         };
         symbols_layer {
             label = "SYMBOL";
             bindings = <
-/**/&kp N0       &kp N1         &kp N2         &kp N3         &kp CARET       &none &none    &none         &none         &kp UP        &none          &key_repeat
-/**/&kp EXCL     &kp N4         &kp N5         &kp N6         &kp DLLR        &none &none    &kp AMPS      &kp LEFT      &kp DOWN      &kp RIGHT      &kp STAR
-/**/&kp AT       &kp N7         &kp N8         &kp N9         &kp PRCNT       &none &none    &kp HASH      &kp STAR      &trans        &trans         &trans
-/*  &            &*/            &trans         &trans         &lt ADJT SPC  /*&none &none*/  &lt ADJT SPC  &trans        &trans
+/**/&kp N0       &kp N1         &kp N2         &kp N3         &kp CARET        &none &none    &none          &none         &kp UP        &none          &key_repeat
+/**/&kp EXCL     &kp N4         &kp N5         &kp N6         &kp DLLR         &none &none    &kp AMPS       &kp LEFT      &kp DOWN      &kp RIGHT      &kp STAR
+/**/&kp AT       &kp N7         &kp N8         &kp N9         &kp PRCNT        &none &none    &kp HASH       &kp STAR      &trans        &trans         &trans
+/*  &            &*/            &trans         &trans         &lt ADJT_SPC() /*&none &none*/  &lt ADJT_SPC() &trans        &trans
             >;
         };
         adjust_layer {
             label = "ADJUST";
             bindings = <
-/**/&to BASE     &kp F1         &kp F2         &kp F3         &kp LOCK_SCRN   &none &none    &kp C_VOL_DN  &kp C_VOL_UP  &kp C_MUTE    &kp MUTE_MIC   &to BASE
-/**/&none        &kp F4         &kp F5         &kp F6         &kp LOCK_SCRN   &none &none    &kp C_BRI_DN  &kp C_BRI_UP  &kp SCRN_CAP  &kp C_PP       &none
-/**/&bt BT_CLR   &kp F7         &kp F8         &kp F9         &none           &none &none    &bt BT(0)     &bt BT(1)     &bt BT(2)     &bt BT(3)      &bt BT(4)
-/*  &            &*/            &to CD_2       &to CD_1       &none         /*&none &none*/  &none         &none         &none
+/**/&to BASE     &kp F1         &kp F2         &kp F3         &kp LOCK_SCRN    &none &none    &kp C_VOL_DN  &kp C_VOL_UP  &kp C_MUTE    &kp MUTE_MIC   &to BASE
+/**/&none        &kp F4         &kp F5         &kp F6         &kp LOCK_SCRN    &none &none    &kp C_BRI_DN  &kp C_BRI_UP  &kp SCRN_CAP  &kp C_PP       &none
+/**/&bt BT_CLR   &kp F7         &kp F8         &kp F9         &none            &none &none    &bt BT(0)     &bt BT(1)     &bt BT(2)     &bt BT(3)      &bt BT(4)
+/*  &            &*/            &to CD_2       &to CD_1       &none          /*&none &none*/  &none         &none         &none
             >;
         };
         code_refactor_layer {
             label = "CODE REFACTOR";
             bindings = <
-/**/&to BASE     &none          &kp CD_REF_F   &kp CD_REF_P   &none           &none &none    &none         &kp CD_REF_L  &none         &none          &none
-/**/&kp F5       &cd CD_REF_R() &cd CD_REF_S() &kp LC(T)      &none           &none &none    &kp CD_REF_M  &kp CD_REF_N  &none         &none          &none
-/**/&none        &none          &kp CD_REF_C   &none          &kp CD_REF_V    &none &none    &none         &none         &none         &none          &none
-/*  &            &*/            &none          &none          &none         /*&none &none*/  &none         &none         &none
+/**/&to BASE     &none          &kp CD_REF_F   &kp CD_REF_P   &none            &none &none    &none         &kp CD_REF_L  &none         &none          &none
+/**/&kp F5       &cd CD_REF_R() &cd CD_REF_S() &kp LC(T)      &none            &none &none    &kp CD_REF_M  &kp CD_REF_N  &none         &none          &none
+/**/&none        &none          &kp CD_REF_C   &none          &kp CD_REF_V     &none &none    &none         &none         &none         &none          &none
+/*  &            &*/            &none          &none          &none          /*&none &none*/  &none         &none         &none
             >;
         };
         code_nav_layer {
             label = "CODE NAV";
             bindings = <
-/**/&to BASE     &none          &none          &kp LG(N1)     &cd CD_NAV_D()  &none &none    &none         &none         &none         &none          &none
-/**/&none        &cd CD_NAV_R() &none          &cd CD_NAV_T() &none           &none &none    &kp LS(F7)    &kp LS(F8)    &kp LA(F9)    &kp CD_DBG_R   &none
-/**/&none        &none          &cdn_diff_co   &none          &cdn_diff_br    &none &none    &none         &none         &none         &none          &none
-/*  &            &*/            &none          &none          &none         /*&none &none*/  &none         &none         &none
+/**/&to BASE     &none          &none          &kp LG(N1)     &cd CD_NAV_D()   &none &none    &none         &none         &none         &none          &none
+/**/&none        &cd CD_NAV_R() &none          &cd CD_NAV_T() &none            &none &none    &kp LS(F7)    &kp LS(F8)    &kp LA(F9)    &kp CD_DBG_R   &none
+/**/&none        &none          &cdn_diff_co   &none          &cdn_diff_br     &none &none    &none         &none         &none         &none          &none
+/*  &            &*/            &none          &none          &none          /*&none &none*/  &none         &none         &none
             >;
         };
     };
