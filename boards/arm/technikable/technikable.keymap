@@ -204,7 +204,7 @@
 /**/&sas AS(Q)   &mas AS(W)     &fas AS(F)     &fas AS(P)     &mas AS(D)       &none &none    &mas AS(J)     &fas AS(L)    &fas AS(U)    &mas AS(Y)     &sas AS(MINUS)
 /**/&sas AS(A)   &mas AS(R)     &fas AS(S)     &fas AS(T)     &fas AS(G)       &none &none    &fas AS(M)     &fas AS(N)    &fas AS(E)    &mas AS(I)     &sas AS(O)
 /**/&sas AS(Z)   &mas AS(X)     &fas AS(C)     &fas AS(V)     &fas AS(B)       &none &none    &fas AS(K)     &fas AS(H)    &kp COMMA     &kp DOT        &sas AS(SEMI)
-/*  &            &*/            &mt LC_SPC()   &mt LG_SPC()   &lt SYMS_SPC() /*&none &none*/  &lt SYMS_SPC() &mt RG_SPC()  &mt LA_SPC()
+/*  &            &*/            &mt LA_SPC()   &mt LG_SPC()   &lt SYMS_SPC() /*&none &none*/  &lt SYMS_SPC() &mt RG_SPC()  &mt LC_SPC()
             >;
         };
         symbols_layer {
