@@ -15,13 +15,13 @@
 #define BT(n) BT_SEL n
 
 // Layer Taps
-#define SS() SYMS SPACE
+#define SYMS_SPC() SYMS SPACE
+#define ADJT_SPC() ADJT SPACE
 
 // Mod Taps
+#define GS() LGUI SPACE
 #define LC_SPC() LCTRL SPACE
 #define LA_SPC() LALT SPACE
-#define LG_SPC() LGUI SPACE
-#define RG_SPC() RGUI SPACE
 #define RA_SPC() RALT SPACE
 #define RC_SPC() RCTRL SPACE
 
@@ -147,7 +147,6 @@
         combo_del               { timeout-ms = <FAST_COMBO_MS>; key-positions = <40 9 10>;      bindings = <&kp DELETE>;      };
         combo_enter             { timeout-ms = <FAST_COMBO_MS>; key-positions = <21 22>;        bindings = <&kp ENTER>;       };
         combo_equal             { timeout-ms = <FAST_COMBO_MS>; key-positions = <10 11>;        bindings = <&mas AS(EQUAL)>;  };
-        combo_rshift            { timeout-ms = <FAST_COMBO_MS>; key-positions = <34 35>;        bindings = <&kp RSHIFT>;      };
         
         // vertical
         combo_pipe_qmark        { timeout-ms = <FAST_COMBO_MS>; key-positions = <0  12>;        bindings = <&mas QMARK PIPE>; };
@@ -233,7 +232,7 @@
 /**/&sas AS(Q)   &mas AS(W)     &fas AS(F)     &fas AS(P)     &mas AS(D)      &none      &none    &mas AS(J)     &fas AS(L)    &fas AS(U)    &mas AS(Y)     &sas AS(MINUS)
 /**/&sas AS(A)   &mas AS(R)     &fas AS(S)     &fas AS(T)     &fas AS(G)      &none      &none    &fas AS(M)     &fas AS(N)    &fas AS(E)    &mas AS(I)     &sas AS(O)
 /**/&sas AS(Z)   &mas AS(X)     &fas AS(C)     &fas AS(V)     &fas AS(B)      &none      &none    &fas AS(K)     &fas AS(H)    &kp COMMA     &kp DOT        &sas AS(SEMI)
-/*  &            &*/            &mt LC_SPC()   &mt LA_SPC()   &mt LG_SPC()    &lt SS() /*&none*/  &mt RG_SPC()   &mt RA_SPC()  &mt RC_SPC()
+/*  &            &*/            &mt LC_SPC()   &mt LA_SPC()   &lt SYMS_SPC()  &mt GS() /*&none*/  &lt SYM_SPC()  &mt RA_SPC()  &mt RC_SPC()
             >;
         };
 
@@ -243,7 +242,7 @@
 /**/&kp N0       &kp N1         &kp N2         &kp N3         &kp CARET       &none      &none    &to ADJT       &none         &kp UP        &none          &key_repeat
 /**/&kp EXCL     &kp N4         &kp N5         &kp N6         &kp DLLR        &none      &none    &kp AMPS       &kp LEFT      &kp DOWN      &kp RIGHT      &kp STAR
 /**/&kp AT       &kp N7         &kp N8         &kp N9         &kp PRCNT       &none      &none    &kp HASH       &kp STAR      &trans        &trans         &trans
-/*  &            &*/            &trans         &trans         &trans          &none    /*&none*/  &trans         &trans        &trans
+/*  &            &*/            &trans         &trans         &lt ADJT_SPC()  &trans   /*&none*/  &lt ADJT_SPC() &trans        &trans
             >;
         };
 
@@ -253,7 +252,7 @@
 /**/&to BASE     &kp F1         &kp F2         &kp F3         &kp LOCK_SCRN   &none      &none    &kp C_VOL_DN  &kp C_VOL_UP  &kp C_MUTE    &kp MUTE_MIC   &to BASE
 /**/&none        &kp F4         &kp F5         &kp F6         &kp LOCK_SCRN   &none      &none    &kp C_BRI_DN  &kp C_BRI_UP  &kp SCRN_CAP  &kp C_PP       &none
 /**/&bt BT_CLR   &kp F7         &kp F8         &kp F9         &none           &none      &none    &bt BT(0)     &bt BT(1)     &bt BT(2)     &bt BT(3)      &bt BT(4)
-/*  &            &*/            &trans         &trans         &trans          &none    /*&none*/  &trans        &trans        &trans
+/*  &            &*/            &trans         &trans         &none           &trans   /*&none*/  &none         &trans        &trans
             >;
         };
 
