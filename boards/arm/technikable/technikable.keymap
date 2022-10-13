@@ -200,7 +200,8 @@
         combo_bslash            { timeout-ms = <FAST_COMBO_MS>; key-positions = <2 15>;         bindings = <&kp BSLH>;        };
         
         // layers
-        combo_adjust            { timeout-ms = <SLOW_COMBO_MS>; key-positions = <38 40>;        bindings = <&mo ADJT>;       };
+        combo_adjust1           { timeout-ms = <SLOW_COMBO_MS>; key-positions = <38 39>;        bindings = <&mo ADJT>;       };
+        combo_adjust2           { timeout-ms = <SLOW_COMBO_MS>; key-positions = <39 40>;        bindings = <&mo ADJT>;       };
         combo_code_refactor     { timeout-ms = <SLOW_COMBO_MS>; key-positions = <37 41>;        bindings = <&mo CD_1>;       };
         combo_code_nav          { timeout-ms = <SLOW_COMBO_MS>; key-positions = <36 42>;        bindings = <&mo CD_2>;       };
 
