@@ -200,15 +200,15 @@
         combo_bslash            { timeout-ms = <FAST_COMBO_MS>; key-positions = <2 15>;         bindings = <&kp BSLH>;        };
         
         // layers
-        combo_adjust            { timeout-ms = <SLOW_COMBO_MS>; key-positions = <38 40>;         bindings = <&mo ADJT>;       };
-        combo_code_refactor     { timeout-ms = <SLOW_COMBO_MS>; key-positions = <37 41>;         bindings = <&mo CD_1>;       };
-        combo_code_nav          { timeout-ms = <SLOW_COMBO_MS>; key-positions = <36 42>;         bindings = <&mo CD_2>;       };
+        combo_adjust            { timeout-ms = <SLOW_COMBO_MS>; key-positions = <38 40>;        bindings = <&mo ADJT>;       };
+        combo_code_refactor     { timeout-ms = <SLOW_COMBO_MS>; key-positions = <37 41>;        bindings = <&mo CD_1>;       };
+        combo_code_nav          { timeout-ms = <SLOW_COMBO_MS>; key-positions = <36 42>;        bindings = <&mo CD_2>;       };
 
         // admin
-        combo_boot_left         { timeout-ms = <SLOW_COMBO_MS>; key-positions = <24 25 26 27>;  bindings = <&bootloader>;     };
-        combo_boot_right        { timeout-ms = <SLOW_COMBO_MS>; key-positions = <32 33 34 35>;  bindings = <&bootloader>;     };
-        combo_lock_screen_left  { timeout-ms = <SLOW_COMBO_MS>; key-positions = <0 1 2 3>;      bindings = <&kp LOCK_SCRN>;   };
-        combo_lock_screen_right { timeout-ms = <SLOW_COMBO_MS>; key-positions = <8 9 10 11>;    bindings = <&kp LOCK_SCRN>;   };
+        combo_boot_left         { timeout-ms = <SLOW_COMBO_MS>; key-positions = <24 25 26 27>;  bindings = <&bootloader>;    };
+        combo_boot_right        { timeout-ms = <SLOW_COMBO_MS>; key-positions = <32 33 34 35>;  bindings = <&bootloader>;    };
+        combo_lock_screen_left  { timeout-ms = <SLOW_COMBO_MS>; key-positions = <0 1 2 3>;      bindings = <&kp LOCK_SCRN>;  };
+        combo_lock_screen_right { timeout-ms = <SLOW_COMBO_MS>; key-positions = <8 9 10 11>;    bindings = <&kp LOCK_SCRN>;  };
     };
 
     macros {
@@ -235,8 +235,9 @@
 /**/&sas AS(A)   &mas AS(R)     &fas AS(S)     &fas AS(T)     &fas AS(G)      &none      &none    &fas AS(M)     &fas AS(N)    &fas AS(E)    &mas AS(I)     &sas AS(O)
 /**/&sas AS(Z)   &mas AS(X)     &fas AS(C)     &fas AS(V)     &fas AS(B)      &none      &none    &fas AS(K)     &fas AS(H)    &kp COMMA     &kp DOT        &sas AS(SEMI)
 /*  &            &*/            &mt LC_SPC()   &mt LA_SPC()   &mt LG_SPC()    &lt SS() /*&none*/  &mt RG_SPC()   &mt RA_SPC()  &mt RC_SPC()
-        
-    
+            >;
+        };
+
         symbols_layer {
             label = "SYMBOL";
             bindings = <
@@ -246,6 +247,7 @@
 /*  &            &*/            &trans         &trans         &trans          &none    /*&none*/  &trans         &trans        &trans
             >;
         };
+
         adjust_layer {
             label = "ADJUST";
             bindings = <
@@ -255,6 +257,7 @@
 /*  &            &*/            &trans         &trans         &trans          &none    /*&none*/  &trans        &trans        &trans
             >;
         };
+
         code_refactor_layer {
             label = "CODE REFACTOR";
             bindings = <
@@ -264,6 +267,7 @@
 /*  &            &*/            &none          &none          &none           &none    /*&none*/  &none         &none         &none
             >;
         };
+
         code_nav_layer {
             label = "CODE NAV";
             bindings = <
