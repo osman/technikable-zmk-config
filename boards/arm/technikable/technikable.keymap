@@ -149,8 +149,8 @@
         combo_equal             { timeout-ms = <FAST_COMBO_MS>; key-positions = <10 11>;        bindings = <&mas AS(EQUAL)>;  };
         
         // vertical
-        combo_pipe_qmark        { timeout-ms = <FAST_COMBO_MS>; key-positions = <0  12>;        bindings = <&mas QMARK PIPE>; };
-        combo_quotes            { timeout-ms = <FAST_COMBO_MS>; key-positions = <11 23>;        bindings = <&mas AS(SQT)>;    };
+        combo_pipe_qmark        { timeout-ms = <FAST_COMBO_MS>; key-positions = <1  13>;        bindings = <&mas QMARK PIPE>; };
+        combo_quotes            { timeout-ms = <FAST_COMBO_MS>; key-positions = <10 22>;        bindings = <&mas AS(SQT)>;    };
         
         // distance
         combo_l_paren_brac1     { timeout-ms = <SLOW_COMBO_MS>; key-positions = <38 1>;         bindings = <&mas RPAR LPAR>;  };
