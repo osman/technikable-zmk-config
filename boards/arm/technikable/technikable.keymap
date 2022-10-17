@@ -138,7 +138,6 @@
         
         // horizontal
         combo_tilde             { timeout-ms = <FAST_COMBO_MS>; key-positions = <0 1>;          bindings = <&mas AS(GRAVE)>;  };
-        combo_capsword          { timeout-ms = <FAST_COMBO_MS>; key-positions = <12 13>;        bindings = <&caps_word>;      };
         combo_lshift            { timeout-ms = <FAST_COMBO_MS>; key-positions = <24 25>;        bindings = <&kp LSHIFT>;      };
         combo_rshift            { timeout-ms = <FAST_COMBO_MS>; key-positions = <34 35>;        bindings = <&kp RSHIFT>;      };
         combo_esc               { timeout-ms = <FAST_COMBO_MS>; key-positions = <1 2>;          bindings = <&kp ESC>;         };
@@ -149,44 +148,45 @@
         combo_equal             { timeout-ms = <FAST_COMBO_MS>; key-positions = <10 11>;        bindings = <&mas AS(EQUAL)>;  };
         
         // vertical
-        combo_pipe_qmark        { timeout-ms = <FAST_COMBO_MS>; key-positions = <1  13>;        bindings = <&mas QMARK PIPE>; };
-        combo_quotes            { timeout-ms = <FAST_COMBO_MS>; key-positions = <10 22>;        bindings = <&mas AS(SQT)>;    };
+        combo_pipe_qmark        { timeout-ms = <FAST_COMBO_MS>; key-positions = <1  13>;        bindings = <&mas QMARK PIPE>;     };
+        combo_quotes            { timeout-ms = <FAST_COMBO_MS>; key-positions = <10 22>;        bindings = <&mas AS(SQT)>;        };
         
-        // distance
-        combo_l_paren_brac1     { timeout-ms = <SLOW_COMBO_MS>; key-positions = <38 1>;         bindings = <&mas RPAR LPAR>;  };
-        combo_l_curly_brac1     { timeout-ms = <SLOW_COMBO_MS>; key-positions = <38 2>;         bindings = <&mas RBRC LBRC>;  };
-        combo_l_squar_brac1     { timeout-ms = <SLOW_COMBO_MS>; key-positions = <38 3>;         bindings = <&mas RBKT LBKT>;  };
-        combo_l_angle_brac1     { timeout-ms = <SLOW_COMBO_MS>; key-positions = <38 16>;        bindings = <&mas GT LT>;      };
-        
-        combo_l_paren_brac2     { timeout-ms = <SLOW_COMBO_MS>; key-positions = <40 1>;         bindings = <&mas RPAR LPAR>;  };
-        combo_l_curly_brac2     { timeout-ms = <SLOW_COMBO_MS>; key-positions = <40 2>;         bindings = <&mas RBRC LBRC>;  };
-        combo_l_squar_brac2     { timeout-ms = <SLOW_COMBO_MS>; key-positions = <40 3>;         bindings = <&mas RBKT LBKT>;  };
-        combo_l_angle_brac2     { timeout-ms = <SLOW_COMBO_MS>; key-positions = <40 16>;        bindings = <&mas GT LT>;      };
-        
-        combo_r_angle_brac1     { timeout-ms = <SLOW_COMBO_MS>; key-positions = <38 19>;        bindings = <&mas LT GT>;      };
-        combo_r_squar_brac1     { timeout-ms = <SLOW_COMBO_MS>; key-positions = <38 8>;         bindings = <&mas LBKT RBKT>;  };
-        combo_r_curly_brac1     { timeout-ms = <SLOW_COMBO_MS>; key-positions = <38 9>;         bindings = <&mas LBRC RBRC>;  };
-        combo_r_paren_brac1     { timeout-ms = <SLOW_COMBO_MS>; key-positions = <38 10>;        bindings = <&mas LPAR RPAR>;  };
-
-        combo_r_angle_brac2     { timeout-ms = <SLOW_COMBO_MS>; key-positions = <40 19>;        bindings = <&mas LT GT>;      };
-        combo_r_squar_brac2     { timeout-ms = <SLOW_COMBO_MS>; key-positions = <40 8>;         bindings = <&mas LBKT RBKT>;  };
-        combo_r_curly_brac2     { timeout-ms = <SLOW_COMBO_MS>; key-positions = <40 9>;         bindings = <&mas LBRC RBRC>;  };
-        combo_r_paren_brac2     { timeout-ms = <SLOW_COMBO_MS>; key-positions = <40 10>;        bindings = <&mas LPAR RPAR>;  };
-
         // angled
-        combo_fslash1           { timeout-ms = <FAST_COMBO_MS>; key-positions = <1 12>;         bindings = <&kp FSLH>;        };
-        combo_fslash2           { timeout-ms = <FAST_COMBO_MS>; key-positions = <2 13>;         bindings = <&kp FSLH>;        };
-        combo_bslash            { timeout-ms = <FAST_COMBO_MS>; key-positions = <2 15>;         bindings = <&kp BSLH>;        };
+        combo_fslash1           { timeout-ms = <FAST_COMBO_MS>; key-positions = <1 12>;         bindings = <&kp FSLH>;            };
+        combo_fslash2           { timeout-ms = <FAST_COMBO_MS>; key-positions = <2 13>;         bindings = <&kp FSLH>;            };
+        combo_bslash            { timeout-ms = <FAST_COMBO_MS>; key-positions = <2 15>;         bindings = <&kp BSLH>;            };
         
-        // layers
-        combo_code_refactor     { timeout-ms = <SLOW_COMBO_MS>; key-positions = <37 41>;        bindings = <&mo CD_1>;       };
-        combo_code_nav          { timeout-ms = <SLOW_COMBO_MS>; key-positions = <36 42>;        bindings = <&mo CD_2>;       };
+        // thumbs
+        combo_capsword          { timeout-ms = <FAST_COMBO_MS>; key-positions = <12 13>;        bindings = <&caps_word>;          };
+        combo_code_refactor     { timeout-ms = <SLOW_COMBO_MS>; key-positions = <37 41>;        bindings = <&lt CD_1 &caps_word>; };
+        combo_code_nav          { timeout-ms = <SLOW_COMBO_MS>; key-positions = <36 42>;        bindings = <&mo CD_2>;            };
+
+        // thumb + other
+        combo_l_paren_brac1     { timeout-ms = <SLOW_COMBO_MS>; key-positions = <38 1>;         bindings = <&mas RPAR LPAR>;      };
+        combo_l_curly_brac1     { timeout-ms = <SLOW_COMBO_MS>; key-positions = <38 2>;         bindings = <&mas RBRC LBRC>;      };
+        combo_l_squar_brac1     { timeout-ms = <SLOW_COMBO_MS>; key-positions = <38 3>;         bindings = <&mas RBKT LBKT>;      };
+        combo_l_angle_brac1     { timeout-ms = <SLOW_COMBO_MS>; key-positions = <38 16>;        bindings = <&mas GT LT>;          };
+        
+        combo_l_paren_brac2     { timeout-ms = <SLOW_COMBO_MS>; key-positions = <40 1>;         bindings = <&mas RPAR LPAR>;      };
+        combo_l_curly_brac2     { timeout-ms = <SLOW_COMBO_MS>; key-positions = <40 2>;         bindings = <&mas RBRC LBRC>;      };
+        combo_l_squar_brac2     { timeout-ms = <SLOW_COMBO_MS>; key-positions = <40 3>;         bindings = <&mas RBKT LBKT>;      };
+        combo_l_angle_brac2     { timeout-ms = <SLOW_COMBO_MS>; key-positions = <40 16>;        bindings = <&mas GT LT>;          };
+        
+        combo_r_angle_brac1     { timeout-ms = <SLOW_COMBO_MS>; key-positions = <38 19>;        bindings = <&mas LT GT>;          };
+        combo_r_squar_brac1     { timeout-ms = <SLOW_COMBO_MS>; key-positions = <38 8>;         bindings = <&mas LBKT RBKT>;      };
+        combo_r_curly_brac1     { timeout-ms = <SLOW_COMBO_MS>; key-positions = <38 9>;         bindings = <&mas LBRC RBRC>;      };
+        combo_r_paren_brac1     { timeout-ms = <SLOW_COMBO_MS>; key-positions = <38 10>;        bindings = <&mas LPAR RPAR>;      };
+
+        combo_r_angle_brac2     { timeout-ms = <SLOW_COMBO_MS>; key-positions = <40 19>;        bindings = <&mas LT GT>;          };
+        combo_r_squar_brac2     { timeout-ms = <SLOW_COMBO_MS>; key-positions = <40 8>;         bindings = <&mas LBKT RBKT>;      };
+        combo_r_curly_brac2     { timeout-ms = <SLOW_COMBO_MS>; key-positions = <40 9>;         bindings = <&mas LBRC RBRC>;      };
+        combo_r_paren_brac2     { timeout-ms = <SLOW_COMBO_MS>; key-positions = <40 10>;        bindings = <&mas LPAR RPAR>;      };
 
         // admin
-        combo_boot_left         { timeout-ms = <SLOW_COMBO_MS>; key-positions = <24 25 26 27>;  bindings = <&bootloader>;    };
-        combo_boot_right        { timeout-ms = <SLOW_COMBO_MS>; key-positions = <32 33 34 35>;  bindings = <&bootloader>;    };
-        combo_lock_screen_left  { timeout-ms = <SLOW_COMBO_MS>; key-positions = <0 1 2 3>;      bindings = <&kp LOCK_SCRN>;  };
-        combo_lock_screen_right { timeout-ms = <SLOW_COMBO_MS>; key-positions = <8 9 10 11>;    bindings = <&kp LOCK_SCRN>;  };
+        combo_boot_left         { timeout-ms = <SLOW_COMBO_MS>; key-positions = <24 25 26 27>;  bindings = <&bootloader>;         };
+        combo_boot_right        { timeout-ms = <SLOW_COMBO_MS>; key-positions = <32 33 34 35>;  bindings = <&bootloader>;         };
+        combo_lock_screen_left  { timeout-ms = <SLOW_COMBO_MS>; key-positions = <0 1 2 3>;      bindings = <&kp LOCK_SCRN>;       };
+        combo_lock_screen_right { timeout-ms = <SLOW_COMBO_MS>; key-positions = <8 9 10 11>;    bindings = <&kp LOCK_SCRN>;       };
     };
 
     macros {
