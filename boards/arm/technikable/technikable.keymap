@@ -121,7 +121,7 @@
             label = "DELETE_BACKSPACE";
             #binding-cells = <0>;
             bindings = <&kp BSPC>, <&kp DELETE>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
+            mods = <(MOD_LSFT)>;
         };
     };
 
