@@ -158,7 +158,7 @@
         combo_bslash            { timeout-ms = <FAST_COMBO_MS>; key-positions = <2 15>;         bindings = <&kp BSLH>;        };
         
         // thumbs
-        combo_code_refactor     { timeout-ms = <SLOW_COMBO_MS>; key-positions = <37 41>;        bindings = <&mo CD_1;         };
+        combo_code_refactor     { timeout-ms = <SLOW_COMBO_MS>; key-positions = <37 41>;        bindings = <&mo CD_1>;        };
         combo_code_nav          { timeout-ms = <SLOW_COMBO_MS>; key-positions = <36 42>;        bindings = <&mo CD_2>;        };
 
         // thumb + other
