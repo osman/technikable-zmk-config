@@ -143,8 +143,7 @@
         combo_rshift            { timeout-ms = <FAST_COMBO_MS>; key-positions = <34 35>;        bindings = <&kp RSHIFT>;      };
         combo_esc               { timeout-ms = <FAST_COMBO_MS>; key-positions = <1 2>;          bindings = <&kp ESC>;         };
         combo_tab               { timeout-ms = <FAST_COMBO_MS>; key-positions = <13 14>;        bindings = <&kp TAB>;         };
-        combo_backspace         { timeout-ms = <FAST_COMBO_MS>; key-positions = <9 10>;         bindings = <&bspc>;           };
-        combo_del               { timeout-ms = <FAST_COMBO_MS>; key-positions = <40 9 10>;      bindings = <&kp DELETE>;      };
+        combo_backspace         { timeout-ms = <SLOW_COMBO_MS>; key-positions = <9 10>;         bindings = <&bspc>;           };
         combo_enter             { timeout-ms = <FAST_COMBO_MS>; key-positions = <21 22>;        bindings = <&kp ENTER>;       };
         combo_equal             { timeout-ms = <FAST_COMBO_MS>; key-positions = <10 11>;        bindings = <&mas AS(EQUAL)>;  };
         
