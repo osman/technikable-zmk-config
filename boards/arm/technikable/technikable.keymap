@@ -126,8 +126,8 @@
     };
 
     // Timeouts
-    #define FAST_COMBO_MS 28
-    #define VERT_COMBO_MS 35
+    #define FAST_COMBO_MS 25
+    #define VERT_COMBO_MS 36
     #define SLOW_COMBO_MS 60
 
     combos {
@@ -215,7 +215,7 @@
 /**/&sas AS(Q)   &mas AS(W)     &fas AS(F)     &fas AS(P)     &mas AS(D)      &none      &none    &mas AS(J)     &fas AS(L)    &fas AS(U)    &mas AS(Y)     &sas AS(MINUS)
 /**/&sas AS(A)   &mas AS(R)     &fas AS(S)     &fas AS(T)     &fas AS(G)      &none      &none    &fas AS(M)     &fas AS(N)    &fas AS(E)    &mas AS(I)     &sas AS(O)
 /**/&sas AS(Z)   &mas AS(X)     &fas AS(C)     &fas AS(V)     &fas AS(B)      &none      &none    &fas AS(K)     &fas AS(H)    &kp COMMA     &kp DOT        &sas AS(SEMI)
-/*  &            &*/            &mt LC_SPC()   &mt LA_SPC()   &lt SYMS_SPC()  &mt GS() /*&none*/  &lt SYMS_SPC() &mt RA_SPC()  &mt RC_SPC()
+/*  &            &*/            &kp LCTRL      &kp LALT       &lt SYMS_SPC()  &mt GS() /*&none*/  &lt SYMS_SPC() &kp RALT      &kp RCTRL
             >;
         };
 
