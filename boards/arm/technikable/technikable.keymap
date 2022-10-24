@@ -126,7 +126,7 @@
     };
 
     // Timeouts
-    #define FAST_COMBO_MS 25
+    #define FAST_COMBO_MS 20
     #define VERT_COMBO_MS 36
     #define SLOW_COMBO_MS 60
 
