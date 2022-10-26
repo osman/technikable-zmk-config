@@ -221,8 +221,8 @@
         symbols_layer {
             label = "SYMBOL";
             bindings = <
-/**/&kp N0       &kp N1         &kp N2         &kp N3         &kp CARET       &none      &none    &to ADJT       &none         &kp UP        &none          &key_repeat
-/**/&kp EXCL     &kp N4         &kp N5         &kp N6         &kp DLLR        &none      &none    &kp AMPS       &kp LEFT      &kp DOWN      &kp RIGHT      &kp STAR
+/**/&kp N0       &kp N1         &kp N2         &kp N3         &kp CARET       &none      &none    &to ADJT       &none         &kp UP        &none          &trans
+/**/&kp EXCL     &kp N4         &kp N5         &kp N6         &kp DLLR        &none      &none    &kp AMPS       &kp LEFT      &kp DOWN      &kp RIGHT      &key_repeat
 /**/&kp AT       &kp N7         &kp N8         &kp N9         &kp PRCNT       &none      &none    &kp HASH       &kp STAR      &trans        &trans         &trans
 /*  &            &*/            &trans         &trans         &lt ADJT_SPC()  &trans   /*&none*/  &lt ADJT_SPC() &trans        &trans
             >;
