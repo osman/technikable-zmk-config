@@ -163,8 +163,8 @@
         combo_code_nav          { timeout-ms = <SLOW_COMBO_MS>; key-positions = <36 42>;        bindings = <&mo CD_2>;        };
 
         // thumb + other
-        combo_l_capsword        { timeout-ms = <SLOW_COMBO_MS>; key-positions = <38 12 13>;     bindings = <&caps_word>;      };
-        combo_r_capsword        { timeout-ms = <SLOW_COMBO_MS>; key-positions = <40 22 23>;     bindings = <&caps_word>;      };
+        combo_l_capsword        { timeout-ms = <SLOW_COMBO_MS>; key-positions = <38 24 25>;     bindings = <&caps_word>;      };
+        combo_r_capsword        { timeout-ms = <SLOW_COMBO_MS>; key-positions = <40 34 35>;     bindings = <&caps_word>;      };
 
         combo_l_paren_brac1     { timeout-ms = <SLOW_COMBO_MS>; key-positions = <38 1>;         bindings = <&mas RPAR LPAR>;  };
         combo_l_curly_brac1     { timeout-ms = <SLOW_COMBO_MS>; key-positions = <38 2>;         bindings = <&mas RBRC LBRC>;  };
@@ -187,8 +187,8 @@
         combo_r_paren_brac2     { timeout-ms = <SLOW_COMBO_MS>; key-positions = <40 10>;        bindings = <&mas LPAR RPAR>;  };
 
         // admin
-        combo_boot_left         { timeout-ms = <SLOW_COMBO_MS>; key-positions = <24 25 26 27>;  bindings = <&bootloader>;     };
-        combo_boot_right        { timeout-ms = <SLOW_COMBO_MS>; key-positions = <32 33 34 35>;  bindings = <&bootloader>;     };
+        combo_boot_left         { timeout-ms = <SLOW_COMBO_MS>; key-positions = <26 27 28 39>;  bindings = <&bootloader>;     };
+        combo_boot_right        { timeout-ms = <SLOW_COMBO_MS>; key-positions = <31 32 33 39>;  bindings = <&bootloader>;     };
         combo_lock_screen_left  { timeout-ms = <SLOW_COMBO_MS>; key-positions = <0 1 2 3>;      bindings = <&kp LOCK_SCRN>;   };
         combo_lock_screen_right { timeout-ms = <SLOW_COMBO_MS>; key-positions = <8 9 10 11>;    bindings = <&kp LOCK_SCRN>;   };
     };
