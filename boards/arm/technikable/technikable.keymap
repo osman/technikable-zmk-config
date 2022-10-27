@@ -194,8 +194,7 @@
         combo_r_paren_brac2     { timeout-ms = <SLOW_COMBO_MS>; key-positions = <40 10>;        bindings = <&mas LPAR RPAR>;  };
 
         // admin
-        combo_boot_left         { timeout-ms = <SLOW_COMBO_MS>; key-positions = <26 27 28 39>;  bindings = <&bootloader>;     };
-        combo_boot_right        { timeout-ms = <SLOW_COMBO_MS>; key-positions = <31 32 33 39>;  bindings = <&bootloader>;     };
+        combo_boot_left         { timeout-ms = <SLOW_COMBO_MS>; key-positions = <26 27 28 38>;  bindings = <&bootloader>;     };
         combo_lock_screen_left  { timeout-ms = <SLOW_COMBO_MS>; key-positions = <0 1 2 3>;      bindings = <&kp LOCK_SCRN>;   };
         combo_lock_screen_right { timeout-ms = <SLOW_COMBO_MS>; key-positions = <8 9 10 11>;    bindings = <&kp LOCK_SCRN>;   };
     };
