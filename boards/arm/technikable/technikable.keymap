@@ -127,9 +127,9 @@
         shift_cw: shift_capsword {
             compatible = "zmk,behavior-tap-dance";
             label = "SHIFT_CAPSWORD";
-            tapping-term-ms = <180>;
+            tapping-term-ms = <100>;
             #binding-cells = <0>;
-            bindings = <&kp LSHIFT>, <&caps_word>;
+            bindings = <&kp LSHIFT>, <&kp CAPSLOCK>;
         };
     };
 
