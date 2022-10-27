@@ -18,14 +18,6 @@
 #define SYMS_SPC() SYMS SPACE
 #define ADJT_SPC() ADJT SPACE
 
-// Mod Taps
-#define GS() LGUI SPACE
-#define LC_SPC() LCTRL SPACE
-#define LA_SPC() LALT SPACE
-#define RA_SPC() RALT SPACE
-#define RC_SPC() RCTRL SPACE
-#define LS_CAP() LSHIFT CAPSLOCK
-
 // Modifier Combos
 #define LSG(kc) LS(LG(kc))
 #define LAG(kc) LA(LG(kc))
@@ -141,8 +133,8 @@
     
         // horizontal
         combo_tilde             { timeout-ms = <FAST_COMBO_MS>; key-positions = <0 1>;          bindings = <&mas AS(GRAVE)>;  };
-        combo_lshift            { timeout-ms = <SLOW_COMBO_MS>; key-positions = <24 25>;        bindings = <&mt LS_CAP()>;    };
-        combo_rshift            { timeout-ms = <SLOW_COMBO_MS>; key-positions = <34 35>;        bindings = <&mt LS_CAP()>;    };
+        combo_lshift            { timeout-ms = <SLOW_COMBO_MS>; key-positions = <24 25>;        bindings = <&mt LSHIFT CAPS>; };
+        combo_rshift            { timeout-ms = <SLOW_COMBO_MS>; key-positions = <34 35>;        bindings = <&mt RSHIFT CAPS>; };
         combo_esc               { timeout-ms = <FAST_COMBO_MS>; key-positions = <1 2>;          bindings = <&kp ESC>;         };
         combo_tab               { timeout-ms = <FAST_COMBO_MS>; key-positions = <13 14>;        bindings = <&kp TAB>;         };
         combo_backspace         { timeout-ms = <SLOW_COMBO_MS>; key-positions = <9 10>;         bindings = <&bspc>;           };
