@@ -50,9 +50,9 @@
 #define CD_REF_B() LSG(F9) LG(F9) // build all, build module
 #define CD_REF_R() LS(F6) F6      // move
 #define CD_REF_S() LG(F6) LAG(T)  // surround
+#define CD_NAV_E() LS(F2) F2      // go to next/last error
 #define CD_NAV_R() LG(N4) LCS(R)  // open run window, run tests
 #define CD_NAV_D() LG(N5) LCS(D)  // open debug window, run tests in debug mode
-#define CD_NAV_T() LS(F2) F2      // go to next/last error
 
 &lt {
     tapping-term-ms = <200>;
@@ -219,9 +219,9 @@
         base_layer {
             label = "BASE";
             bindings = <
-/**/&sas AS(Q)   &mas AS(W)     &fas AS(F)     &fas AS(P)     &mas AS(D)      &none      &none    &mas AS(J)      &fas AS(L)    &fas AS(U)    &mas AS(Y)     &sas AS(MINUS)
-/**/&sas AS(A)   &mas AS(R)     &fas AS(S)     &fas AS(T)     &fas AS(G)      &none      &none    &fas AS(M)      &fas AS(N)    &fas AS(E)    &mas AS(I)     &sas AS(O)
-/**/&sas AS(Z)   &mas AS(X)     &fas AS(C)     &fas AS(V)     &fas AS(B)      &none      &none    &fas AS(K)      &fas AS(H)    &kp COMMA     &kp DOT        &sas AS(SEMI)
+/**/&sas AS(Q)   &mas AS(W)     &fas AS(F)     &fas AS(P)     &mas AS(D)      &none      &none    &mas AS(J)      &fas AS(L)    &fas AS(U)     &mas AS(Y)     &sas AS(MINUS)
+/**/&sas AS(A)   &mas AS(R)     &fas AS(S)     &fas AS(T)     &fas AS(G)      &none      &none    &fas AS(M)      &fas AS(N)    &fas AS(E)     &mas AS(I)     &sas AS(O)
+/**/&sas AS(Z)   &mas AS(X)     &fas AS(C)     &fas AS(V)     &fas AS(B)      &none      &none    &fas AS(K)      &fas AS(H)    &kp COMMA      &kp DOT        &sas AS(SEMI)
 /*  &            &*/            &kp LCTRL      &kp LALT       &lt SYMS_SPC()  &kp LGUI /*&none*/  &lt SYMS_SPC()  &kp RALT      &kp RCTRL
             >;
         };
@@ -229,9 +229,9 @@
         symbols_layer {
             label = "SYMBOL";
             bindings = <
-/**/&kp N0       &kp N1         &kp N2         &kp N3         &kp CARET       &none      &none    &to ADJT        &none         &kp UP        &none          &trans
-/**/&kp EXCL     &kp N4         &kp N5         &kp N6         &kp DLLR        &none      &none    &kp AMPS        &kp LEFT      &kp DOWN      &kp RIGHT      &none
-/**/&kp AT       &kp N7         &kp N8         &kp N9         &kp PRCNT       &none      &none    &kp HASH        &kp STAR      &trans        &trans         &trans
+/**/&kp N0       &kp N1         &kp N2         &kp N3         &kp CARET       &none      &none    &to ADJT        &none         &kp UP         &none          &trans
+/**/&kp EXCL     &kp N4         &kp N5         &kp N6         &kp DLLR        &none      &none    &kp AMPS        &kp LEFT      &kp DOWN       &kp RIGHT      &none
+/**/&kp AT       &kp N7         &kp N8         &kp N9         &kp PRCNT       &none      &none    &kp HASH        &kp STAR      &trans         &trans         &trans
 /*  &            &*/            &trans         &trans         &lt ADJT_SPC()  &trans   /*&none*/  &lt ADJT_SPC()  &trans        &trans
             >;
         };
@@ -239,9 +239,9 @@
         adjust_layer {
             label = "ADJUST";
             bindings = <
-/**/&to BASE     &kp F1         &kp F2         &kp F3         &kp LOCK_SCRN   &none      &none    &kp C_VOL_DN    &kp C_VOL_UP  &kp C_MUTE    &kp MUTE_MIC   &to BASE
-/**/&none        &kp F4         &kp F5         &kp F6         &kp LOCK_SCRN   &none      &none    &kp C_BRI_DN    &kp C_BRI_UP  &kp SCRN_CAP  &kp C_PP       &none
-/**/&bt BT_CLR   &kp F7         &kp F8         &kp F9         &none           &none      &none    &bt BT(0)       &bt BT(1)     &bt BT(2)     &bt BT(3)      &bt BT(4)
+/**/&to BASE     &kp F1         &kp F2         &kp F3         &kp LOCK_SCRN   &none      &none    &kp C_VOL_DN    &kp C_VOL_UP  &kp C_MUTE     &kp MUTE_MIC   &to BASE
+/**/&none        &kp F4         &kp F5         &kp F6         &kp LOCK_SCRN   &none      &none    &kp C_BRI_DN    &kp C_BRI_UP  &kp SCRN_CAP   &kp C_PP       &none
+/**/&bt BT_CLR   &kp F7         &kp F8         &kp F9         &none           &none      &none    &bt BT(0)       &bt BT(1)     &bt BT(2)      &bt BT(3)      &bt BT(4)
 /*  &            &*/            &trans         &trans         &none           &trans   /*&none*/  &none           &trans        &trans
             >;
         };
@@ -249,9 +249,9 @@
         code_refactor_layer {
             label = "CODE REFACTOR";
             bindings = <
-/**/&to BASE     &none          &kp CD_REF_F   &kp CD_REF_P   &none           &none      &none    &none           &kp CD_REF_L  &none         &none          &none
-/**/&kp F5       &cd CD_REF_R() &cd CD_REF_S() &kp LC(T)      &none           &none      &none    &kp CD_REF_M    &kp CD_REF_N  &none         &none          &none
-/**/&none        &none          &kp CD_REF_C   &kp CD_REF_V   &none           &none      &none    &cd CD_REF_B()  &none         &none         &none          &none
+/**/&to BASE     &none          &kp CD_REF_F   &kp CD_REF_P   &none           &none      &none    &none           &kp CD_REF_L  &none          &none          &none
+/**/&kp F5       &cd CD_REF_R() &cd CD_REF_S() &kp LC(T)      &none           &none      &none    &kp CD_REF_M    &kp CD_REF_N  &none          &none          &none
+/**/&none        &none          &kp CD_REF_C   &kp CD_REF_V   &none           &none      &none    &cd CD_REF_B()  &none         &none          &none          &none
 /*  &            &*/            &none          &none          &none           &none    /*&none*/  &none           &none         &none
             >;
         };
@@ -259,9 +259,9 @@
         code_nav_layer {
             label = "CODE NAV";
             bindings = <
-/**/&to BASE     &none          &none          &kp LG(N1)     &cd CD_NAV_D()  &none      &none    &none           &none         &none         &none          &none
-/**/&none        &cd CD_NAV_R() &none          &cd CD_NAV_T() &none           &none      &none    &kp LS(F7)      &kp LS(F8)    &kp LA(F9)    &kp CD_DBG_R   &none
-/**/&none        &none          &cdn_diff_co   &none          &cdn_diff_br    &none      &none    &none           &none         &none         &none          &none
+/**/&to BASE     &none          &none          &kp LG(N1)     &cd CD_NAV_D()  &none      &none    &none           &kp LS(F7)    &kp LS(F8)     &kp LA(F9)     &kp CD_DBG_R
+/**/&none        &cd CD_NAV_R() &none          &none          &none           &none      &none    &none           &none         &cd CD_NAV_E() &none          &none
+/**/&none        &none          &cdn_diff_co   &none          &cdn_diff_br    &none      &none    &none           &none         &none          &none          &none
 /*  &            &*/            &none          &none          &none           &none    /*&none*/  &none           &none         &none
             >;
         };
