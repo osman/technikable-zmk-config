@@ -137,13 +137,6 @@
             bindings = <&kp BSPC>, <&kp DELETE>;
             mods = <(MOD_LSFT)>;
         };
-        shift_capsword: shift_capsword {
-            compatible = "zmk,behavior-tap-dance";
-            label = "SHIFT_CAPSWORD";
-            tapping-term-ms = <400>;
-            #binding-cells = <0>;
-            bindings = <&kp LSHIFT>, <&caps_word>;
-        };
         cd_ref_r: code_refactor_r {
             compatible = "zmk,behavior-tap-dance";
             label = "CODE_REFACTOR";
@@ -167,14 +160,15 @@
     
         // horizontal
         combo_tilde             { timeout-ms = <FAST_COMBO_MS>; key-positions = <0 1>;          bindings = <&mas AS(GRAVE)>;  };
-        combo_lshift            { timeout-ms = <SLOW_COMBO_MS>; key-positions = <24 25>;        bindings = <&shift_capsword>; };
-        combo_rshift            { timeout-ms = <SLOW_COMBO_MS>; key-positions = <34 35>;        bindings = <&shift_capsword>; };
+        combo_lshift            { timeout-ms = <SLOW_COMBO_MS>; key-positions = <24 25>;        bindings = <&kp LSHIFT>;      };
+        combo_rshift            { timeout-ms = <SLOW_COMBO_MS>; key-positions = <34 35>;        bindings = <&kp RSHIFT>;      };
+        combo_lcapsword         { timeout-ms = <SLOW_COMBO_MS>; key-positions = <25 26>;        bindings = <&capsword>;       };
+        combo_rcapsword         { timeout-ms = <SLOW_COMBO_MS>; key-positions = <33 34>;        bindings = <&capsword>;       };
         combo_esc               { timeout-ms = <FAST_COMBO_MS>; key-positions = <1 2>;          bindings = <&kp ESC>;         };
         combo_tab               { timeout-ms = <FAST_COMBO_MS>; key-positions = <13 14>;        bindings = <&kp TAB>;         };
         combo_backspace         { timeout-ms = <SLOW_COMBO_MS>; key-positions = <9 10>;         bindings = <&bspc>;           };
         combo_enter             { timeout-ms = <FAST_COMBO_MS>; key-positions = <21 22>;        bindings = <&kp ENTER>;       };
         combo_equal             { timeout-ms = <FAST_COMBO_MS>; key-positions = <10 11>;        bindings = <&mas AS(EQUAL)>;  };
-        combo_capsword          { timeout-ms = <SLOW_COMBO_MS>; key-positions = <27 32>;        bindings = <&caps_word>;      };
         
         // vertical
         combo_pipe_qmark        { timeout-ms = <VERT_COMBO_MS>; key-positions = <1  13>;        bindings = <&mas QMARK PIPE>; };
