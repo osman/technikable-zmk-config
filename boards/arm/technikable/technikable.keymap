@@ -167,7 +167,7 @@
         combo_backspace         { timeout-ms = <SLOW_COMBO_MS>; key-positions = <9 10>;         bindings = <&bspc>;           };
         combo_enter             { timeout-ms = <FAST_COMBO_MS>; key-positions = <21 22>;        bindings = <&kp ENTER>;       };
         combo_equal             { timeout-ms = <FAST_COMBO_MS>; key-positions = <10 11>;        bindings = <&mas AS(EQUAL)>;  };
-        combo_capsword          { timeout-ms = <SLOW_COMBO_MS>; key-positions = <28 31>;        bindings = <&caps_word>;      };
+        combo_capsword          { timeout-ms = <SLOW_COMBO_MS>; key-positions = <27 32>;        bindings = <&caps_word>;      };
         
         // vertical
         combo_pipe_qmark        { timeout-ms = <VERT_COMBO_MS>; key-positions = <1  13>;        bindings = <&mas QMARK PIPE>; };
