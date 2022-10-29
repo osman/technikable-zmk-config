@@ -140,7 +140,7 @@
         cd_ref_r: code_refactor_r {
             compatible = "zmk,behavior-tap-dance";
             label = "CODE_REFACTOR";
-            tapping-term-ms = <200>;
+            tapping-term-ms = <400>;
             #binding-cells = <0>;
             bindings = <&kp LS(F6)>, <&kp F6>, <&kp LG(F6)>;
         };
