@@ -162,8 +162,8 @@
         combo_tilde             { timeout-ms = <FAST_COMBO_MS>; key-positions = <0 1>;          bindings = <&mas AS(GRAVE)>;  };
         combo_lshift            { timeout-ms = <SLOW_COMBO_MS>; key-positions = <24 25>;        bindings = <&kp LSHIFT>;      };
         combo_rshift            { timeout-ms = <SLOW_COMBO_MS>; key-positions = <34 35>;        bindings = <&kp RSHIFT>;      };
-        combo_lcapsword         { timeout-ms = <SLOW_COMBO_MS>; key-positions = <25 26>;        bindings = <&capsword>;       };
-        combo_rcapsword         { timeout-ms = <SLOW_COMBO_MS>; key-positions = <33 34>;        bindings = <&capsword>;       };
+        combo_lcapsword         { timeout-ms = <SLOW_COMBO_MS>; key-positions = <25 26>;        bindings = <&caps_word>;      };
+        combo_rcapsword         { timeout-ms = <SLOW_COMBO_MS>; key-positions = <33 34>;        bindings = <&caps_word>;      };
         combo_esc               { timeout-ms = <FAST_COMBO_MS>; key-positions = <1 2>;          bindings = <&kp ESC>;         };
         combo_tab               { timeout-ms = <FAST_COMBO_MS>; key-positions = <13 14>;        bindings = <&kp TAB>;         };
         combo_backspace         { timeout-ms = <SLOW_COMBO_MS>; key-positions = <9 10>;         bindings = <&bspc>;           };
