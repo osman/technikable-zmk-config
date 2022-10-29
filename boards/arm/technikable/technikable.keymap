@@ -258,7 +258,7 @@
             label = "CODE REFACTOR";
             bindings = <
 /**/&to BASE     &none          &kp CD_REF_F   &kp CD_REF_P   &none           &none      &none    &none           &kp CD_REF_L  &none          &none          &none
-/**/&kp CD_REF_A &cd_ref_r      &kp CD_REF_S   &kp CD_REF_T   &none           &none      &none    &kp CD_REF_M    &kp CD_REF_N  &none          &CD_REF_I      &none
+/**/&kp CD_REF_A &cd_ref_r      &kp CD_REF_S   &kp CD_REF_T   &none           &none      &none    &kp CD_REF_M    &kp CD_REF_N  &none          &kp CD_REF_I   &none
 /**/&none        &none          &kp CD_REF_C   &kp CD_REF_V   &cd CD_REF_B()  &none      &none    &none           &none         &none          &none          &none
 /*  &            &*/            &none          &none          &none           &none    /*&none*/  &none           &none         &none
             >;
