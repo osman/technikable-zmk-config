@@ -75,13 +75,26 @@
 
     macros {
         capslock: capslock {
-            label = "MACOS_CAPSLOCK";
             compatible = "zmk,behavior-macro";
+            label = "MACOS_CAPSLOCK";
             tap-ms = <200>;
             #binding-cells = <0>;
             bindings = <&kp CAPS>;
         };
+        cdn_diff_co: code_diff_commit {
+            compatible = "zmk,behavior-macro";
+            label = "CODE_NAV_DIFF_COMMIT";
+            #binding-cells = <0>;
+            bindings = <&kp LSG(D) &kp C>;
+        };
+        cdn_diff_br: code_diff_branch {
+            compatible = "zmk,behavior-macro";
+            label = "CODE_NAV_DIFF_BRANCH";
+            #binding-cells = <0>;
+            bindings = <&kp LSG(D) &kp B>;
+        };
     };
+
 
     behaviors {
         fas: fast_auto_shift {
@@ -207,21 +220,6 @@
         combo_boot_left         { timeout-ms = <SLOW_COMBO_MS>; key-positions = <26 27 28 38>;  bindings = <&bootloader>;     };
         combo_lock_screen_left  { timeout-ms = <SLOW_COMBO_MS>; key-positions = <0 1 2 3>;      bindings = <&kp LOCK_SCRN>;   };
         combo_lock_screen_right { timeout-ms = <SLOW_COMBO_MS>; key-positions = <8 9 10 11>;    bindings = <&kp LOCK_SCRN>;   };
-    };
-
-    macros {
-        cdn_diff_co: code_diff_commit {
-            compatible = "zmk,behavior-macro";
-            label = "CODE_NAV_DIFF_COMMIT";
-            #binding-cells = <0>;
-            bindings = <&macro_tap &kp LSG(D)>, <&macro_tap &kp C>;
-        };
-        cdn_diff_br: code_diff_branch {
-            compatible = "zmk,behavior-macro";
-            label = "CODE_NAV_DIFF_BRANCH";
-            #binding-cells = <0>;
-            bindings = <&macro_tap &kp LSG(D)>, <&macro_tap &kp B>;
-        };
     };
 
     keymap {
