@@ -154,21 +154,22 @@
 
         // admin
         ZMK_COMBO_ADV(boot_left,          &bootloader,      LB0 LB1 LB2 LH0,  BASE,  SLOW_COMBO_MS)  
-        ZMK_COMBO_ADV(lock_screen_left,   &kp LOCK_SCRN,    LT1 LT2 LT3 LT4,  BASE,  SLOW_COMBO_MS)  
-        ZMK_COMBO_ADV(lock_screen_right,  &kp LOCK_SCRN,    RT1 RT2 RT3 RT4,  BASE,  SLOW_COMBO_MS)  
+        ZMK_COMBO_ADV(lock_screen_left,   &kp LCG(Q),       LT1 LT2 LT3 LT4,  BASE,  SLOW_COMBO_MS)  
+        ZMK_COMBO_ADV(lock_screen_right,  &kp LCG(Q),       RT1 RT2 RT3 RT4,  BASE,  SLOW_COMBO_MS)  
     };
 
     keymap {
         compatible = "zmk,keymap";
 
-        #define XXXX &none
-        #define ____ &trans
-        #define DM() &none &none
-        #define K_LC()   &kp LCTRL
-        #define K_LA()   &kp LALT
-        #define K_LG()   &kp LCMD
-        #define SYM_SP() &lt SYMS SPACE
         ZMK_LAYER(base_layer,
+#define XXXX &none
+#define ____ &trans
+#define DM() &none &none
+#define K_LC()   &kp LCTRL
+#define K_LA()   &kp LALT
+#define K_LG()   &kp LCMD
+#define SYM_SP() &lt SYMS SPACE
+
 SAS(Q)    MAS(W)   FAS(F)   FAS(P)   MAS(D)         DM()      MAS(J)     FAS(L)     FAS(U)     MAS(Y)     SAS(MINUS)
 SAS(A)    MAS(R)   FAS(S)   FAS(T)   FAS(G)         DM()      FAS(M)     FAS(N)     FAS(E)     MAS(I)     SAS(O)
 SAS(Z)    MAS(X)   FAS(C)   FAS(V)   FAS(B)         DM()      FAS(K)     FAS(H)     &kp COMMA  &kp DOT    SAS(SEMI)
