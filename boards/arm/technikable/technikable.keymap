@@ -198,11 +198,11 @@ S_AS(Z)  M_AS(X)  F_AS(C)  F_AS(V)  F_AS(B)         D_MID()        F_AS(K)   F_A
         #define VOL(name)   &kp C_VOL_ ## name
         #define BRI(name)   &kp C_BRI_ ## name
         #define BT_S(n)     &bt BT_SEL n
-        #define BT_C()      &bt BT_CLR
-         CDR_F()
+        #define BT_CL()      &bt BT_CLR
+
 TO_BS()  &kp  F1  &kp  F2  &kp  F3  XXXXXXX         D_MID()        VOL(DN)  VOL(UP)  VMUTE()  XXXXXXX  TO_BS()
 XXXXXXX  &kp  F4  &kp  F5  &kp  F6  XXXXXXX         D_MID()        BRI(DN)  BRI(UP)  SNCAP()  PLAYP()  XXXXXXX
-BT_C()   &kp  F7  &kp  F8  &kp  F9  XXXXXXX         D_MID()        BT_S(0)  BT_S(1)  BT_S(2)  BT_S(3)  BT_S(4)
+BT_CL()  &kp  F7  &kp  F8  &kp  F9  XXXXXXX         D_MID()        BT_S(0)  BT_S(1)  BT_S(2)  BT_S(3)  BT_S(4)
                   _______  _______  XXXXXXX         _______        XXXXXXX  _______  _______
         )
 
