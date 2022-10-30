@@ -48,9 +48,9 @@
 #define RB4 35
 
 // Thumb Keys
-#define LH0 36
+#define LH2 36
 #define LH1 37
-#define LH2 38
+#define LH0 38
 #define BMH 39
 #define RH0 40
 #define RH1 41
