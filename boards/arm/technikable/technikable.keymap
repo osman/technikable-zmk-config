@@ -88,8 +88,16 @@
             bindings = <&kp>, <&kp>;
         )
         
+        ZMK_BEHAVIOR(nav, hold_tap,
+            flavor = "tap-preferred";
+            tapping-term-ms = <300>;
+            quick-tap-ms = <50>;
+            global-quick-tap;
+            bindings = <&kp>, <&kp>;
+        )
+        
         ZMK_BEHAVIOR(bspc, mod_morph,
-            bindings = <&mt LA(BSPC) BSPC>, <&mt LA(DEL) DEL>;
+            bindings = <&nav LA(BSPC) BSPC>, <&nav LA(DEL) DEL>;
             mods = <(MOD_LSFT)>;
         )
         
@@ -182,12 +190,12 @@ S_AS(Z)  M_AS(X)  F_AS(C)  F_AS(V)  F_AS(B)         D_MID()        F_AS(K)  F_AS
         ZMK_LAYER(symbols_layer,
         #define ADJSP()  &lt ADJT SPACE
         #define NUMB(n)  &kp N ## n
-        #define NAV_U()  &sas PAGE_UP UP
-        #define NAV_D()  &sas PAGE_DOWN DOWN
-        #define NAV_L()  &sas LA(LEFT) LEFT     // right, right by a word
-        #define NAV_R()  &sas LA(RIGHT) RIGHT   // left, left by a word
-        #define K_BWD()  &sas LG(LBRC) LG(LBKT) // back, move to tab on left
-        #define K_FWD()  &sas LG(RBRC) LG(RBKT) // forwards, move to tab on right
+        #define NAV_U()  &nav PAGE_UP UP
+        #define NAV_D()  &nav PAGE_DOWN DOWN
+        #define NAV_L()  &nav LA(LEFT) LEFT     // right, right by a word
+        #define NAV_R()  &nav LA(RIGHT) RIGHT   // left, left by a word
+        #define K_BWD()  &nav LG(LBRC) LG(LBKT) // back, move to tab on left
+        #define K_FWD()  &nav LG(RBRC) LG(RBKT) // forwards, move to tab on right
 
 NUMB(0)  NUMB(1)  NUMB(2)  NUMB(3)  &kp CARET       D_MID()        K_BWD()  K_FWD()  NAV_U()  XXXXXXX  _______
 &kp EXCL NUMB(4)  NUMB(5)  NUMB(6)  &kp DLLR        D_MID()        &kp AMPS NAV_L()  NAV_D()  NAV_R()  XXXXXXX
@@ -196,14 +204,14 @@ NUMB(0)  NUMB(1)  NUMB(2)  NUMB(3)  &kp CARET       D_MID()        K_BWD()  K_FW
         )
 
         ZMK_LAYER(adjust_layer,
-        #define FUNC(n)   &kp F ## n
-        #define VMUTE()   &kp C_MUTE 
-        #define PLAYP()   &kp C_PLAY_PAUSE 
-        #define SNCAP()   &kp LSG(N4)
-        #define VOL(dir)  &kp C_VOL_ ## dir
-        #define BRI(dir)  &kp C_BRI_ ## dir
-        #define BT_S(n)   &bt BT_SEL n
-        #define BT_CL()   &bt BT_CLR
+        #define FUNC(n)  &kp F ## n
+        #define VMUTE()  &kp C_MUTE 
+        #define PLAYP()  &kp C_PLAY_PAUSE 
+        #define SNCAP()  &kp LSG(N4)
+        #define VOL(dir) &kp C_VOL_ ## dir
+        #define BRI(dir) &kp C_BRI_ ## dir
+        #define BT_S(n)  &bt BT_SEL n
+        #define BT_CL()  &bt BT_CLR
 
 TO_BS()  FUNC(1)  FUNC(2)  FUNC(3)  XXXXXXX         D_MID()        VOL(DN)  VOL(UP)  VMUTE()  XXXXXXX  XXXXXXX
 XXXXXXX  FUNC(4)  FUNC(5)  FUNC(6)  XXXXXXX         D_MID()        BRI(DN)  BRI(UP)  SNCAP()  PLAYP()  XXXXXXX
