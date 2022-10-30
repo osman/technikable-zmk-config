@@ -3,8 +3,8 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/outputs.h>
 
-#include helper/functions.h
-#include helper/keypos.h
+#include "helper/functions.h"
+#include "helper/keypos.h"
 
 // Layers
 #define BASE 0
@@ -13,9 +13,15 @@
 #define CREF 3
 #define CNAV 4
 
+// Aliases
+#define XXXX &none
+#define ____ &trans
+#define DM() &none &none
+
 // Behavior Shortcuts
-#define AS(kc) LS(kc) kc
-#define BT(n) BT_SEL n
+#define FAS(kc) &fas LS(kc) kc
+#define MAS(kc) &mas LS(kc) kc
+#define SAS(kc) &sas LS(kc) kc
 
 // Modifier Combos
 #define LSG(kc) LS(LG(kc))
@@ -48,10 +54,10 @@
     };
 
     macros {
-        ZMK_BEHAVIOR(cdn_diff_co, macro,
+        ZMK_BEHAVIOR(diff_co, macro,
             bindings = <&kp LSG(D) &kp C>;
         )
-        ZMK_BEHAVIOR(cdn_diff_br, macro,
+        ZMK_BEHAVIOR(diff_br, macro,
             bindings = <&kp LSG(D) &kp B>;
         )
     };
@@ -86,10 +92,10 @@
             bindings = <&kp>, <&kp>;
         )
         ZMK_BEHAVIOR(bspc, mod_morph,
-            bindings = <&kp BSPC>, <&kp DELETE>;
+            bindings = <&mt LA(BSPC) BSPC>, <&mt LA(DEL) DEL>;
             mods = <(MOD_LSFT)>;
         )
-        ZMK_BEHAVIOR(cd_ref_r, tap_dance,
+        ZMK_BEHAVIOR(cdr_r, tap_dance,
             tapping-term-ms = <400>;
             bindings = <&kp LS(F6)>, <&kp F6>, <&kp LG(F6)>;
         )
@@ -106,7 +112,7 @@
         compatible = "zmk,combos";
     
         // horizontal
-        ZMK_COMBO_ADV(tilde,              &mas AS(GRAVE),   LT4 LT3,          ALL,   FAST_COMBO_MS)
+        ZMK_COMBO_ADV(tilde,              MAS(GRAVE),       LT4 LT3,          ALL,   FAST_COMBO_MS)
         ZMK_COMBO_ADV(lshift,             &kp LSHIFT,       LB4 LB3,          ALL,   SLOW_COMBO_MS)
         ZMK_COMBO_ADV(rshift,             &kp RSHIFT,       RB3 RB4,          ALL,   SLOW_COMBO_MS)
         ZMK_COMBO_ADV(lcapsword,          &caps_word,       LB3 LB2,          BASE,  SLOW_COMBO_MS)
@@ -115,11 +121,11 @@
         ZMK_COMBO_ADV(tab,                &kp TAB,          LM3 LM2,          ALL,   FAST_COMBO_MS)
         ZMK_COMBO_ADV(backspace,          &bspc,            RT2 RT3,          ALL,   SLOW_COMBO_MS)
         ZMK_COMBO_ADV(enter,              &kp ENTER,        RM2 RM3,          ALL,   FAST_COMBO_MS)
-        ZMK_COMBO_ADV(equal,              &mas AS(EQUAL),   RT3 RT4,          ALL,   FAST_COMBO_MS)
+        ZMK_COMBO_ADV(equal,              MAS(EQUAL),       RT3 RT4,          ALL,   FAST_COMBO_MS)
         
         // vertical
         ZMK_COMBO_ADV(pipe_qmark,         &mas QMARK PIPE,  LT3 LM3,          ALL,   VERT_COMBO_MS)
-        ZMK_COMBO_ADV(quotes,             &mas AS(SQT),     RT3 RM3,          ALL,   VERT_COMBO_MS)
+        ZMK_COMBO_ADV(quotes,             MAS(SQT),         RT3 RM3,          ALL,   VERT_COMBO_MS)
                                                          
         // angled                                        
         ZMK_COMBO_ADV(fslash,             &kp FSLH,         LT2 LM3,          ALL,   FAST_COMBO_MS)
@@ -159,75 +165,78 @@
         compatible = "zmk,keymap";
 
         ZMK_LAYER(base_layer,
-#define SYMS_SPC() SYMS SPACE
+#define SYM_SP() &lt SYMS SPACE
+#define K_LC()   &kp LCTRL
+#define K_LA()   &kp LALT
+#define K_LG()   &kp LCMD
 
-/**/&sas AS(Q)   &mas AS(W)     &fas AS(F)     &fas AS(P)     &mas AS(D)      &none      &none    &mas AS(J)      &fas AS(L)      &fas AS(U)     &mas AS(Y)     &sas AS(MINUS)
-/**/&sas AS(A)   &mas AS(R)     &fas AS(S)     &fas AS(T)     &fas AS(G)      &none      &none    &fas AS(M)      &fas AS(N)      &fas AS(E)     &mas AS(I)     &sas AS(O)
-/**/&sas AS(Z)   &mas AS(X)     &fas AS(C)     &fas AS(V)     &fas AS(B)      &none      &none    &fas AS(K)      &fas AS(H)      &kp COMMA      &kp DOT        &sas AS(SEMI)
-/*  &            &*/            &kp LCTRL      &kp LALT       &lt SYMS_SPC()  &kp LGUI /*&none*/  &lt SYMS_SPC()  &mo CREF        &mo CNAV
+SAS(Q)    MAS(W)   FAS(F)   FAS(P)   MAS(D)         DM()      MAS(J)     FAS(L)     FAS(U)     MAS(Y)     SAS(MINUS)
+SAS(A)    MAS(R)   FAS(S)   FAS(T)   FAS(G)         DM()      FAS(M)     FAS(N)     FAS(E)     MAS(I)     SAS(O)
+SAS(Z)    MAS(X)   FAS(C)   FAS(V)   FAS(B)         DM()      FAS(K)     FAS(H)     &kp COMMA  &kp DOT    SAS(SEMI)
+                   K_LC()   K_LA()   SYM_SP()       K_LG()    SYM_SP()   &mo CREF   &mo CNAV
         )
 
         ZMK_LAYER(symbols_layer,
-#define ADJT_SPC() ADJT SPACE
+#define ADJ_SP() &lt ADJT SPACE
 
-/**/&kp N0       &kp N1         &kp N2         &kp N3         &kp CARET       &none      &none    &to ADJT        &none           &kp UP         &none          &trans
-/**/&kp EXCL     &kp N4         &kp N5         &kp N6         &kp DLLR        &none      &none    &kp AMPS        &kp LEFT        &kp DOWN       &kp RIGHT      &none
-/**/&kp AT       &kp N7         &kp N8         &kp N9         &kp PRCNT       &none      &none    &kp HASH        &kp STAR        &trans         &trans         &trans
-/*  &            &*/            &trans         &trans         &lt ADJT_SPC()  &trans   /*&none*/  &lt ADJT_SPC()  &trans          &trans
+&kp N0    &kp N1   &kp N2   &kp N3   &kp CARET      DM()      &to ADJT   XXXX       &kp UP     XXXX       ____  
+&kp EXCL  &kp N4   &kp N5   &kp N6   &kp DLLR       DM()      &kp AMPS   &kp LEFT   &kp DOWN   &kp RIGHT  XXXX 
+&kp AT    &kp N7   &kp N8   &kp N9   &kp PRCNT      DM()      &kp HASH   &kp STAR   ____       ____       ____  
+                   ____     ____     ADJ_SP()       ____      ADJ_SP()   ____       ____  
         )
 
         ZMK_LAYER(adjust_layer,
-#define MUTE_MIC  LS(LG(LC(LA(M))))
-#define SCRN_CAP  LSG(N4)
-#define LOCK_SCRN LCG(Q)
+#define K_MUTE()    &kp C_MUTE 
+#define SCN_CAP()   &kp LSG(N4)
+#define VOL(name)   &kp C_VOL_ ## name
+#define BRI(name)   &kp C_BRI_ ## name
+#define BT(n)       &bt BT_SEL n
+#define BT_C()      &bt BT_CLR
 
-/**/&to BASE     &kp F1         &kp F2         &kp F3         &kp LOCK_SCRN   &none      &none    &kp C_VOL_DN    &kp C_VOL_UP    &kp C_MUTE     &kp MUTE_MIC   &to BASE
-/**/&none        &kp F4         &kp F5         &kp F6         &kp LOCK_SCRN   &none      &none    &kp C_BRI_DN    &kp C_BRI_UP    &kp SCRN_CAP   &kp C_PP       &none
-/**/&bt BT_CLR   &kp F7         &kp F8         &kp F9         &none           &none      &none    &bt BT(0)       &bt BT(1)       &bt BT(2)      &bt BT(3)      &bt BT(4)
-/*  &            &*/            &trans         &trans         &none           &trans   /*&none*/  &none           &trans          &trans
+&to BASE  &kp F1   &kp F2   &kp F3   XXXX           DM()      VOL(DN)    VOL(UP)    K_MUTE()   XXXX       &to BASE
+XXXX      &kp F4   &kp F5   &kp F6   XXXX           DM()      BRI(DN)    BRI(UP)    SCN_CAP()  &kp C_PP   XXXX 
+BT_C      &kp F7   &kp F8   &kp F9   XXXX           DM()      BT(0)      BT(1)      BT(2)      BT(3)      BT(4)
+                   ____     ____     XXXX           ____      XXXX       ____       ____  
         )
 
         ZMK_LAYER(code_refactor_layer,
-#define CD_REF_B() LG(F9) LSG(F9)   // build module, build all
-#define CD_REF_B() LG(F9) LSG(F9)   // build module, build all
-#define CD_REF_A F5                 // copy (putting it beside R which is rename/move)
-#define CD_REF_C LAG(C)             // extract constant
-#define CD_REF_F LAG(F)             // extract field
-#define CD_REF_P LAG(P)             // extract parameter
-#define CD_REF_V LAG(V)             // extract variable
-#define CD_REF_N LAG(N)             // inline
-#define CD_REF_M LAG(M)             // extract method
-#define CD_REF_L LAG(L)             // format
-#define CD_REF_I LAG(L)             // format (qwerty position)
-#define CD_REF_S LAG(T)             // surround
-#define CD_REF_T LC(T)              // refactor
-#define CD_REF_O LA(ENTER)          // suggested actions
-#define CD_REF_B() LG(F9) LSG(F9)   // build module, build all
+#define CDR_A() &kp F5                 // copy (putting it beside R which is rename/move)
+#define CDR_C() &kp LAG(C)             // extract constant
+#define CDR_F() &kp LAG(F)             // extract field
+#define CDR_P() &kp LAG(P)             // extract parameter
+#define CDR_V() &kp LAG(V)             // extract variable
+#define CDR_N() &kp LAG(N)             // inline
+#define CDR_M() &kp LAG(M)             // extract method
+#define CDR_L() &kp LAG(L)             // format
+#define CDR_I() &kp LAG(L)             // format (qwerty position)
+#define CDR_S() &kp LAG(T)             // surround
+#define CDR_T() &kp LC(T)              // refactor
+#define CDR_O() &kp LA(ENTER)          // suggested actions
+#define CDR_B() &cd LG(F9) LSG(F9)     // build module, build all
 
-/**/&to BASE     &none          &kp CD_REF_F   &kp CD_REF_P   &none           &none      &none    &none           &kp CD_REF_L    &none          &none          &none
-/**/&kp CD_REF_A &cd_ref_r      &kp CD_REF_S   &kp CD_REF_T   &none           &none      &none    &kp CD_REF_M    &kp CD_REF_N    &none          &kp CD_REF_I   &kp CD_REF_O
-/**/&none        &none          &kp CD_REF_C   &kp CD_REF_V   &cd CD_REF_B()  &none      &none    &none           &none           &none          &none          &none
-/*  &            &*/            &none          &none          &none           &none    /*&none*/  &none           &none           &none
+&to BASE  XXXX     CDR_F()  CDR_P()  XXXX           DM()      XXXX       CDR_L()    XXXX     XXXX       XXXX 
+CDR_A()   &cdr_r   CDR_S()  CDR_T()  XXXX           DM()      CDR_M()    CDR_N()    XXXX     CDR_I()    CDR_O()
+XXXX      XXXX     CDR_C()  CDR_V()  CDR_B()        DM()      XXXX       XXXX       XXXX     XXXX       XXXX 
+                   XXXX     XXXX     XXXX           XXXX      XXXX       XXXX       XXXX 
         )
 
         ZMK_LAYER(code_nav_layer,
-#define CD_NAV_P   LG(N1)             // project tree tab
-#define CD_DBG_R   LAG(R)             // debug: run until breakpoint
-#define CD_NAV_E() LS(F2) F2          // go to next/last error
-#define CD_NAV_R() LG(N4) LCS(R)      // run tests, open run window
-#define CD_NAV_F() LSG(R) LSG(F)      // find in project, replace in project
-#define CD_NAV_D() LG(N5) LCS(D)      // run tests in debug mode, open debug window
-#define CD_DBG_I() F7 LS(F7)          // debug: smart step into, step into
-#define CD_DBG_O() LS(F8) F8          // debug: step over, step out
-#define CD_DBG_R() LA(F9) LAG(R)      // debug: run until breakpoint, run until cursor
-#define CD_DBG_B() LG(F8) LA(F8)      // debug: evaluate expression, set breakpoint
-#define CD_BWD()   LG(LBRC) LG(LBKT)  // back, move to tab on left
-#define CD_FWD()   LG(RBRC) LG(RBKT)  // forwards, move to tab on right
+#define CDN_P() &kp LG(N1)             // project tree tab
+#define CDN_E() &cd LS(F2) F2          // go to next/last error
+#define CDN_R() &cd LG(N4) LCS(R)      // run tests, open run window
+#define CDN_F() &cd LSG(R) LSG(F)      // find in project, replace in project
+#define CDN_D() &cd LG(N5) LCS(D)      // run tests in debug mode, open debug window
+#define DBG_I() &cd F7 LS(F7)          // debug: smart step into, step into
+#define DBG_O() &cd LS(F8) F8          // debug: step over, step out
+#define DBG_R() &cd LA(F9) LAG(R)      // debug: run until breakpoint, run until cursor
+#define DBG_B() &cd LG(F8) LA(F8)      // debug: evaluate expression, set breakpoint
+#define K_BWD() &cd LG(LBRC) LG(LBKT)  // back, move to tab on left
+#define K_FWD() &cd LG(RBRC) LG(RBKT)  // forwards, move to tab on right
 
-/**/&to BASE     &none          &cd CD_NAV_F() &kp CD_NAV_P   &cd CD_NAV_D()  &none      &none    &none           &cd CD_DBG_I()  &cd CD_DBG_O() &cd CD_DBG_R() &cd CD_DBG_B()
-/**/&none        &cd CD_NAV_R() &none          &none          &none           &none      &none    &none           &none           &cd CD_NAV_E() &cd CD_BWD()   &cd CD_FWD()
-/**/&none        &none          &cdn_diff_co   &none          &cdn_diff_br    &none      &none    &none           &none           &none          &none          &none
-/*  &            &*/            &none          &none          &none           &none    /*&none*/  &none           &none           &none
+&to BASE  XXXX     CDN_F()  CDN_P()  CDN_D()        DM()      XXXX       DBG_I()    DBG_O()  DBG_R()   DBG_B()
+XXXX      CDN_R()  XXXX     XXXX     XXXX           DM()      XXXX       XXXX       CDN_E()  K_BWD()   K_FWD()
+XXXX      XXXX     &diff_co XXXX     &diff_br       DM()      XXXX       XXXX       XXXX     XXXX      XXXX 
+                   XXXX     XXXX     XXXX           XXXX      XXXX       XXXX       XXXX 
         )
     };
 };
