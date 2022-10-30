@@ -170,11 +170,12 @@
         #define K_LC()   &kp LCTRL
         #define K_LA()   &kp LALT
         #define K_LG()   &kp LCMD
+        #define K_COM()  &kp COMMA
         #define SYM_SP() &lt SYMS SPACE
 
-S_AS(Q)  M_AS(W)  F_AS(F)  F_AS(P)  M_AS(D)         D_MID()        M_AS(J)   F_AS(L)  F_AS(U)   M_AS(Y)  S_AS(MINUS)
-S_AS(A)  M_AS(R)  F_AS(S)  F_AS(T)  F_AS(G)         D_MID()        F_AS(M)   F_AS(N)  F_AS(E)   M_AS(I)  S_AS(O)
-S_AS(Z)  M_AS(X)  F_AS(C)  F_AS(V)  F_AS(B)         D_MID()        F_AS(K)   F_AS(H)  &kp COMMA &kp DOT  S_AS(SEMI)
+S_AS(Q)  M_AS(W)  F_AS(F)  F_AS(P)  M_AS(D)         D_MID()        M_AS(J)   F_AS(L)  F_AS(U)  M_AS(Y)  S_AS(MINUS)
+S_AS(A)  M_AS(R)  F_AS(S)  F_AS(T)  F_AS(G)         D_MID()        F_AS(M)   F_AS(N)  F_AS(E)  M_AS(I)  S_AS(O)
+S_AS(Z)  M_AS(X)  F_AS(C)  F_AS(V)  F_AS(B)         D_MID()        F_AS(K)   F_AS(H)  K_COM()  &kp DOT  S_AS(SEMI)
                   K_LC()   K_LA()   SYM_SP()        K_LG()         SYM_SP()  &mo CREF &mo CNAV
         )
 
@@ -182,12 +183,12 @@ S_AS(Z)  M_AS(X)  F_AS(C)  F_AS(V)  F_AS(B)         D_MID()        F_AS(K)   F_A
         #define ADJ_SP() &lt ADJT SPACE
         #define NAV_L()  &sas LA(LEFT) LEFT
         #define NAV_R()  &sas LA(RIGHT) RIGHT
+        #define K_AST()  &kp STAR
 
-
-&kp N0   &kp  N1  &kp  N2  &kp  N3  &kp CARET       D_MID()        &to ADJT  XXXXXXX   &kp UP   XXXXXXX  _______
-&kp EXCL &kp  N4  &kp  N5  &kp  N6  &kp DLLR        D_MID()        &kp AMPS  NAV_L()   &kp DOWN NAV_R()  XXXXXXX
-&kp AT   &kp  N7  &kp  N8  &kp  N9  &kp PRCNT       D_MID()        &kp HASH  &kp STAR  _______  _______  _______
-                  _______  _______  ADJ_SP()        _______        ADJ_SP()  _______   _______
+&kp N0   &kp  N1  &kp  N2  &kp  N3  &kp CARET       D_MID()        &to ADJT  XXXXXXX  &kp UP   XXXXXXX  _______
+&kp EXCL &kp  N4  &kp  N5  &kp  N6  &kp DLLR        D_MID()        &kp AMPS  NAV_L()  &kp DOWN NAV_R()  XXXXXXX
+&kp AT   &kp  N7  &kp  N8  &kp  N9  &kp PRCNT       D_MID()        &kp HASH  K_AST()  _______  _______  _______
+                  _______  _______  ADJ_SP()        _______        ADJ_SP()  _______  _______
         )
 
         ZMK_LAYER(adjust_layer,
