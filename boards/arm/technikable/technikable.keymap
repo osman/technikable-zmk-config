@@ -161,9 +161,10 @@
     keymap {
         compatible = "zmk,keymap";
 
-        #define XXXX     &none
-        #define ____     &trans
-        #define DM()     &none &none
+        #define XXXXXXX  &none
+        #define _______  &trans
+        #define D_MID()  &none &none
+        #define TO_BS()  &to BASE
 
         ZMK_LAYER(base_layer,
         #define K_LC()   &kp LCTRL
@@ -171,19 +172,19 @@
         #define K_LG()   &kp LCMD
         #define SYM_SP() &lt SYMS SPACE
 
-SAS(Q)    MAS(W)   FAS(F)   FAS(P)   MAS(D)         DM()      MAS(J)     FAS(L)     FAS(U)     MAS(Y)     SAS(MINUS)
-SAS(A)    MAS(R)   FAS(S)   FAS(T)   FAS(G)         DM()      FAS(M)     FAS(N)     FAS(E)     MAS(I)     SAS(O)
-SAS(Z)    MAS(X)   FAS(C)   FAS(V)   FAS(B)         DM()      FAS(K)     FAS(H)     &kp COMMA  &kp DOT    SAS(SEMI)
-                   K_LC()   K_LA()   SYM_SP()       K_LG()    SYM_SP()   &mo CREF   &mo CNAV
+SAS(Q)    MAS(W)   FAS(F)   FAS(P)   MAS(D)         D_MID()        MAS(J)     FAS(L)     FAS(U)     MAS(Y)     SAS(MINUS)
+SAS(A)    MAS(R)   FAS(S)   FAS(T)   FAS(G)         D_MID()        FAS(M)     FAS(N)     FAS(E)     MAS(I)     SAS(O)
+SAS(Z)    MAS(X)   FAS(C)   FAS(V)   FAS(B)         D_MID()        FAS(K)     FAS(H)     &kp COMMA  &kp DOT    SAS(SEMI)
+                   K_LC()   K_LA()   SYM_SP()       K_LG()         SYM_SP()   &mo CREF   &mo CNAV
         )
 
         ZMK_LAYER(symbols_layer,
         #define ADJ_SP() &lt ADJT SPACE
 
-&kp N0    &kp N1   &kp N2   &kp N3   &kp CARET      DM()      &to ADJT   XXXX       &kp UP     XXXX       ____  
-&kp EXCL  &kp N4   &kp N5   &kp N6   &kp DLLR       DM()      &kp AMPS   &kp LEFT   &kp DOWN   &kp RIGHT  XXXX 
-&kp AT    &kp N7   &kp N8   &kp N9   &kp PRCNT      DM()      &kp HASH   &kp STAR   ____       ____       ____  
-                   ____     ____     ADJ_SP()       ____      ADJ_SP()   ____       ____  
+&kp N0    &kp N1   &kp N2   &kp N3   &kp CARET      D_MID()        &to ADJT   XXXXXXX    &kp UP     XXXXXXX    _______
+&kp EXCL  &kp N4   &kp N5   &kp N6   &kp DLLR       D_MID()        &kp AMPS   &kp LEFT   &kp DOWN   &kp RIGHT  XXXXXXX
+&kp AT    &kp N7   &kp N8   &kp N9   &kp PRCNT      D_MID()        &kp HASH   &kp STAR   _______    _______    _______
+                   _______  _______  ADJ_SP()       _______        ADJ_SP()   _______    _______
         )
 
         ZMK_LAYER(adjust_layer,
@@ -191,13 +192,13 @@ SAS(Z)    MAS(X)   FAS(C)   FAS(V)   FAS(B)         DM()      FAS(K)     FAS(H) 
         #define SCN_CAP()   &kp LSG(N4)
         #define VOL(name)   &kp C_VOL_ ## name
         #define BRI(name)   &kp C_BRI_ ## name
-        #define BT(n)       &bt BT_SEL n
+        #define BT_S(n)     &bt BT_SEL n
         #define BT_C()      &bt BT_CLR
 
-&to BASE  &kp F1   &kp F2   &kp F3   XXXX           DM()      VOL(DN)    VOL(UP)    V_MUTE()   XXXX       &to BASE
-XXXX      &kp F4   &kp F5   &kp F6   XXXX           DM()      BRI(DN)    BRI(UP)    SCN_CAP()  &kp C_PP   XXXX 
-BT_C      &kp F7   &kp F8   &kp F9   XXXX           DM()      BT(0)      BT(1)      BT(2)      BT(3)      BT(4)
-                   ____     ____     XXXX           ____      XXXX       ____       ____  
+TO_BS()   &kp F1   &kp F2   &kp F3   XXXXXXX        D_MID()        VOL(DN)    VOL(UP)    V_MUTE()   XXXXXXX    TO_BS()
+XXXXXXX   &kp F4   &kp F5   &kp F6   XXXXXXX        D_MID()        BRI(DN)    BRI(UP)    SCN_CAP()  &kp C_PP   XXXXXXX
+BT_C()    &kp F7   &kp F8   &kp F9   XXXXXXX        D_MID()        BT_S(0)    BT_S(1)    BT_S(2)    BT_S(3)    BT_S(4)
+                   _______  _______  XXXXXXX        _______        XXXXXXX    _______    _______
         )
 
         ZMK_LAYER(code_refactor_layer,
@@ -215,10 +216,10 @@ BT_C      &kp F7   &kp F8   &kp F9   XXXX           DM()      BT(0)      BT(1)  
         #define CDR_O() &kp LA(ENTER)          // suggested actions
         #define CDR_B() &cd LG(F9) LSG(F9)     // build module, build all
 
-&to BASE  XXXX     CDR_F()  CDR_P()  XXXX           DM()      XXXX       CDR_L()    XXXX     XXXX       XXXX 
-CDR_A()   &cdr_r   CDR_S()  CDR_T()  XXXX           DM()      CDR_M()    CDR_N()    XXXX     CDR_I()    CDR_O()
-XXXX      XXXX     CDR_C()  CDR_V()  CDR_B()        DM()      XXXX       XXXX       XXXX     XXXX       XXXX 
-                   XXXX     XXXX     XXXX           XXXX      XXXX       XXXX       XXXX 
+TO_BS()   XXXXXXX  CDR_F()  CDR_P()  XXXXXXX        D_MID()        XXXXXXX    CDR_L()    XXXXXXX  XXXXXXX    XXXXXXX
+CDR_A()   &cdr_r   CDR_S()  CDR_T()  XXXXXXX        D_MID()        CDR_M()    CDR_N()    XXXXXXX  CDR_I()    CDR_O()
+XXXXXXX   XXXXXXX  CDR_C()  CDR_V()  CDR_B()        D_MID()        XXXXXXX    XXXXXXX    XXXXXXX  XXXXXXX    XXXXXXX
+                   XXXXXXX  XXXXXXX  XXXXXXX        XXXXXXX        XXXXXXX    XXXXXXX    XXXXXXX
         )
 
         ZMK_LAYER(code_nav_layer,
@@ -234,10 +235,10 @@ XXXX      XXXX     CDR_C()  CDR_V()  CDR_B()        DM()      XXXX       XXXX   
         #define K_BWD() &cd LG(LBRC) LG(LBKT)  // back, move to tab on left
         #define K_FWD() &cd LG(RBRC) LG(RBKT)  // forwards, move to tab on right
 
-&to BASE  XXXX     CDN_F()  CDN_P()  CDN_D()        DM()      XXXX       DBG_I()    DBG_O()  DBG_R()   DBG_B()
-XXXX      CDN_R()  XXXX     XXXX     XXXX           DM()      XXXX       XXXX       CDN_E()  K_BWD()   K_FWD()
-XXXX      XXXX     &diff_co XXXX     &diff_br       DM()      XXXX       XXXX       XXXX     XXXX      XXXX 
-                   XXXX     XXXX     XXXX           XXXX      XXXX       XXXX       XXXX 
+TO_BS()   XXXXXXX  CDN_F()  CDN_P()  CDN_D()        D_MID()        XXXXXXX    DBG_I()    DBG_O()  DBG_R()   DBG_B()
+XXXXXXX   CDN_R()  XXXXXXX  XXXXXXX  XXXXXXX        D_MID()        XXXXXXX    XXXXXXX    CDN_E()  K_BWD()   K_FWD()
+XXXXXXX   XXXXXXX  &diff_co XXXXXXX  &diff_br       D_MID()        XXXXXXX    XXXXXXX    XXXXXXX  XXXXXXX   XXXXXXX
+                   XXXXXXX  XXXXXXX  XXXXXXX        XXXXXXX        XXXXXXX    XXXXXXX    XXXXXXX
         )
     };
 };
