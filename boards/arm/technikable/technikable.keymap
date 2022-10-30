@@ -137,8 +137,7 @@
         ZMK_COMBO_ADV(bslash,             &kp BSLH,         LT2 LM1,          ALL,   FAST_COMBO_MS)
                                                          
         // thumbs                                        
-        ZMK_COMBO_ADV(term_less_pgup,     &kp LC(F),        LH2 LT2,          ALL,   SLOW_COMBO_MS)
-        ZMK_COMBO_ADV(term_less_pgdn,     &kp LC(B),        LH2 LB0,          ALL,   SLOW_COMBO_MS)
+        ZMK_COMBO_ADV(alt,                &kp LALT,         LH1 LH2,          ALL,   SLOW_COMBO_MS)
                                                          
         ZMK_COMBO_ADV(l_paren_brac1,      &mas RPAR LPAR,   LH0 LT3,          ALL,   SLOW_COMBO_MS)
         ZMK_COMBO_ADV(l_curly_brac1,      &mas RBRC LBRC,   LH0 LT2,          ALL,   SLOW_COMBO_MS)
@@ -176,7 +175,6 @@
 
         ZMK_LAYER(base_layer,
         #define KP_LC()  &kp LCTRL
-        #define KP_LA()  &kp LALT
         #define KP_LG()  &kp LCMD
         #define K_COM()  &kp COMMA
         #define SYMSP()  &lt SYMS SPACE
@@ -184,7 +182,7 @@
 S_AS(Q)  M_AS(W)  F_AS(F)  F_AS(P)  M_AS(D)         D_MID()        M_AS(J)  F_AS(L)  F_AS(U)  M_AS(Y)  S_AS(MINUS)
 S_AS(A)  M_AS(R)  F_AS(S)  F_AS(T)  F_AS(G)         D_MID()        F_AS(M)  F_AS(N)  F_AS(E)  M_AS(I)  S_AS(O)
 S_AS(Z)  M_AS(X)  F_AS(C)  F_AS(V)  F_AS(B)         D_MID()        F_AS(K)  F_AS(H)  K_COM()  &kp DOT  S_AS(SEMI)
-                  KP_LC()  KP_LA()  SYMSP()         KP_LG()        SYMSP()  &mo CREF &mo CNAV
+                  KP_LC()  KP_LG()  SYMSP()         XXXXXXX        SYMSP()  &mo CREF &mo CNAV
         )
 
         ZMK_LAYER(symbols_layer,
