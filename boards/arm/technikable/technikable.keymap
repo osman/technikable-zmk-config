@@ -176,27 +176,30 @@ SAS(Z)    MAS(X)   FAS(C)   FAS(V)   FAS(B)         DM()      FAS(K)     FAS(H) 
                    K_LC()   K_LA()   SYM_SP()       K_LG()    SYM_SP()   &mo CREF   &mo CNAV
         )
 
-        #define ADJ_SP() &lt ADJT SPACE
         ZMK_LAYER(symbols_layer,
+        #define ADJ_SP() &lt ADJT SPACE
+
 &kp N0    &kp N1   &kp N2   &kp N3   &kp CARET      DM()      &to ADJT   XXXX       &kp UP     XXXX       ____  
 &kp EXCL  &kp N4   &kp N5   &kp N6   &kp DLLR       DM()      &kp AMPS   &kp LEFT   &kp DOWN   &kp RIGHT  XXXX 
 &kp AT    &kp N7   &kp N8   &kp N9   &kp PRCNT      DM()      &kp HASH   &kp STAR   ____       ____       ____  
                    ____     ____     ADJ_SP()       ____      ADJ_SP()   ____       ____  
         )
 
+        ZMK_LAYER(adjust_layer,
         #define V_MUTE()    &kp C_MUTE 
         #define SCN_CAP()   &kp LSG(N4)
         #define VOL(name)   &kp C_VOL_ ## name
         #define BRI(name)   &kp C_BRI_ ## name
         #define BT(n)       &bt BT_SEL n
         #define BT_C()      &bt BT_CLR
-        ZMK_LAYER(adjust_layer,
+
 &to BASE  &kp F1   &kp F2   &kp F3   XXXX           DM()      VOL(DN)    VOL(UP)    V_MUTE()   XXXX       &to BASE
 XXXX      &kp F4   &kp F5   &kp F6   XXXX           DM()      BRI(DN)    BRI(UP)    SCN_CAP()  &kp C_PP   XXXX 
 BT_C      &kp F7   &kp F8   &kp F9   XXXX           DM()      BT(0)      BT(1)      BT(2)      BT(3)      BT(4)
                    ____     ____     XXXX           ____      XXXX       ____       ____  
         )
 
+        ZMK_LAYER(code_refactor_layer,
         #define CDR_A() &kp F5                 // copy (putting it beside R which is rename/move)
         #define CDR_C() &kp LAG(C)             // extract constant
         #define CDR_F() &kp LAG(F)             // extract field
@@ -210,13 +213,14 @@ BT_C      &kp F7   &kp F8   &kp F9   XXXX           DM()      BT(0)      BT(1)  
         #define CDR_T() &kp LC(T)              // refactor
         #define CDR_O() &kp LA(ENTER)          // suggested actions
         #define CDR_B() &cd LG(F9) LSG(F9)     // build module, build all
-        ZMK_LAYER(code_refactor_layer,
+
 &to BASE  XXXX     CDR_F()  CDR_P()  XXXX           DM()      XXXX       CDR_L()    XXXX     XXXX       XXXX 
 CDR_A()   &cdr_r   CDR_S()  CDR_T()  XXXX           DM()      CDR_M()    CDR_N()    XXXX     CDR_I()    CDR_O()
 XXXX      XXXX     CDR_C()  CDR_V()  CDR_B()        DM()      XXXX       XXXX       XXXX     XXXX       XXXX 
                    XXXX     XXXX     XXXX           XXXX      XXXX       XXXX       XXXX 
         )
 
+        ZMK_LAYER(code_nav_layer,
         #define CDN_P() &kp LG(N1)             // project tree tab
         #define CDN_E() &cd LS(F2) F2          // go to next/last error
         #define CDN_R() &cd LG(N4) LCS(R)      // run tests, open run window
@@ -228,7 +232,7 @@ XXXX      XXXX     CDR_C()  CDR_V()  CDR_B()        DM()      XXXX       XXXX   
         #define DBG_B() &cd LG(F8) LA(F8)      // debug: evaluate expression, set breakpoint
         #define K_BWD() &cd LG(LBRC) LG(LBKT)  // back, move to tab on left
         #define K_FWD() &cd LG(RBRC) LG(RBKT)  // forwards, move to tab on right
-        ZMK_LAYER(code_nav_layer,
+
 &to BASE  XXXX     CDN_F()  CDN_P()  CDN_D()        DM()      XXXX       DBG_I()    DBG_O()  DBG_R()   DBG_B()
 XXXX      CDN_R()  XXXX     XXXX     XXXX           DM()      XXXX       XXXX       CDN_E()  K_BWD()   K_FWD()
 XXXX      XXXX     &diff_co XXXX     &diff_br       DM()      XXXX       XXXX       XXXX     XXXX      XXXX 
