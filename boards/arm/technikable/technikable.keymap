@@ -167,42 +167,45 @@
         #define TO_BS()  &to BASE
 
         ZMK_LAYER(base_layer,
-        #define K_LC()   &kp LCTRL
-        #define K_LA()   &kp LALT
-        #define K_LG()   &kp LCMD
+        #define KP_LC()  &kp LCTRL
+        #define KP_LA()  &kp LALT
+        #define KP_LG()  &kp LCMD
         #define K_COM()  &kp COMMA
-        #define SYM_SP() &lt SYMS SPACE
+        #define SYMSP()  &lt SYMS SPACE
 
 S_AS(Q)  M_AS(W)  F_AS(F)  F_AS(P)  M_AS(D)         D_MID()        M_AS(J)   F_AS(L)  F_AS(U)  M_AS(Y)  S_AS(MINUS)
 S_AS(A)  M_AS(R)  F_AS(S)  F_AS(T)  F_AS(G)         D_MID()        F_AS(M)   F_AS(N)  F_AS(E)  M_AS(I)  S_AS(O)
 S_AS(Z)  M_AS(X)  F_AS(C)  F_AS(V)  F_AS(B)         D_MID()        F_AS(K)   F_AS(H)  K_COM()  &kp DOT  S_AS(SEMI)
-                  K_LC()   K_LA()   SYM_SP()        K_LG()         SYM_SP()  &mo CREF &mo CNAV
+                  KP_LC()  KP_LA()  SYMSP()         KP_LG()        SYMSP()   &mo CREF &mo CNAV
         )
 
         ZMK_LAYER(symbols_layer,
-        #define ADJ_SP() &lt ADJT SPACE
+        #define ADJSP()  &lt ADJT SPACE
+        #define NAV_U()  &sas PAGE_UP UP
+        #define NAV_D()  &sas PAGE_DOWN DOWN
         #define NAV_L()  &sas LA(LEFT) LEFT
         #define NAV_R()  &sas LA(RIGHT) RIGHT
-        #define K_AST()  &kp STAR
+        #define NUMB(n)  &kp N ## n
 
-&kp N0   &kp  N1  &kp  N2  &kp  N3  &kp CARET       D_MID()        &to ADJT  XXXXXXX  &kp UP   XXXXXXX  _______
-&kp EXCL &kp  N4  &kp  N5  &kp  N6  &kp DLLR        D_MID()        &kp AMPS  NAV_L()  &kp DOWN NAV_R()  XXXXXXX
-&kp AT   &kp  N7  &kp  N8  &kp  N9  &kp PRCNT       D_MID()        &kp HASH  K_AST()  _______  _______  _______
-                  _______  _______  ADJ_SP()        _______        ADJ_SP()  _______  _______
+NUMB(0)  NUMB(1)  NUMB(2)  NUMB(3)  &kp CARET       D_MID()        XXXXXXX  XXXXXXX  NAV_U()  XXXXXXX  _______
+&kp EXCL NUMB(4)  NUMB(5)  NUMB(6)  &kp DLLR        D_MID()        &kp AMPS NAV_L()  NAV_D()  NAV_R()  XXXXXXX
+&kp AT   NUMB(7)  NUMB(8)  NUMB(9)  &kp PRCNT       D_MID()        &kp HASH &kp STAR _______  _______  _______
+                  _______  _______  ADJSP()         _______        ADJSP()  _______  _______
         )
 
         ZMK_LAYER(adjust_layer,
-        #define VMUTE()     &kp C_MUTE 
-        #define PLAYP()     &kp C_PLAY_PAUSE 
-        #define SNCAP()     &kp LSG(N4)
-        #define VOL(name)   &kp C_VOL_ ## name
-        #define BRI(name)   &kp C_BRI_ ## name
-        #define BT_S(n)     &bt BT_SEL n
-        #define BT_CL()      &bt BT_CLR
+        #define FUNC(n)   &kp F ## n
+        #define VMUTE()   &kp C_MUTE 
+        #define PLAYP()   &kp C_PLAY_PAUSE 
+        #define SNCAP()   &kp LSG(N4)
+        #define VOL(dir)  &kp C_VOL_ ## dir
+        #define BRI(dir)  &kp C_BRI_ ## dir
+        #define BT_S(n)   &bt BT_SEL n
+        #define BT_CL()   &bt BT_CLR
 
-TO_BS()  &kp  F1  &kp  F2  &kp  F3  XXXXXXX         D_MID()        VOL(DN)  VOL(UP)  VMUTE()  XXXXXXX  TO_BS()
-XXXXXXX  &kp  F4  &kp  F5  &kp  F6  XXXXXXX         D_MID()        BRI(DN)  BRI(UP)  SNCAP()  PLAYP()  XXXXXXX
-BT_CL()  &kp  F7  &kp  F8  &kp  F9  XXXXXXX         D_MID()        BT_S(0)  BT_S(1)  BT_S(2)  BT_S(3)  BT_S(4)
+TO_BS()  FUNC(1)  FUNC(2)  FUNC(3)  XXXXXXX         D_MID()        VOL(DN)  VOL(UP)  VMUTE()  XXXXXXX  TO_BS()
+XXXXXXX  FUNC(4)  FUNC(5)  FUNC(6)  XXXXXXX         D_MID()        BRI(DN)  BRI(UP)  SNCAP()  PLAYP()  XXXXXXX
+BT_CL()  FUNC(7)  FUNC(8)  FUNC(9)  XXXXXXX         D_MID()        BT_S(0)  BT_S(1)  BT_S(2)  BT_S(3)  BT_S(4)
                   _______  _______  XXXXXXX         _______        XXXXXXX  _______  _______
         )
 
