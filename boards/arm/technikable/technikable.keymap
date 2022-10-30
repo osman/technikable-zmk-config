@@ -7,8 +7,8 @@
 #define BASE 0
 #define SYMS 1
 #define ADJT 2
-#define CD_1 3
-#define CD_2 4
+#define CREF 3
+#define CNAV 4
 
 // Behavior Shortcuts
 #define AS(kc) LS(kc) kc
@@ -41,13 +41,22 @@
 #define CD_REF_I LAG(L)         // format (qwerty position)
 #define CD_REF_S LAG(T)         // surround
 #define CD_REF_T LC(T)          // refactor
+#define CD_REF_O LA(ENTER)      // suggested actions
+#define CD_NAV_P LG(N1)         // project tree tab
 #define CD_DBG_R LAG(R)         // debug: run until breakpoint
 
 // Code Layer Hold-Taps
-#define CD_REF_B() LG(F9) LSG(F9) // build module, build all
-#define CD_NAV_E() LS(F2) F2      // go to next/last error
-#define CD_NAV_R() LG(N4) LCS(R)  // run tests, open run window
-#define CD_NAV_D() LG(N5) LCS(D)  // run tests in debug mode, open debug window
+#define CD_REF_B() LG(F9) LSG(F9)     // build module, build all
+#define CD_NAV_E() LS(F2) F2          // go to next/last error
+#define CD_NAV_R() LG(N4) LCS(R)      // run tests, open run window
+#define CD_NAV_F() LSG(R) LSG(F)      // find in project, replace in project
+#define CD_NAV_D() LG(N5) LCS(D)      // run tests in debug mode, open debug window
+#define CD_DBG_I() F7 LS(F7)          // debug: smart step into, step into
+#define CD_DBG_O() LS(F8) F8          // debug: step over, step out
+#define CD_DBG_R() LA(F9) LAG(R)      // debug: run until breakpoint, run until cursor
+#define CD_DBG_B() LG(F8) LA(F8)      // debug: evaluate expression, set breakpoint
+#define CD_BWD()   LG(LBRC) LG(LBKT)  // back, move to tab on left
+#define CD_FWD()   LG(RBRC) LG(RBKT)  // forwards, move to tab on right
 
 &lt {
     tapping-term-ms = <200>;
@@ -179,8 +188,6 @@
         combo_bslash            { timeout-ms = <FAST_COMBO_MS>; key-positions = <2 15>;         bindings = <&kp BSLH>;        };
         
         // thumbs
-        combo_code_refactor     { timeout-ms = <SLOW_COMBO_MS>; key-positions = <37 41>;        bindings = <&mo CD_1>;        };
-        combo_code_nav          { timeout-ms = <SLOW_COMBO_MS>; key-positions = <36 42>;        bindings = <&mo CD_2>;        };
         combo_term_less_pgup    { timeout-ms = <SLOW_COMBO_MS>; key-positions = <36 2>;         bindings = <&kp LC(F)>;       };
         combo_term_less_pgdn    { timeout-ms = <SLOW_COMBO_MS>; key-positions = <36 28>;        bindings = <&kp LC(B)>;       };
 
@@ -215,50 +222,50 @@
         base_layer {
             label = "BASE";
             bindings = <
-/**/&sas AS(Q)   &mas AS(W)     &fas AS(F)     &fas AS(P)     &mas AS(D)      &none      &none    &mas AS(J)      &fas AS(L)    &fas AS(U)     &mas AS(Y)     &sas AS(MINUS)
-/**/&sas AS(A)   &mas AS(R)     &fas AS(S)     &fas AS(T)     &fas AS(G)      &none      &none    &fas AS(M)      &fas AS(N)    &fas AS(E)     &mas AS(I)     &sas AS(O)
-/**/&sas AS(Z)   &mas AS(X)     &fas AS(C)     &fas AS(V)     &fas AS(B)      &none      &none    &fas AS(K)      &fas AS(H)    &kp COMMA      &kp DOT        &sas AS(SEMI)
-/*  &            &*/            &kp LCTRL      &kp LALT       &lt SYMS_SPC()  &kp LGUI /*&none*/  &lt SYMS_SPC()  &kp RALT      &kp RCTRL
+/**/&sas AS(Q)   &mas AS(W)     &fas AS(F)     &fas AS(P)     &mas AS(D)      &none      &none    &mas AS(J)      &fas AS(L)      &fas AS(U)     &mas AS(Y)     &sas AS(MINUS)
+/**/&sas AS(A)   &mas AS(R)     &fas AS(S)     &fas AS(T)     &fas AS(G)      &none      &none    &fas AS(M)      &fas AS(N)      &fas AS(E)     &mas AS(I)     &sas AS(O)
+/**/&sas AS(Z)   &mas AS(X)     &fas AS(C)     &fas AS(V)     &fas AS(B)      &none      &none    &fas AS(K)      &fas AS(H)      &kp COMMA      &kp DOT        &sas AS(SEMI)
+/*  &            &*/            &kp LCTRL      &kp LALT       &lt SYMS_SPC()  &kp LGUI /*&none*/  &lt SYMS_SPC()  &mo CREF        &mo CNAV
             >;
         };
 
         symbols_layer {
             label = "SYMBOL";
             bindings = <
-/**/&kp N0       &kp N1         &kp N2         &kp N3         &kp CARET       &none      &none    &to ADJT        &none         &kp UP         &none          &trans
-/**/&kp EXCL     &kp N4         &kp N5         &kp N6         &kp DLLR        &none      &none    &kp AMPS        &kp LEFT      &kp DOWN       &kp RIGHT      &none
-/**/&kp AT       &kp N7         &kp N8         &kp N9         &kp PRCNT       &none      &none    &kp HASH        &kp STAR      &trans         &trans         &trans
-/*  &            &*/            &trans         &trans         &lt ADJT_SPC()  &trans   /*&none*/  &lt ADJT_SPC()  &trans        &trans
+/**/&kp N0       &kp N1         &kp N2         &kp N3         &kp CARET       &none      &none    &to ADJT        &none           &kp UP         &none          &trans
+/**/&kp EXCL     &kp N4         &kp N5         &kp N6         &kp DLLR        &none      &none    &kp AMPS        &kp LEFT        &kp DOWN       &kp RIGHT      &none
+/**/&kp AT       &kp N7         &kp N8         &kp N9         &kp PRCNT       &none      &none    &kp HASH        &kp STAR        &trans         &trans         &trans
+/*  &            &*/            &trans         &trans         &lt ADJT_SPC()  &trans   /*&none*/  &lt ADJT_SPC()  &trans          &trans
             >;
         };
 
         adjust_layer {
             label = "ADJUST";
             bindings = <
-/**/&to BASE     &kp F1         &kp F2         &kp F3         &kp LOCK_SCRN   &none      &none    &kp C_VOL_DN    &kp C_VOL_UP  &kp C_MUTE     &kp MUTE_MIC   &to BASE
-/**/&none        &kp F4         &kp F5         &kp F6         &kp LOCK_SCRN   &none      &none    &kp C_BRI_DN    &kp C_BRI_UP  &kp SCRN_CAP   &kp C_PP       &none
-/**/&bt BT_CLR   &kp F7         &kp F8         &kp F9         &none           &none      &none    &bt BT(0)       &bt BT(1)     &bt BT(2)      &bt BT(3)      &bt BT(4)
-/*  &            &*/            &trans         &trans         &none           &trans   /*&none*/  &none           &trans        &trans
+/**/&to BASE     &kp F1         &kp F2         &kp F3         &kp LOCK_SCRN   &none      &none    &kp C_VOL_DN    &kp C_VOL_UP    &kp C_MUTE     &kp MUTE_MIC   &to BASE
+/**/&none        &kp F4         &kp F5         &kp F6         &kp LOCK_SCRN   &none      &none    &kp C_BRI_DN    &kp C_BRI_UP    &kp SCRN_CAP   &kp C_PP       &none
+/**/&bt BT_CLR   &kp F7         &kp F8         &kp F9         &none           &none      &none    &bt BT(0)       &bt BT(1)       &bt BT(2)      &bt BT(3)      &bt BT(4)
+/*  &            &*/            &trans         &trans         &none           &trans   /*&none*/  &none           &trans          &trans
             >;
         };
 
         code_refactor_layer {
             label = "CODE REFACTOR";
             bindings = <
-/**/&to BASE     &none          &kp CD_REF_F   &kp CD_REF_P   &none           &none      &none    &none           &kp CD_REF_L  &none          &none          &none
-/**/&kp CD_REF_A &cd_ref_r      &kp CD_REF_S   &kp CD_REF_T   &none           &none      &none    &kp CD_REF_M    &kp CD_REF_N  &none          &kp CD_REF_I   &none
-/**/&none        &none          &kp CD_REF_C   &kp CD_REF_V   &cd CD_REF_B()  &none      &none    &none           &none         &none          &none          &none
-/*  &            &*/            &none          &none          &none           &none    /*&none*/  &none           &none         &none
+/**/&to BASE     &none          &kp CD_REF_F   &kp CD_REF_P   &none           &none      &none    &none           &kp CD_REF_L    &none          &none          &none
+/**/&kp CD_REF_A &cd_ref_r      &kp CD_REF_S   &kp CD_REF_T   &none           &none      &none    &kp CD_REF_M    &kp CD_REF_N    &none          &kp CD_REF_I   &kp CD_REF_O
+/**/&none        &none          &kp CD_REF_C   &kp CD_REF_V   &cd CD_REF_B()  &none      &none    &none           &none           &none          &none          &none
+/*  &            &*/            &none          &none          &none           &none    /*&none*/  &none           &none           &none
             >;
         };
 
         code_nav_layer {
             label = "CODE NAV";
             bindings = <
-/**/&to BASE     &none          &none          &kp LG(N1)     &cd CD_NAV_D()  &none      &none    &none           &kp LS(F7)    &kp LS(F8)     &kp LA(F9)     &kp CD_DBG_R
-/**/&none        &cd CD_NAV_R() &none          &none          &none           &none      &none    &none           &none         &cd CD_NAV_E() &none          &none
-/**/&none        &none          &cdn_diff_co   &none          &cdn_diff_br    &none      &none    &none           &none         &none          &none          &none
-/*  &            &*/            &none          &none          &none           &none    /*&none*/  &none           &none         &none
+/**/&to BASE     &none          &cd CD_NAV_F() &kp CD_NAV_P   &cd CD_NAV_D()  &none      &none    &none           &cd CD_DBG_I()  &cd CD_DBG_O() &cd CD_DBG_R() &cd CD_DBG_B()
+/**/&none        &cd CD_NAV_R() &none          &none          &none           &none      &none    &none           &none           &cd CD_NAV_E() &cd CD_BWD()   &cd CD_FWD()
+/**/&none        &none          &cdn_diff_co   &none          &cdn_diff_br    &none      &none    &none           &none           &none          &none          &none
+/*  &            &*/            &none          &none          &none           &none    /*&none*/  &none           &none           &none
             >;
         };
     };
