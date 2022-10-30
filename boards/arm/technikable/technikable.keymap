@@ -53,7 +53,7 @@
     };
 
     behaviors {
-        #define FAS(kc) &fas LS(kc) kc
+        #define F_AS(kc) &fas LS(kc) kc
         ZMK_BEHAVIOR(fas, hold_tap,
             flavor = "tap-preferred";
             tapping-term-ms = <145>;
@@ -62,7 +62,7 @@
             bindings = <&kp>, <&kp>;
         )
         
-        #define MAS(kc) &mas LS(kc) kc
+        #define M_AS(kc) &mas LS(kc) kc
         ZMK_BEHAVIOR(mas, hold_tap,
             flavor = "tap-preferred";
             tapping-term-ms = <175>;
@@ -71,7 +71,7 @@
             bindings = <&kp>, <&kp>;
         )
         
-        #define SAS(kc) &sas LS(kc) kc
+        #define S_AS(kc) &sas LS(kc) kc
         ZMK_BEHAVIOR(sas, hold_tap,
             flavor = "tap-preferred";
             tapping-term-ms = <200>;
@@ -109,7 +109,7 @@
         #define SLOW_COMBO_MS 60
 
         // horizontal
-        ZMK_COMBO_ADV(tilde,              MAS(GRAVE),       LT4 LT3,          ALL,   FAST_COMBO_MS)
+        ZMK_COMBO_ADV(tilde,              M_AS(GRAVE),      LT4 LT3,          ALL,   FAST_COMBO_MS)
         ZMK_COMBO_ADV(lshift,             &kp LSHIFT,       LB4 LB3,          ALL,   SLOW_COMBO_MS)
         ZMK_COMBO_ADV(rshift,             &kp RSHIFT,       RB3 RB4,          ALL,   SLOW_COMBO_MS)
         ZMK_COMBO_ADV(lcapsword,          &caps_word,       LB3 LB2,          BASE,  SLOW_COMBO_MS)
@@ -118,11 +118,11 @@
         ZMK_COMBO_ADV(tab,                &kp TAB,          LM3 LM2,          ALL,   FAST_COMBO_MS)
         ZMK_COMBO_ADV(backspace,          &bspc,            RT2 RT3,          ALL,   SLOW_COMBO_MS)
         ZMK_COMBO_ADV(enter,              &kp ENTER,        RM2 RM3,          ALL,   FAST_COMBO_MS)
-        ZMK_COMBO_ADV(equal,              MAS(EQUAL),       RT3 RT4,          ALL,   FAST_COMBO_MS)
+        ZMK_COMBO_ADV(equal,              M_AS(EQUAL),      RT3 RT4,          ALL,   FAST_COMBO_MS)
         
         // vertical
         ZMK_COMBO_ADV(pipe_qmark,         &mas QMARK PIPE,  LT3 LM3,          ALL,   VERT_COMBO_MS)
-        ZMK_COMBO_ADV(quotes,             MAS(SQT),         RT3 RM3,          ALL,   VERT_COMBO_MS)
+        ZMK_COMBO_ADV(quotes,             M_AS(SQT),        RT3 RM3,          ALL,   VERT_COMBO_MS)
                                                          
         // angled                                        
         ZMK_COMBO_ADV(fslash,             &kp FSLH,         LT2 LM3,          ALL,   FAST_COMBO_MS)
