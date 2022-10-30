@@ -3,6 +3,9 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/outputs.h>
 
+#include helper/functions.h
+#include helper/keypos.h
+
 // Layers
 #define BASE 0
 #define SYMS 1
@@ -14,49 +17,11 @@
 #define AS(kc) LS(kc) kc
 #define BT(n) BT_SEL n
 
-// Layer Taps
-#define SYMS_SPC() SYMS SPACE
-#define ADJT_SPC() ADJT SPACE
-
 // Modifier Combos
 #define LSG(kc) LS(LG(kc))
 #define LAG(kc) LA(LG(kc))
 #define LCS(kc) LC(LS(kc))
 #define LCG(kc) LC(LG(kc))
-
-// Adjust Layer Taps
-#define MUTE_MIC  LS(LG(LC(LA(M))))
-#define SCRN_CAP  LSG(N4)
-#define LOCK_SCRN LCG(Q)
-
-// Code Layer Taps
-#define CD_REF_A F5             // copy (putting it beside R which is rename/move)
-#define CD_REF_C LAG(C)         // extract constant
-#define CD_REF_F LAG(F)         // extract field
-#define CD_REF_P LAG(P)         // extract parameter
-#define CD_REF_V LAG(V)         // extract variable
-#define CD_REF_N LAG(N)         // inline
-#define CD_REF_M LAG(M)         // extract method
-#define CD_REF_L LAG(L)         // format
-#define CD_REF_I LAG(L)         // format (qwerty position)
-#define CD_REF_S LAG(T)         // surround
-#define CD_REF_T LC(T)          // refactor
-#define CD_REF_O LA(ENTER)      // suggested actions
-#define CD_NAV_P LG(N1)         // project tree tab
-#define CD_DBG_R LAG(R)         // debug: run until breakpoint
-
-// Code Layer Hold-Taps
-#define CD_REF_B() LG(F9) LSG(F9)     // build module, build all
-#define CD_NAV_E() LS(F2) F2          // go to next/last error
-#define CD_NAV_R() LG(N4) LCS(R)      // run tests, open run window
-#define CD_NAV_F() LSG(R) LSG(F)      // find in project, replace in project
-#define CD_NAV_D() LG(N5) LCS(D)      // run tests in debug mode, open debug window
-#define CD_DBG_I() F7 LS(F7)          // debug: smart step into, step into
-#define CD_DBG_O() LS(F8) F8          // debug: step over, step out
-#define CD_DBG_R() LA(F9) LAG(R)      // debug: run until breakpoint, run until cursor
-#define CD_DBG_B() LG(F8) LA(F8)      // debug: evaluate expression, set breakpoint
-#define CD_BWD()   LG(LBRC) LG(LBKT)  // back, move to tab on left
-#define CD_FWD()   LG(RBRC) LG(RBKT)  // forwards, move to tab on right
 
 &lt {
     tapping-term-ms = <200>;
@@ -83,190 +48,186 @@
     };
 
     macros {
-        cdn_diff_co: code_diff_commit {
-            compatible = "zmk,behavior-macro";
-            label = "CODE_NAV_DIFF_COMMIT";
-            #binding-cells = <0>;
+        ZMK_BEHAVIOR(cdn_diff_co, macro,
             bindings = <&kp LSG(D) &kp C>;
-        };
-        cdn_diff_br: code_diff_branch {
-            compatible = "zmk,behavior-macro";
-            label = "CODE_NAV_DIFF_BRANCH";
-            #binding-cells = <0>;
+        )
+        ZMK_BEHAVIOR(cdn_diff_br, macro,
             bindings = <&kp LSG(D) &kp B>;
-        };
+        )
     };
 
-
     behaviors {
-        fas: fast_auto_shift {
-            compatible = "zmk,behavior-hold-tap";
-            label = "AUTO_SHIFT";
+        ZMK_BEHAVIOR(fas, hold_tap,
             flavor = "tap-preferred";
             tapping-term-ms = <145>;
             quick-tap-ms = <50>;
             global-quick-tap;
-            #binding-cells = <2>;
             bindings = <&kp>, <&kp>;
-        };
-        mas: medium_auto_shift {
-            compatible = "zmk,behavior-hold-tap";
-            label = "RING_AUTO_SHIFT";
+        )
+        ZMK_BEHAVIOR(mas, hold_tap,
             flavor = "tap-preferred";
             tapping-term-ms = <175>;
             quick-tap-ms = <50>;
             global-quick-tap;
-            #binding-cells = <2>;
             bindings = <&kp>, <&kp>;
-        };
-        sas: slow_auto_shift {
-            compatible = "zmk,behavior-hold-tap";
-            label = "PINKY_AUTO_SHIFT";
+        )
+        ZMK_BEHAVIOR(sas, hold_tap,
             flavor = "tap-preferred";
             tapping-term-ms = <200>;
             quick-tap-ms = <50>;
             global-quick-tap;
-            #binding-cells = <2>;
             bindings = <&kp>, <&kp>;
-        };
-        cd: code_hold_tap {
-            compatible = "zmk,behavior-hold-tap";
-            label = "CODE_HOLD_TAP";
+        )
+        ZMK_BEHAVIOR(cd, hold_tap,
             flavor = "tap-preferred";
             tapping-term-ms = <180>;
             quick-tap-ms = <50>;
             global-quick-tap;
-            #binding-cells = <2>;
             bindings = <&kp>, <&kp>;
-        };
-        bspc: delete_backspace {
-            compatible = "zmk,behavior-mod-morph";
-            label = "DELETE_BACKSPACE";
-            #binding-cells = <0>;
+        )
+        ZMK_BEHAVIOR(bspc, mod_morph,
             bindings = <&kp BSPC>, <&kp DELETE>;
             mods = <(MOD_LSFT)>;
-        };
-        cd_ref_r: code_refactor_r {
-            compatible = "zmk,behavior-tap-dance";
-            label = "CODE_REFACTOR";
+        )
+        ZMK_BEHAVIOR(cd_ref_r, tap_dance,
             tapping-term-ms = <400>;
-            #binding-cells = <0>;
             bindings = <&kp LS(F6)>, <&kp F6>, <&kp LG(F6)>;
-        };
+        )
     };
 
-    // Timeouts
+    // Combo Configs
+    #undef COMBO_HOOK
+    #define COMBO_HOOK global-quick-tap-ms = <75>;
     #define FAST_COMBO_MS 20
     #define VERT_COMBO_MS 36
     #define SLOW_COMBO_MS 60
 
     combos {
         compatible = "zmk,combos";
-        /*  0  1  2  3  4 | 5   6|  7  8  9 10 11 */
-        /* 12 13 14 15 16 |17  18| 19 20 21 22 23 */
-        /* 24 25 26 27 28 |29  30| 31 32 33 34 35 */
-        /*       36 37 38  __39__  40 41 42       */
     
         // horizontal
-        combo_tilde             { timeout-ms = <FAST_COMBO_MS>; key-positions = <0 1>;          bindings = <&mas AS(GRAVE)>;  };
-        combo_lshift            { timeout-ms = <SLOW_COMBO_MS>; key-positions = <24 25>;        bindings = <&kp LSHIFT>;      };
-        combo_rshift            { timeout-ms = <SLOW_COMBO_MS>; key-positions = <34 35>;        bindings = <&kp RSHIFT>;      };
-        combo_lcapsword         { timeout-ms = <SLOW_COMBO_MS>; key-positions = <25 26>;        bindings = <&caps_word>;      };
-        combo_rcapsword         { timeout-ms = <SLOW_COMBO_MS>; key-positions = <33 34>;        bindings = <&caps_word>;      };
-        combo_esc               { timeout-ms = <FAST_COMBO_MS>; key-positions = <1 2>;          bindings = <&kp ESC>;         };
-        combo_tab               { timeout-ms = <FAST_COMBO_MS>; key-positions = <13 14>;        bindings = <&kp TAB>;         };
-        combo_backspace         { timeout-ms = <SLOW_COMBO_MS>; key-positions = <9 10>;         bindings = <&bspc>;           };
-        combo_enter             { timeout-ms = <FAST_COMBO_MS>; key-positions = <21 22>;        bindings = <&kp ENTER>;       };
-        combo_equal             { timeout-ms = <FAST_COMBO_MS>; key-positions = <10 11>;        bindings = <&mas AS(EQUAL)>;  };
+        ZMK_COMBO_ADV(tilde,              &mas AS(GRAVE),   LT4 LT3,          ALL,   FAST_COMBO_MS)
+        ZMK_COMBO_ADV(lshift,             &kp LSHIFT,       LB4 LB3,          ALL,   SLOW_COMBO_MS)
+        ZMK_COMBO_ADV(rshift,             &kp RSHIFT,       RB3 RB4,          ALL,   SLOW_COMBO_MS)
+        ZMK_COMBO_ADV(lcapsword,          &caps_word,       LB3 LB2,          BASE,  SLOW_COMBO_MS)
+        ZMK_COMBO_ADV(rcapsword,          &caps_word,       RB2 RB3,          BASE,  SLOW_COMBO_MS)
+        ZMK_COMBO_ADV(esc,                &kp ESC,          LT3 LT2,          ALL,   FAST_COMBO_MS)
+        ZMK_COMBO_ADV(tab,                &kp TAB,          LM3 LM2,          ALL,   FAST_COMBO_MS)
+        ZMK_COMBO_ADV(backspace,          &bspc,            RT2 RT3,          ALL,   SLOW_COMBO_MS)
+        ZMK_COMBO_ADV(enter,              &kp ENTER,        RM2 RM3,          ALL,   FAST_COMBO_MS)
+        ZMK_COMBO_ADV(equal,              &mas AS(EQUAL),   RT3 RT4,          ALL,   FAST_COMBO_MS)
         
         // vertical
-        combo_pipe_qmark        { timeout-ms = <VERT_COMBO_MS>; key-positions = <1  13>;        bindings = <&mas QMARK PIPE>; };
-        combo_quotes            { timeout-ms = <VERT_COMBO_MS>; key-positions = <10 22>;        bindings = <&mas AS(SQT)>;    };
-        
-        // angled
-        combo_fslash            { timeout-ms = <FAST_COMBO_MS>; key-positions = <2 13>;         bindings = <&kp FSLH>;        };
-        combo_bslash            { timeout-ms = <FAST_COMBO_MS>; key-positions = <2 15>;         bindings = <&kp BSLH>;        };
-        
-        // thumbs
-        combo_term_less_pgup    { timeout-ms = <SLOW_COMBO_MS>; key-positions = <36 2>;         bindings = <&kp LC(F)>;       };
-        combo_term_less_pgdn    { timeout-ms = <SLOW_COMBO_MS>; key-positions = <36 28>;        bindings = <&kp LC(B)>;       };
-
-        combo_l_paren_brac1     { timeout-ms = <SLOW_COMBO_MS>; key-positions = <38 1>;         bindings = <&mas RPAR LPAR>;  };
-        combo_l_curly_brac1     { timeout-ms = <SLOW_COMBO_MS>; key-positions = <38 2>;         bindings = <&mas RBRC LBRC>;  };
-        combo_l_squar_brac1     { timeout-ms = <SLOW_COMBO_MS>; key-positions = <38 3>;         bindings = <&mas RBKT LBKT>;  };
-        combo_l_angle_brac1     { timeout-ms = <SLOW_COMBO_MS>; key-positions = <38 4>;         bindings = <&mas GT LT>;      };
-        
-        combo_r_angle_brac1     { timeout-ms = <SLOW_COMBO_MS>; key-positions = <38 7>;         bindings = <&mas LT GT>;      };
-        combo_r_squar_brac1     { timeout-ms = <SLOW_COMBO_MS>; key-positions = <38 8>;         bindings = <&mas LBKT RBKT>;  };
-        combo_r_curly_brac1     { timeout-ms = <SLOW_COMBO_MS>; key-positions = <38 9>;         bindings = <&mas LBRC RBRC>;  };
-        combo_r_paren_brac1     { timeout-ms = <SLOW_COMBO_MS>; key-positions = <38 10>;        bindings = <&mas LPAR RPAR>;  };
-
-        combo_l_paren_brac2     { timeout-ms = <SLOW_COMBO_MS>; key-positions = <40 1>;         bindings = <&mas RPAR LPAR>;  };
-        combo_l_curly_brac2     { timeout-ms = <SLOW_COMBO_MS>; key-positions = <40 2>;         bindings = <&mas RBRC LBRC>;  };
-        combo_l_squar_brac2     { timeout-ms = <SLOW_COMBO_MS>; key-positions = <40 3>;         bindings = <&mas RBKT LBKT>;  };
-        combo_l_angle_brac2     { timeout-ms = <SLOW_COMBO_MS>; key-positions = <40 4>;         bindings = <&mas GT LT>;      };
-        
-        combo_r_angle_brac2     { timeout-ms = <SLOW_COMBO_MS>; key-positions = <40 7>;         bindings = <&mas LT GT>;      };
-        combo_r_squar_brac2     { timeout-ms = <SLOW_COMBO_MS>; key-positions = <40 8>;         bindings = <&mas LBKT RBKT>;  };
-        combo_r_curly_brac2     { timeout-ms = <SLOW_COMBO_MS>; key-positions = <40 9>;         bindings = <&mas LBRC RBRC>;  };
-        combo_r_paren_brac2     { timeout-ms = <SLOW_COMBO_MS>; key-positions = <40 10>;        bindings = <&mas LPAR RPAR>;  };
+        ZMK_COMBO_ADV(pipe_qmark,         &mas QMARK PIPE,  LT3 LM3,          ALL,   VERT_COMBO_MS)
+        ZMK_COMBO_ADV(quotes,             &mas AS(SQT),     RT3 RM3,          ALL,   VERT_COMBO_MS)
+                                                         
+        // angled                                        
+        ZMK_COMBO_ADV(fslash,             &kp FSLH,         LT2 LM3,          ALL,   FAST_COMBO_MS)
+        ZMK_COMBO_ADV(bslash,             &kp BSLH,         LT2 LM1,          ALL,   FAST_COMBO_MS)
+                                                         
+        // thumbs                                        
+        ZMK_COMBO_ADV(term_less_pgup,     &kp LC(F),        LH2 LT2,          ALL,   SLOW_COMBO_MS)
+        ZMK_COMBO_ADV(term_less_pgdn,     &kp LC(B),        LH2 LB0,          ALL,   SLOW_COMBO_MS)
+                                                         
+        ZMK_COMBO_ADV(l_paren_brac1,      &mas RPAR LPAR,   LH0 LT3,          ALL,   SLOW_COMBO_MS)
+        ZMK_COMBO_ADV(l_curly_brac1,      &mas RBRC LBRC,   LH0 LT2,          ALL,   SLOW_COMBO_MS)
+        ZMK_COMBO_ADV(l_squar_brac1,      &mas RBKT LBKT,   LH0 LT1,          ALL,   SLOW_COMBO_MS)
+        ZMK_COMBO_ADV(l_angle_brac1,      &mas GT LT,       LH0 LT0,          ALL,   SLOW_COMBO_MS)
+                                                         
+        ZMK_COMBO_ADV(r_angle_brac1,      &mas LT GT,       LH0 RT0,          ALL,   SLOW_COMBO_MS)
+        ZMK_COMBO_ADV(r_squar_brac1,      &mas LBKT RBKT,   LH0 RT1,          ALL,   SLOW_COMBO_MS)
+        ZMK_COMBO_ADV(r_curly_brac1,      &mas LBRC RBRC,   LH0 RT2,          ALL,   SLOW_COMBO_MS)
+        ZMK_COMBO_ADV(r_paren_brac1,      &mas LPAR RPAR,   LH0 RT3,          ALL,   SLOW_COMBO_MS)
+                                                         
+        ZMK_COMBO_ADV(l_paren_brac2,      &mas RPAR LPAR,   RH0 LT3,          ALL,   SLOW_COMBO_MS)
+        ZMK_COMBO_ADV(l_curly_brac2,      &mas RBRC LBRC,   RH0 LT2,          ALL,   SLOW_COMBO_MS)
+        ZMK_COMBO_ADV(l_squar_brac2,      &mas RBKT LBKT,   RH0 LT1,          ALL,   SLOW_COMBO_MS)
+        ZMK_COMBO_ADV(l_angle_brac2,      &mas GT LT,       RH0 LT0,          ALL,   SLOW_COMBO_MS)
+                                                         
+        ZMK_COMBO_ADV(r_angle_brac2,      &mas LT GT,       RH0 RT0,          ALL,   SLOW_COMBO_MS)
+        ZMK_COMBO_ADV(r_squar_brac2,      &mas LBKT RBKT,   RH0 RT1,          ALL,   SLOW_COMBO_MS)
+        ZMK_COMBO_ADV(r_curly_brac2,      &mas LBRC RBRC,   RH0 RT2,          ALL,   SLOW_COMBO_MS)
+        ZMK_COMBO_ADV(r_paren_brac2,      &mas LPAR RPAR,   RH0 RT3,          ALL,   SLOW_COMBO_MS)
 
         // admin
-        combo_boot_left         { timeout-ms = <SLOW_COMBO_MS>; key-positions = <26 27 28 38>;  bindings = <&bootloader>;     };
-        combo_lock_screen_left  { timeout-ms = <SLOW_COMBO_MS>; key-positions = <0 1 2 3>;      bindings = <&kp LOCK_SCRN>;   };
-        combo_lock_screen_right { timeout-ms = <SLOW_COMBO_MS>; key-positions = <8 9 10 11>;    bindings = <&kp LOCK_SCRN>;   };
+        ZMK_COMBO_ADV(boot_left,          &bootloader,      LB0 LB1 LB2 LH0,  BASE,  SLOW_COMBO_MS)  
+        ZMK_COMBO_ADV(lock_screen_left,   &kp LOCK_SCRN,    LT1 LT2 LT3 LT4,  BASE,  SLOW_COMBO_MS)  
+        ZMK_COMBO_ADV(lock_screen_right,  &kp LOCK_SCRN,    RT1 RT2 RT3 RT4,  BASE,  SLOW_COMBO_MS)  
     };
 
     keymap {
         compatible = "zmk,keymap";
-        base_layer {
-            label = "BASE";
-            bindings = <
+
+        ZMK_LAYER(base_layer,
+#define SYMS_SPC() SYMS SPACE
+
 /**/&sas AS(Q)   &mas AS(W)     &fas AS(F)     &fas AS(P)     &mas AS(D)      &none      &none    &mas AS(J)      &fas AS(L)      &fas AS(U)     &mas AS(Y)     &sas AS(MINUS)
 /**/&sas AS(A)   &mas AS(R)     &fas AS(S)     &fas AS(T)     &fas AS(G)      &none      &none    &fas AS(M)      &fas AS(N)      &fas AS(E)     &mas AS(I)     &sas AS(O)
 /**/&sas AS(Z)   &mas AS(X)     &fas AS(C)     &fas AS(V)     &fas AS(B)      &none      &none    &fas AS(K)      &fas AS(H)      &kp COMMA      &kp DOT        &sas AS(SEMI)
 /*  &            &*/            &kp LCTRL      &kp LALT       &lt SYMS_SPC()  &kp LGUI /*&none*/  &lt SYMS_SPC()  &mo CREF        &mo CNAV
-            >;
-        };
+        )
 
-        symbols_layer {
-            label = "SYMBOL";
-            bindings = <
+        ZMK_LAYER(symbols_layer,
+#define ADJT_SPC() ADJT SPACE
+
 /**/&kp N0       &kp N1         &kp N2         &kp N3         &kp CARET       &none      &none    &to ADJT        &none           &kp UP         &none          &trans
 /**/&kp EXCL     &kp N4         &kp N5         &kp N6         &kp DLLR        &none      &none    &kp AMPS        &kp LEFT        &kp DOWN       &kp RIGHT      &none
 /**/&kp AT       &kp N7         &kp N8         &kp N9         &kp PRCNT       &none      &none    &kp HASH        &kp STAR        &trans         &trans         &trans
 /*  &            &*/            &trans         &trans         &lt ADJT_SPC()  &trans   /*&none*/  &lt ADJT_SPC()  &trans          &trans
-            >;
-        };
+        )
 
-        adjust_layer {
-            label = "ADJUST";
-            bindings = <
+        ZMK_LAYER(adjust_layer,
+#define MUTE_MIC  LS(LG(LC(LA(M))))
+#define SCRN_CAP  LSG(N4)
+#define LOCK_SCRN LCG(Q)
+
 /**/&to BASE     &kp F1         &kp F2         &kp F3         &kp LOCK_SCRN   &none      &none    &kp C_VOL_DN    &kp C_VOL_UP    &kp C_MUTE     &kp MUTE_MIC   &to BASE
 /**/&none        &kp F4         &kp F5         &kp F6         &kp LOCK_SCRN   &none      &none    &kp C_BRI_DN    &kp C_BRI_UP    &kp SCRN_CAP   &kp C_PP       &none
 /**/&bt BT_CLR   &kp F7         &kp F8         &kp F9         &none           &none      &none    &bt BT(0)       &bt BT(1)       &bt BT(2)      &bt BT(3)      &bt BT(4)
 /*  &            &*/            &trans         &trans         &none           &trans   /*&none*/  &none           &trans          &trans
-            >;
-        };
+        )
 
-        code_refactor_layer {
-            label = "CODE REFACTOR";
-            bindings = <
+        ZMK_LAYER(code_refactor_layer,
+#define CD_REF_B() LG(F9) LSG(F9)   // build module, build all
+#define CD_REF_B() LG(F9) LSG(F9)   // build module, build all
+#define CD_REF_A F5                 // copy (putting it beside R which is rename/move)
+#define CD_REF_C LAG(C)             // extract constant
+#define CD_REF_F LAG(F)             // extract field
+#define CD_REF_P LAG(P)             // extract parameter
+#define CD_REF_V LAG(V)             // extract variable
+#define CD_REF_N LAG(N)             // inline
+#define CD_REF_M LAG(M)             // extract method
+#define CD_REF_L LAG(L)             // format
+#define CD_REF_I LAG(L)             // format (qwerty position)
+#define CD_REF_S LAG(T)             // surround
+#define CD_REF_T LC(T)              // refactor
+#define CD_REF_O LA(ENTER)          // suggested actions
+#define CD_REF_B() LG(F9) LSG(F9)   // build module, build all
+
 /**/&to BASE     &none          &kp CD_REF_F   &kp CD_REF_P   &none           &none      &none    &none           &kp CD_REF_L    &none          &none          &none
 /**/&kp CD_REF_A &cd_ref_r      &kp CD_REF_S   &kp CD_REF_T   &none           &none      &none    &kp CD_REF_M    &kp CD_REF_N    &none          &kp CD_REF_I   &kp CD_REF_O
 /**/&none        &none          &kp CD_REF_C   &kp CD_REF_V   &cd CD_REF_B()  &none      &none    &none           &none           &none          &none          &none
 /*  &            &*/            &none          &none          &none           &none    /*&none*/  &none           &none           &none
-            >;
-        };
+        )
 
-        code_nav_layer {
-            label = "CODE NAV";
-            bindings = <
+        ZMK_LAYER(code_nav_layer,
+#define CD_NAV_P   LG(N1)             // project tree tab
+#define CD_DBG_R   LAG(R)             // debug: run until breakpoint
+#define CD_NAV_E() LS(F2) F2          // go to next/last error
+#define CD_NAV_R() LG(N4) LCS(R)      // run tests, open run window
+#define CD_NAV_F() LSG(R) LSG(F)      // find in project, replace in project
+#define CD_NAV_D() LG(N5) LCS(D)      // run tests in debug mode, open debug window
+#define CD_DBG_I() F7 LS(F7)          // debug: smart step into, step into
+#define CD_DBG_O() LS(F8) F8          // debug: step over, step out
+#define CD_DBG_R() LA(F9) LAG(R)      // debug: run until breakpoint, run until cursor
+#define CD_DBG_B() LG(F8) LA(F8)      // debug: evaluate expression, set breakpoint
+#define CD_BWD()   LG(LBRC) LG(LBKT)  // back, move to tab on left
+#define CD_FWD()   LG(RBRC) LG(RBKT)  // forwards, move to tab on right
+
 /**/&to BASE     &none          &cd CD_NAV_F() &kp CD_NAV_P   &cd CD_NAV_D()  &none      &none    &none           &cd CD_DBG_I()  &cd CD_DBG_O() &cd CD_DBG_R() &cd CD_DBG_B()
 /**/&none        &cd CD_NAV_R() &none          &none          &none           &none      &none    &none           &none           &cd CD_NAV_E() &cd CD_BWD()   &cd CD_FWD()
 /**/&none        &none          &cdn_diff_co   &none          &cdn_diff_br    &none      &none    &none           &none           &none          &none          &none
 /*  &            &*/            &none          &none          &none           &none    /*&none*/  &none           &none           &none
-            >;
-        };
+        )
     };
 };
