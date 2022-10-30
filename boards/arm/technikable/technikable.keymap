@@ -13,11 +13,6 @@
 #define CREF 3
 #define CNAV 4
 
-// Behavior Shortcuts
-#define FAS(kc) &fas LS(kc) kc
-#define MAS(kc) &mas LS(kc) kc
-#define SAS(kc) &sas LS(kc) kc
-
 // Modifier Combos
 #define LSG(kc) LS(LG(kc))
 #define LAG(kc) LA(LG(kc))
@@ -58,6 +53,7 @@
     };
 
     behaviors {
+        #define FAS(kc) &fas LS(kc) kc
         ZMK_BEHAVIOR(fas, hold_tap,
             flavor = "tap-preferred";
             tapping-term-ms = <145>;
@@ -65,6 +61,8 @@
             global-quick-tap;
             bindings = <&kp>, <&kp>;
         )
+        
+        #define MAS(kc) &mas LS(kc) kc
         ZMK_BEHAVIOR(mas, hold_tap,
             flavor = "tap-preferred";
             tapping-term-ms = <175>;
@@ -72,6 +70,8 @@
             global-quick-tap;
             bindings = <&kp>, <&kp>;
         )
+        
+        #define SAS(kc) &sas LS(kc) kc
         ZMK_BEHAVIOR(sas, hold_tap,
             flavor = "tap-preferred";
             tapping-term-ms = <200>;
@@ -79,6 +79,7 @@
             global-quick-tap;
             bindings = <&kp>, <&kp>;
         )
+
         ZMK_BEHAVIOR(cd, hold_tap,
             flavor = "tap-preferred";
             tapping-term-ms = <180>;
@@ -86,26 +87,27 @@
             global-quick-tap;
             bindings = <&kp>, <&kp>;
         )
+        
         ZMK_BEHAVIOR(bspc, mod_morph,
             bindings = <&mt LA(BSPC) BSPC>, <&mt LA(DEL) DEL>;
             mods = <(MOD_LSFT)>;
         )
+        
         ZMK_BEHAVIOR(cdr_r, tap_dance,
             tapping-term-ms = <400>;
             bindings = <&kp LS(F6)>, <&kp F6>, <&kp LG(F6)>;
         )
     };
 
-    // Combo Configs
-    #undef COMBO_HOOK
-    #define COMBO_HOOK global-quick-tap-ms = <75>;
-    #define FAST_COMBO_MS 20
-    #define VERT_COMBO_MS 36
-    #define SLOW_COMBO_MS 60
-
     combos {
         compatible = "zmk,combos";
     
+        #undef COMBO_HOOK
+        #define COMBO_HOOK global-quick-tap-ms = <75>;
+        #define FAST_COMBO_MS 20
+        #define VERT_COMBO_MS 36
+        #define SLOW_COMBO_MS 60
+
         // horizontal
         ZMK_COMBO_ADV(tilde,              MAS(GRAVE),       LT4 LT3,          ALL,   FAST_COMBO_MS)
         ZMK_COMBO_ADV(lshift,             &kp LSHIFT,       LB4 LB3,          ALL,   SLOW_COMBO_MS)
