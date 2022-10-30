@@ -161,14 +161,15 @@
     keymap {
         compatible = "zmk,keymap";
 
+        #define XXXX     &none
+        #define ____     &trans
+        #define DM()     &none &none
+
         ZMK_LAYER(base_layer,
-#define XXXX &none
-#define ____ &trans
-#define DM() &none &none
-#define K_LC()   &kp LCTRL
-#define K_LA()   &kp LALT
-#define K_LG()   &kp LCMD
-#define SYM_SP() &lt SYMS SPACE
+        #define K_LC()   &kp LCTRL
+        #define K_LA()   &kp LALT
+        #define K_LG()   &kp LCMD
+        #define SYM_SP() &lt SYMS SPACE
 
 SAS(Q)    MAS(W)   FAS(F)   FAS(P)   MAS(D)         DM()      MAS(J)     FAS(L)     FAS(U)     MAS(Y)     SAS(MINUS)
 SAS(A)    MAS(R)   FAS(S)   FAS(T)   FAS(G)         DM()      FAS(M)     FAS(N)     FAS(E)     MAS(I)     SAS(O)
