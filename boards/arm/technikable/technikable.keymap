@@ -240,6 +240,7 @@ XXXXXXX  XXXXXXX  CDR_C()  CDR_V()  CDR_B()         D_MID()        XXXXXXX  XXXX
 
         ZMK_LAYER(code_nav_layer,
         #define CDN_P() &kp LG(N1)          // project tree tab
+        #define CDN_T() &kp LSG(T)          // navigate to/from tests
         #define CDN_E() &cd LS(F2) F2       // go to next/last error
         #define CDN_R() &cd LG(N4) LCS(R)   // run tests, open run window
         #define CDN_F() &cd LSG(R) LSG(F)   // find in project, replace in project
@@ -252,7 +253,7 @@ XXXXXXX  XXXXXXX  CDR_C()  CDR_V()  CDR_B()         D_MID()        XXXXXXX  XXXX
         #define TRM_F() &kp LC(F)           // terminal: page down
 
 TO_BS()  XXXXXXX  CDN_F()  CDN_P()  CDN_D()         D_MID()        XXXXXXX  DBG_I()  DBG_O()  DBG_R()  DBG_B()
-XXXXXXX  CDN_R()  XXXXXXX  XXXXXXX  XXXXXXX         D_MID()        XXXXXXX  XXXXXXX  CDN_E()  TRM_B()  TRM_F()
+XXXXXXX  CDN_R()  XXXXXXX  CDN_T()  XXXXXXX         D_MID()        XXXXXXX  XXXXXXX  CDN_E()  TRM_B()  TRM_F()
 XXXXXXX  XXXXXXX  &dif_co  XXXXXXX  &dif_br         D_MID()        XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX
                   XXXXXXX  XXXXXXX  XXXXXXX         XXXXXXX        XXXXXXX  XXXXXXX  XXXXXXX
         )
