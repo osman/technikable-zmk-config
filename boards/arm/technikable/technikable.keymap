@@ -54,6 +54,10 @@
 
     behaviors {
         #define F_AS(kc) &fas LS(kc) kc
+        #define M_AS(kc) &mas LS(kc) kc
+        #define S_AS(kc) &sas LS(kc) kc
+
+        // Hold Taps
         ZMK_BEHAVIOR(fas, hold_tap,
             flavor = "tap-preferred";
             tapping-term-ms = <145>;
@@ -61,17 +65,13 @@
             global-quick-tap;
             bindings = <&kp>, <&kp>;
         )
-        
-        #define M_AS(kc) &mas LS(kc) kc
         ZMK_BEHAVIOR(mas, hold_tap,
             flavor = "tap-preferred";
             tapping-term-ms = <175>;
             quick-tap-ms = <50>;
             global-quick-tap;
             bindings = <&kp>, <&kp>;
-        )
-        
-        #define S_AS(kc) &sas LS(kc) kc
+        ) 
         ZMK_BEHAVIOR(sas, hold_tap,
             flavor = "tap-preferred";
             tapping-term-ms = <200>;
@@ -79,7 +79,6 @@
             global-quick-tap;
             bindings = <&kp>, <&kp>;
         )
-
         ZMK_BEHAVIOR(cd, hold_tap,
             flavor = "tap-preferred";
             tapping-term-ms = <180>;
@@ -87,7 +86,6 @@
             global-quick-tap;
             bindings = <&kp>, <&kp>;
         )
-        
         ZMK_BEHAVIOR(nav, hold_tap,
             flavor = "tap-preferred";
             tapping-term-ms = <300>;
@@ -96,14 +94,24 @@
             bindings = <&kp>, <&kp>;
         )
         
+        // Mod Morphs
         ZMK_BEHAVIOR(bspc, mod_morph,
             bindings = <&nav LA(BSPC) BSPC>, <&nav LA(DEL) DEL>;
             mods = <(MOD_LSFT)>;
         )
         
+        // Tap Dances
         ZMK_BEHAVIOR(cdr_r, tap_dance,
             tapping-term-ms = <400>;
             bindings = <&kp LS(F6)>, <&kp F6>, <&kp LG(F6)>;
+        )
+        ZMK_BEHAVIOR(cdn_up, tap_dance,
+            tapping-term-ms = <280>;
+            bindings = <&kp LA(UP)>, <&kp PAGE_UP>; // extend selection by scope, page up
+        )
+        ZMK_BEHAVIOR(cdn_dn, tap_dance,
+            tapping-term-ms = <280>;
+            bindings = <&kp LA(DOWN)>, <&kp PAGE_DOWN>; // decrease selection by scope, page down
         )
     };
 
@@ -188,8 +196,8 @@ S_AS(Z)  M_AS(X)  F_AS(C)  F_AS(V)  F_AS(B)         D_MID()        F_AS(K)  F_AS
         ZMK_LAYER(symbols_layer,
         #define ADJSP()  &lt ADJT SPACE
         #define NUMB(n)  &kp N ## n
-        #define NAV_U()  &nav PAGE_UP UP
-        #define NAV_D()  &nav PAGE_DOWN DOWN
+        #define NAV_U()  &kp UP
+        #define NAV_D()  &kp DOWN
         #define NAV_L()  &nav LA(LEFT) LEFT     // right, right by a word
         #define NAV_R()  &nav LA(RIGHT) RIGHT   // left, left by a word
         #define K_BWD()  &nav LG(LBRC) LG(LBKT) // back, move to tab on left
@@ -231,11 +239,9 @@ BT_CL()  FUNC(7)  FUNC(8)  FUNC(9)  XXXXXXX         D_MID()        BT_S(0)  BT_S
         #define CDR_S() &kp LAG(T)          // surround
         #define CDR_O() &kp LA(ENTER)       // suggested actions
         #define CDR_B() &cd LG(F9) LSG(F9)  // build module, build all
-        #define CDR_U() &kp LA(UP)          // extend selection by scope
-        #define CDR_E() &kp LA(DOWN)        // extend selection by scope
 
-TO_BS()  XXXXXXX  CDR_F()  CDR_P()  XXXXXXX         D_MID()        XXXXXXX  CDR_L()  CDR_U()  XXXXXXX  XXXXXXX
-CDR_A()  &cdr_r   CDR_S()  CDN_T()  XXXXXXX         D_MID()        CDR_M()  CDR_N()  CDR_E()  CDR_I()  CDR_O()
+TO_BS()  XXXXXXX  CDR_F()  CDR_P()  XXXXXXX         D_MID()        XXXXXXX  CDR_L()  &cdr_up  XXXXXXX  XXXXXXX
+CDR_A()  &cdr_r   CDR_S()  CDN_T()  XXXXXXX         D_MID()        CDR_M()  CDR_N()  &cdr_dn  CDR_I()  CDR_O()
 XXXXXXX  XXXXXXX  CDR_C()  CDR_V()  CDR_B()         D_MID()        XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX
                   XXXXXXX  XXXXXXX  XXXXXXX         XXXXXXX        XXXXXXX  XXXXXXX  XXXXXXX
         )
@@ -255,7 +261,7 @@ XXXXXXX  XXXXXXX  CDR_C()  CDR_V()  CDR_B()         D_MID()        XXXXXXX  XXXX
 
 TO_BS()  XXXXXXX  CDN_F()  CDN_P()  CDN_D()         D_MID()        XXXXXXX  DBG_I()  DBG_O()  DBG_R()  DBG_B()
 XXXXXXX  CDN_R()  XXXXXXX  CDN_T()  XXXXXXX         D_MID()        XXXXXXX  XXXXXXX  CDN_E()  XXXXXXX  CDR_O()
-XXXXXXX  XXXXXXX  &dif_co  XXXXXXX  &dif_br         D_MID()        TRM_B()  TRM_F()  XXXXXXX  XXXXXXX  XXXXXXX
+XXXXXXX  XXXXXXX  &dif_co  XXXXXXX  &dif_br         D_MID()        XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX
                   XXXXXXX  XXXXXXX  XXXXXXX         XXXXXXX        XXXXXXX  XXXXXXX  XXXXXXX
         )
     };
