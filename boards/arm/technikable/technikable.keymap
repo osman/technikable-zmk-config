@@ -218,31 +218,30 @@ BT_CL()  FUNC(7)  FUNC(8)  FUNC(9)  XXXXXXX         D_MID()        BT_S(0)  BT_S
         )
 
         ZMK_LAYER(code_refactor_layer,
-        #define CDR_A() &kp F5                 // copy (putting it beside R which is rename/move)
-        #define CDR_C() &kp LAG(C)             // extract constant
-        #define CDR_F() &kp LAG(F)             // extract field
-        #define CDR_P() &kp LAG(P)             // extract parameter
-        #define CDR_V() &kp LAG(V)             // extract variable
-        #define CDR_N() &kp LAG(N)             // inline
-        #define CDR_M() &kp LAG(M)             // extract method
-        #define CDR_L() &kp LAG(L)             // format
-        #define CDR_I() &kp LAG(L)             // format (qwerty position)
-        #define CDR_S() &kp LAG(T)             // surround
-        #define CDR_T() &kp LC(T)              // refactor
-        #define CDR_O() &kp LA(ENTER)          // suggested actions
-        #define CDR_B() &cd LG(F9) LSG(F9)     // build module, build all
-        #define CDR_U() &kp LA(UP)             // extend selection by scope
-        #define CDR_E() &kp LA(DOWN)           // extend selection by scope
+        #define CDN_T() &kp LSG(T)          // navigate to/from tests
+        #define CDR_A() &kp F5              // copy (putting it beside R which is rename/move)
+        #define CDR_C() &kp LAG(C)          // extract constant
+        #define CDR_F() &kp LAG(F)          // extract field
+        #define CDR_P() &kp LAG(P)          // extract parameter
+        #define CDR_V() &kp LAG(V)          // extract variable
+        #define CDR_N() &kp LAG(N)          // inline
+        #define CDR_M() &kp LAG(M)          // extract method
+        #define CDR_L() &kp LAG(L)          // format
+        #define CDR_I() &kp LAG(L)          // format (qwerty position)
+        #define CDR_S() &kp LAG(T)          // surround
+        #define CDR_O() &kp LA(ENTER)       // suggested actions
+        #define CDR_B() &cd LG(F9) LSG(F9)  // build module, build all
+        #define CDR_U() &kp LA(UP)          // extend selection by scope
+        #define CDR_E() &kp LA(DOWN)        // extend selection by scope
 
 TO_BS()  XXXXXXX  CDR_F()  CDR_P()  XXXXXXX         D_MID()        XXXXXXX  CDR_L()  CDR_U()  XXXXXXX  XXXXXXX
-CDR_A()  &cdr_r   CDR_S()  CDR_T()  XXXXXXX         D_MID()        CDR_M()  CDR_N()  CDR_E()  CDR_I()  CDR_O()
+CDR_A()  &cdr_r   CDR_S()  CDN_T()  XXXXXXX         D_MID()        CDR_M()  CDR_N()  CDR_E()  CDR_I()  CDR_O()
 XXXXXXX  XXXXXXX  CDR_C()  CDR_V()  CDR_B()         D_MID()        XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX
                   XXXXXXX  XXXXXXX  XXXXXXX         XXXXXXX        XXXXXXX  XXXXXXX  XXXXXXX
         )
 
         ZMK_LAYER(code_nav_layer,
         #define CDN_P() &kp LG(N1)          // project tree tab
-        #define CDN_T() &kp LSG(T)          // navigate to/from tests
         #define CDN_E() &cd LS(F2) F2       // go to next/last error
         #define CDN_R() &cd LG(N4) LCS(R)   // run tests, open run window
         #define CDN_F() &cd LSG(R) LSG(F)   // find in project, replace in project
@@ -255,8 +254,8 @@ XXXXXXX  XXXXXXX  CDR_C()  CDR_V()  CDR_B()         D_MID()        XXXXXXX  XXXX
         #define TRM_F() &kp LC(F)           // terminal: page down
 
 TO_BS()  XXXXXXX  CDN_F()  CDN_P()  CDN_D()         D_MID()        XXXXXXX  DBG_I()  DBG_O()  DBG_R()  DBG_B()
-XXXXXXX  CDN_R()  XXXXXXX  CDN_T()  XXXXXXX         D_MID()        XXXXXXX  XXXXXXX  CDN_E()  TRM_B()  TRM_F()
-XXXXXXX  XXXXXXX  &dif_co  XXXXXXX  &dif_br         D_MID()        XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX
+XXXXXXX  CDN_R()  XXXXXXX  CDN_T()  XXXXXXX         D_MID()        XXXXXXX  XXXXXXX  CDN_E()  XXXXXXX  CDR_O()
+XXXXXXX  XXXXXXX  &dif_co  XXXXXXX  &dif_br         D_MID()        TRM_B()  TRM_F()  XXXXXXX  XXXXXXX  XXXXXXX
                   XXXXXXX  XXXXXXX  XXXXXXX         XXXXXXX        XXXXXXX  XXXXXXX  XXXXXXX
         )
     };
