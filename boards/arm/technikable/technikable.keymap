@@ -192,6 +192,7 @@ S_AS(Q)  M_AS(W)  F_AS(F)  F_AS(P)  M_AS(D)     DEAD_MIDDLE()    M_AS(J)  F_AS(L
 S_AS(A)  M_AS(R)  F_AS(S)  F_AS(T)  F_AS(G)     DEAD_MIDDLE()    F_AS(M)  F_AS(N)  F_AS(E)  M_AS(I)  S_AS(O)
 S_AS(Z)  M_AS(X)  F_AS(C)  F_AS(V)  F_AS(B)     DEAD_MIDDLE()    F_AS(K)  F_AS(H)  K_COM()  &kp DOT  S_AS(SEMI)
                   KP_LC()  KP_LG()  SYMSP()     DEAD_THUMBS()    SYMSP()  &mo CREF &mo CNAV
+        )
 
         ZMK_LAYER(symbols_layer,
         #define ADJSP()  &lt ADJT SPACE
@@ -207,6 +208,7 @@ NUMB(0)  NUMB(1)  NUMB(2)  NUMB(3)  &kp CARET   DEAD_MIDDLE()    K_BWD()  K_FWD(
 &kp EXCL NUMB(4)  NUMB(5)  NUMB(6)  &kp DLLR    DEAD_MIDDLE()    &kp AMPS NAV_L()  NAV_D()  NAV_R()  XXXXXXX
 &kp AT   NUMB(7)  NUMB(8)  NUMB(9)  &kp PRCNT   DEAD_MIDDLE()    &kp HASH &kp STAR _______  _______  _______
                   _______  _______  ADJSP()     DEAD_THUMBS()    ADJSP()  _______  _______
+        )
 
         ZMK_LAYER(adjust_layer,
         #define FUNC(n)  &kp F ## n
@@ -222,6 +224,7 @@ TO_BS()  FUNC(1)  FUNC(2)  FUNC(3)  XXXXXXX     DEAD_MIDDLE()    VOL(DN)  VOL(UP
 XXXXXXX  FUNC(4)  FUNC(5)  FUNC(6)  XXXXXXX     DEAD_MIDDLE()    BRI(DN)  BRI(UP)  SNCAP()  PLAYP()  XXXXXXX
 BT_CL()  FUNC(7)  FUNC(8)  FUNC(9)  XXXXXXX     DEAD_MIDDLE()    BT_S(0)  BT_S(1)  BT_S(2)  BT_S(3)  BT_S(4)
                   _______  _______  XXXXXXX     DEAD_THUMBS()    XXXXXXX  _______  _______
+        )
 
         ZMK_LAYER(code_refactor_layer,
         #define CDN_T() &kp LSG(T)          // navigate to/from tests
@@ -242,6 +245,7 @@ TO_BS()  XXXXXXX  CDR_F()  CDR_P()  XXXXXXX     DEAD_MIDDLE()    XXXXXXX  CDR_L(
 CDR_A()  &cdr_r   CDR_S()  CDN_T()  XXXXXXX     DEAD_MIDDLE()    CDR_M()  CDR_N()  &cdn_dn  CDR_I()  CDR_O()
 XXXXXXX  XXXXXXX  CDR_C()  CDR_V()  CDR_B()     DEAD_MIDDLE()    XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX
                   XXXXXXX  XXXXXXX  XXXXXXX     DEAD_THUMBS()    XXXXXXX  XXXXXXX  XXXXXXX
+        )
 
         ZMK_LAYER(code_nav_layer,
         #define CDN_P() &kp LG(N1)          // project tree tab
@@ -260,5 +264,6 @@ TO_BS()  XXXXXXX  CDN_F()  CDN_P()  CDN_D()     DEAD_MIDDLE()    XXXXXXX  DBG_I(
 XXXXXXX  CDN_R()  XXXXXXX  CDN_T()  XXXXXXX     DEAD_MIDDLE()    XXXXXXX  XXXXXXX  CDN_E()  XXXXXXX  CDR_O()
 XXXXXXX  XXXXXXX  &dif_co  XXXXXXX  &dif_br     DEAD_MIDDLE()    XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX
                   XXXXXXX  XXXXXXX  XXXXXXX     DEAD_THUMBS()    XXXXXXX  XXXXXXX  XXXXXXX
+        )
     };
 };
