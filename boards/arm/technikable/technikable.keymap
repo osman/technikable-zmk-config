@@ -137,7 +137,7 @@
         ZMK_COMBO_ADV(bslash,             &kp BSLH,         LT2 LM1,          ALL,   FAST_COMBO_MS)
                                                          
         // thumbs                                        
-        ZMK_COMBO_ADV(alt,                &kp LALT,         LH1 LH2,          ALL,   SLOW_COMBO_MS)
+        ZMK_COMBO_ADV(alt,                &kp LALT,         RH1 RH2,          ALL,   SLOW_COMBO_MS)
                                                          
         ZMK_COMBO_ADV(l_paren_brac1,      &mas RPAR LPAR,   LH0 LT3,          ALL,   SLOW_COMBO_MS)
         ZMK_COMBO_ADV(l_curly_brac1,      &mas RBRC LBRC,   LH0 LT2,          ALL,   SLOW_COMBO_MS)
@@ -231,9 +231,11 @@ BT_CL()  FUNC(7)  FUNC(8)  FUNC(9)  XXXXXXX         D_MID()        BT_S(0)  BT_S
         #define CDR_T() &kp LC(T)              // refactor
         #define CDR_O() &kp LA(ENTER)          // suggested actions
         #define CDR_B() &cd LG(F9) LSG(F9)     // build module, build all
+        #define CDR_U() &kp LA(UP)             // extend selection by scope
+        #define CDR_E() &kp LA(DOWN)           // extend selection by scope
 
-TO_BS()  XXXXXXX  CDR_F()  CDR_P()  XXXXXXX         D_MID()        XXXXXXX  CDR_L()  XXXXXXX  XXXXXXX  XXXXXXX
-CDR_A()  &cdr_r   CDR_S()  CDR_T()  XXXXXXX         D_MID()        CDR_M()  CDR_N()  XXXXXXX  CDR_I()  CDR_O()
+TO_BS()  XXXXXXX  CDR_F()  CDR_P()  XXXXXXX         D_MID()        XXXXXXX  CDR_L()  CDR_U()  XXXXXXX  XXXXXXX
+CDR_A()  &cdr_r   CDR_S()  CDR_T()  XXXXXXX         D_MID()        CDR_M()  CDR_N()  CDR_E()  CDR_I()  CDR_O()
 XXXXXXX  XXXXXXX  CDR_C()  CDR_V()  CDR_B()         D_MID()        XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX
                   XXXXXXX  XXXXXXX  XXXXXXX         XXXXXXX        XXXXXXX  XXXXXXX  XXXXXXX
         )
