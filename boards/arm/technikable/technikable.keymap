@@ -112,8 +112,8 @@
     
         // #undef COMBO_HOOK
         // #define COMBO_HOOK global-quick-tap-ms = <75>;
-        #define FAST_COMBO_MS 20
-        #define VERT_COMBO_MS 36
+        #define FAST_COMBO_MS 30
+        #define VERT_COMBO_MS 38
         #define SLOW_COMBO_MS 60
 
         // horizontal
