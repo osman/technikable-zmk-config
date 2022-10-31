@@ -101,17 +101,17 @@
         )
         
         // Tap Dances
-        ZMK_BEHAVIOR(cdr_r, tap_dance,
+        ZMK_BEHAVIOR(cdr_r, tap_dance,      // rename, move, change signature
             tapping-term-ms = <400>;
             bindings = <&kp LS(F6)>, <&kp F6>, <&kp LG(F6)>;
         )
-        ZMK_BEHAVIOR(cdn_up, tap_dance,
+        ZMK_BEHAVIOR(cdn_up, tap_dance,     // extend selection by scope, page up
             tapping-term-ms = <280>;
-            bindings = <&kp LA(UP)>, <&kp PAGE_UP>; // extend selection by scope, page up
+            bindings = <&kp LA(UP)>, <&kp PAGE_UP>;
         )
-        ZMK_BEHAVIOR(cdn_dn, tap_dance,
+        ZMK_BEHAVIOR(cdn_dn, tap_dance,     // decrease selection by scope, page down
             tapping-term-ms = <280>;
-            bindings = <&kp LA(DOWN)>, <&kp PAGE_DOWN>; // decrease selection by scope, page down
+            bindings = <&kp LA(DOWN)>, <&kp PAGE_DOWN>;
         )
     };
 
@@ -238,8 +238,8 @@ BT_CL()  FUNC(7)  FUNC(8)  FUNC(9)  XXXXXXX     DEAD_MIDDLE()    BT_S(0)  BT_S(1
         #define CDR_O() &kp LA(ENTER)       // suggested actions
         #define CDR_B() &cd LG(F9) LSG(F9)  // build module, build all
 
-TO_BS()  XXXXXXX  CDR_F()  CDR_P()  XXXXXXX     DEAD_MIDDLE()    XXXXXXX  CDR_L()  &cdr_up  XXXXXXX  XXXXXXX
-CDR_A()  &cdr_r   CDR_S()  CDN_T()  XXXXXXX     DEAD_MIDDLE()    CDR_M()  CDR_N()  &cdr_dn  CDR_I()  CDR_O()
+TO_BS()  XXXXXXX  CDR_F()  CDR_P()  XXXXXXX     DEAD_MIDDLE()    XXXXXXX  CDR_L()  &cdn_up  XXXXXXX  XXXXXXX
+CDR_A()  &cdr_r   CDR_S()  CDN_T()  XXXXXXX     DEAD_MIDDLE()    CDR_M()  CDR_N()  &cdn_dn  CDR_I()  CDR_O()
 XXXXXXX  XXXXXXX  CDR_C()  CDR_V()  CDR_B()     DEAD_MIDDLE()    XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX
                   XXXXXXX  XXXXXXX  XXXXXXX     DEAD_THUMBS()    XXXXXXX  XXXXXXX  XXXXXXX
 
