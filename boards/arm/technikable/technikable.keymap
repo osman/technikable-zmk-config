@@ -108,10 +108,10 @@
             tapping-term-ms = <400>; bindings = <&cd LSG(R) LSG(F)>, <&kp LG(F12)>;    // 1:(find in project, replace in project), 2:(find symbol in file)
         )
         ZMK_BEHAVIOR(cdn_up, tap_dance,
-            tapping-term-ms = <280>; bindings = <&kp LA(UP)>, <&kp PAGE_UP>;           // 1:(extend selection by scope), 2:(page up)
+            tapping-term-ms = <280>; bindings = <&kp LA(UP)>, <&kp LG(UP)>, <&kp PAGE_UP>;           // 1:(extend selection by scope), 2:(page up)
         )
         ZMK_BEHAVIOR(cdn_dn, tap_dance,
-             tapping-term-ms = <280>; bindings = <&kp LA(DOWN)>, <&kp PAGE_DOWN>;      // 1:(decrease selection by scope), 2:(page down)
+             tapping-term-ms = <280>; bindings = <&kp LA(DOWN)>, <&kp LG(DOWN)>, <&kp PAGE_DOWN>;      // 1:(decrease selection by scope), 2:(page down)
         )
     };
 
@@ -147,28 +147,28 @@
         // thumbs                                   
         ZMK_COMBO_ADV(alt,           &kp LALT,         RH1 RH2,          ALL,   SLOW_COMBO_MS)
                                                     
-        ZMK_COMBO_ADV(lh_brc1_p,     &sas RPAR LPAR,   LH0 LM1,          ALL,   SLOW_COMBO_MS)
+        ZMK_COMBO_ADV(lh_brc1_p,     &sas RPAR LPAR,   LH0 LM2,          ALL,   SLOW_COMBO_MS)
         ZMK_COMBO_ADV(lh_brc1_c,     &sas RBRC LBRC,   LH0 LT2,          ALL,   SLOW_COMBO_MS)
         ZMK_COMBO_ADV(lh_brc1_a,     &sas GT LT,       LH0 LT3,          ALL,   SLOW_COMBO_MS)
         ZMK_COMBO_ADV(lh_brc1_s,     &sas RBKT LBKT,   LH0 LM3,          ALL,   SLOW_COMBO_MS)
         
-        ZMK_COMBO_ADV(lh_brc2_p,     &sas RPAR LPAR,   RH0 LM1,          ALL,   SLOW_COMBO_MS)
+        ZMK_COMBO_ADV(lh_brc2_p,     &sas RPAR LPAR,   RH0 LM2,          ALL,   SLOW_COMBO_MS)
         ZMK_COMBO_ADV(lh_brc2_c,     &sas RBRC LBRC,   RH0 LT2,          ALL,   SLOW_COMBO_MS)
         ZMK_COMBO_ADV(lh_brc2_a,     &sas GT LT,       RH0 LT3,          ALL,   SLOW_COMBO_MS)
         ZMK_COMBO_ADV(lh_brc2_s,     &sas RBKT LBKT,   RH0 LM3,          ALL,   SLOW_COMBO_MS)
 
-        ZMK_COMBO_ADV(rh_brc1_p,     &sas LPAR RPAR,   LH0 RM1,          ALL,   SLOW_COMBO_MS)
+        ZMK_COMBO_ADV(rh_brc1_p,     &sas LPAR RPAR,   LH0 RM2,          ALL,   SLOW_COMBO_MS)
         ZMK_COMBO_ADV(rh_brc1_c,     &sas LBRC RBRC,   LH0 RT2,          ALL,   SLOW_COMBO_MS)
         ZMK_COMBO_ADV(rh_brc1_a,     &sas LT GT,       LH0 RT3,          ALL,   SLOW_COMBO_MS)
         ZMK_COMBO_ADV(rh_brc1_s,     &sas LBKT RBKT,   LH0 RM3,          ALL,   SLOW_COMBO_MS)
         
-        ZMK_COMBO_ADV(rh_brc2_p,     &sas LPAR RPAR,   RH0 RM1,          ALL,   SLOW_COMBO_MS)
+        ZMK_COMBO_ADV(rh_brc2_p,     &sas LPAR RPAR,   RH0 RM2,          ALL,   SLOW_COMBO_MS)
         ZMK_COMBO_ADV(rh_brc2_c,     &sas LBRC RBRC,   RH0 RT2,          ALL,   SLOW_COMBO_MS)
         ZMK_COMBO_ADV(rh_brc2_a,     &sas LT GT,       RH0 RT3,          ALL,   SLOW_COMBO_MS)
         ZMK_COMBO_ADV(rh_brc2_s,     &sas LBKT RBKT,   RH0 RM3,          ALL,   SLOW_COMBO_MS)
 
         // admin
-        ZMK_COMBO_ADV(lh_boot,       &bootloader,      LB0 LB1 LB2 LH0,  BASE,  SLOW_COMBO_MS)  
+        ZMK_COMBO_ADV(lh_boot,       &bootloader,      LH0 LB0 LB1 LB2,  BASE,  SLOW_COMBO_MS)  
         ZMK_COMBO_ADV(lh_lock_scrn,  &kp LCG(Q),       LT1 LT2 LT3 LT4,  BASE,  SLOW_COMBO_MS)  
         ZMK_COMBO_ADV(rh_lock_scrn,  &kp LCG(Q),       RT1 RT2 RT3 RT4,  BASE,  SLOW_COMBO_MS)  
     };
