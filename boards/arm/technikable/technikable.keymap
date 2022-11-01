@@ -102,13 +102,16 @@
         
         // Tap Dances
         ZMK_BEHAVIOR(cdr_r, tap_dance,
-            tapping-term-ms = <400>; bindings = <&kp LS(F6)>, <&kp F6>, <&kp LG(F6)>;    // rename, move, change signature
+            tapping-term-ms = <400>; bindings = <&kp LS(F6)>, <&kp F6>, <&kp LG(F6)>;  // 1:(rename), 2:(move), 3:(change signature)
+        )
+        ZMK_BEHAVIOR(cdn_f, tap_dance,
+            tapping-term-ms = <400>; bindings = <&cd LSG(R) LSG(F)>, <&kp LG(F12)>;    // 1:(find in project, replace in project), 2:(find symbol in file)
         )
         ZMK_BEHAVIOR(cdn_up, tap_dance,
-            tapping-term-ms = <280>; bindings = <&kp LA(UP)>, <&kp PAGE_UP>;             // extend selection by scope, page up
+            tapping-term-ms = <280>; bindings = <&kp LA(UP)>, <&kp PAGE_UP>;           // 1:(extend selection by scope), 2:(page up)
         )
         ZMK_BEHAVIOR(cdn_dn, tap_dance,
-            tapping-term-ms = <280>; bindings = <&kp LA(DOWN)>, <&kp PAGE_DOWN>;         // decrease selection by scope, page down
+             tapping-term-ms = <280>; bindings = <&kp LA(DOWN)>, <&kp PAGE_DOWN>;      // 1:(decrease selection by scope), 2:(page down)
         )
     };
 
@@ -248,7 +251,6 @@ XXXXXXX  XXXXXXX  CDR_C()  CDR_V()  CDR_B()     DEAD_MIDDLE()    XXXXXXX  XXXXXX
         #define CDN_P() &kp LG(N1)          // project tree tab
         #define CDN_E() &cd LS(F2) F2       // go to next/last error
         #define CDN_R() &cd LG(N4) LCS(R)   // run tests, open run window
-        #define CDN_F() &cd LSG(R) LSG(F)   // find in project, replace in project
         #define CDN_D() &cd LG(N5) LCS(D)   // run tests in debug mode, open debug window
         #define DBG_I() &cd F7 LS(F7)       // debug: smart step into, step into
         #define DBG_O() &cd LS(F8) F8       // debug: step over, step out
@@ -257,7 +259,7 @@ XXXXXXX  XXXXXXX  CDR_C()  CDR_V()  CDR_B()     DEAD_MIDDLE()    XXXXXXX  XXXXXX
         #define TRM_B() &kp LC(B)           // terminal: page up
         #define TRM_F() &kp LC(F)           // terminal: page down
 
-TO_BS()  XXXXXXX  CDN_F()  CDN_P()  CDN_D()     DEAD_MIDDLE()    XXXXXXX  DBG_I()  DBG_O()  DBG_R()  DBG_B()
+TO_BS()  XXXXXXX  &cdn_f   CDN_P()  CDN_D()     DEAD_MIDDLE()    XXXXXXX  DBG_I()  DBG_O()  DBG_R()  DBG_B()
 XXXXXXX  CDN_R()  XXXXXXX  CDN_T()  XXXXXXX     DEAD_MIDDLE()    XXXXXXX  XXXXXXX  CDN_E()  XXXXXXX  CDR_O()
 XXXXXXX  XXXXXXX  &dif_co  XXXXXXX  &dif_br     DEAD_MIDDLE()    XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX
                   XXXXXXX  XXXXXXX  XXXXXXX     DEAD_THUMBS()    XXXXXXX  XXXXXXX  XXXXXXX
