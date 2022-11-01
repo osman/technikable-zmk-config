@@ -102,16 +102,16 @@
         
         // Tap Dances
         ZMK_BEHAVIOR(cdr_r, tap_dance,
-            tapping-term-ms = <400>; bindings = <&kp LS(F6)>, <&kp F6>, <&kp LG(F6)>;  // 1:(rename), 2:(move), 3:(change signature)
+            tapping-term-ms = <400>; bindings = <&kp LS(F6)>, <&kp F6>, <&kp LG(F6)>;               // 1:(rename), 2:(move), 3:(change signature)
         )
         ZMK_BEHAVIOR(cdn_f, tap_dance,
-            tapping-term-ms = <400>; bindings = <&cd LSG(R) LSG(F)>, <&kp LG(F12)>;    // 1:(find in project, replace in project), 2:(find symbol in file)
+            tapping-term-ms = <400>; bindings = <&cd LSG(R) LSG(F)>, <&kp LG(F12)>;                 // 1:(find in project, replace in project), 2:(find symbol in file)
         )
         ZMK_BEHAVIOR(cdn_up, tap_dance,
-            tapping-term-ms = <280>; bindings = <&kp LA(UP)>, <&kp LG(UP)>, <&kp PAGE_UP>;           // 1:(extend selection by scope), 2:(page up)
+            tapping-term-ms = <280>; bindings = <&kp LA(UP)>, <&kp LG(UP)>, <&kp PAGE_UP>;          // 1:(extend selection by scope), 2:(move code up), 3:(page up)
         )
         ZMK_BEHAVIOR(cdn_dn, tap_dance,
-             tapping-term-ms = <280>; bindings = <&kp LA(DOWN)>, <&kp LG(DOWN)>, <&kp PAGE_DOWN>;      // 1:(decrease selection by scope), 2:(page down)
+             tapping-term-ms = <280>; bindings = <&kp LA(DOWN)>, <&kp LG(DOWN)>, <&kp PAGE_DOWN>;   // 1:(decrease selection by scope), 2:(move code down), 3:(page down)
         )
     };
 
