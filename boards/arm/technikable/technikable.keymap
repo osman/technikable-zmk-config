@@ -111,16 +111,16 @@
             tapping-term-ms = <280>; bindings = <&kp LA(DOWN)>, <&kp PAGE_DOWN>;         // decrease selection by scope, page down
         )
         ZMK_BEHAVIOR(lbk_pc, tap_dance,
-            tapping-term-ms = <280>; bindings = <&mas RPAR LPAR>, <&mas RBRC LBRC>;      // parentheses, curly braces
+            tapping-term-ms = <300>; bindings = <&fas RPAR LPAR>, <&fas RBRC LBRC>;      // parentheses, curly braces
         )
         ZMK_BEHAVIOR(rbk_pc, tap_dance,
-            tapping-term-ms = <280>; bindings = <&mas LPAR RPAR>, <&mas LBRC RBRC>;      // parentheses, curly braces
+            tapping-term-ms = <300>; bindings = <&fas LPAR RPAR>, <&fas LBRC RBRC>;      // parentheses, curly braces
         )
         ZMK_BEHAVIOR(lbk_as, tap_dance,
-            tapping-term-ms = <280>; bindings = <&mas GT LT>, <&mas RBKT LBKT>;          // angled brackets, square brackets
+            tapping-term-ms = <300>; bindings = <&fas GT LT>, <&fas RBKT LBKT>;          // angled brackets, square brackets
         )
         ZMK_BEHAVIOR(rbk_as, tap_dance,
-            tapping-term-ms = <280>; bindings = <&mas LT GT>, <&mas LBKT RBKT>;          // angled brackets, square brackets
+            tapping-term-ms = <300>; bindings = <&fas LT GT>, <&fas LBKT RBKT>;          // angled brackets, square brackets
         )
     };
 
