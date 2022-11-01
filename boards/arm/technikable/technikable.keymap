@@ -101,17 +101,26 @@
         )
         
         // Tap Dances
-        ZMK_BEHAVIOR(cdr_r, tap_dance,      // rename, move, change signature
-            tapping-term-ms = <400>;
-            bindings = <&kp LS(F6)>, <&kp F6>, <&kp LG(F6)>;
+        ZMK_BEHAVIOR(cdr_r, tap_dance,
+            tapping-term-ms = <400>; bindings = <&kp LS(F6)>, <&kp F6>, <&kp LG(F6)>;    // rename, move, change signature
         )
-        ZMK_BEHAVIOR(cdn_up, tap_dance,     // extend selection by scope, page up
-            tapping-term-ms = <280>;
-            bindings = <&kp LA(UP)>, <&kp PAGE_UP>;
+        ZMK_BEHAVIOR(cdn_up, tap_dance,
+            tapping-term-ms = <280>; bindings = <&kp LA(UP)>, <&kp PAGE_UP>;             // extend selection by scope, page up
         )
-        ZMK_BEHAVIOR(cdn_dn, tap_dance,     // decrease selection by scope, page down
-            tapping-term-ms = <280>;
-            bindings = <&kp LA(DOWN)>, <&kp PAGE_DOWN>;
+        ZMK_BEHAVIOR(cdn_dn, tap_dance,
+            tapping-term-ms = <280>; bindings = <&kp LA(DOWN)>, <&kp PAGE_DOWN>;         // decrease selection by scope, page down
+        )
+        ZMK_BEHAVIOR(lbk_pc, tap_dance,
+            tapping-term-ms = <280>; bindings = <&mas RPAR LPAR>, <&mas RBRC LBRC>;      // parentheses, curly braces
+        )
+        ZMK_BEHAVIOR(rbk_pc, tap_dance,
+            tapping-term-ms = <280>; bindings = <&mas LPAR RPAR>, <&mas LBRC RBRC>;      // parentheses, curly braces
+        )
+        ZMK_BEHAVIOR(lbk_as, tap_dance,
+            tapping-term-ms = <280>; bindings = <&mas GT LT>, <&mas RBKT LBKT>;          // angled brackets, square brackets
+        )
+        ZMK_BEHAVIOR(rbk_as, tap_dance,
+            tapping-term-ms = <280>; bindings = <&mas LT GT>, <&mas LBKT RBKT>;          // angled brackets, square brackets
         )
     };
 
@@ -125,52 +134,42 @@
         #define SLOW_COMBO_MS 60
 
         // horizontal
-        ZMK_COMBO_ADV(tilde,              M_AS(GRAVE),      LT4 LT3,          ALL,   FAST_COMBO_MS)
-        ZMK_COMBO_ADV(lshift,             &kp LSHIFT,       LB4 LB3,          ALL,   SLOW_COMBO_MS)
-        ZMK_COMBO_ADV(rshift,             &kp RSHIFT,       RB3 RB4,          ALL,   SLOW_COMBO_MS)
-        ZMK_COMBO_ADV(lcapsword,          &caps_word,       LB3 LB2,          BASE,  SLOW_COMBO_MS)
-        ZMK_COMBO_ADV(rcapsword,          &caps_word,       RB2 RB3,          BASE,  SLOW_COMBO_MS)
-        ZMK_COMBO_ADV(esc,                &kp ESC,          LT3 LT2,          ALL,   FAST_COMBO_MS)
-        ZMK_COMBO_ADV(tab,                &kp TAB,          LM3 LM2,          ALL,   FAST_COMBO_MS)
-        ZMK_COMBO_ADV(backspace,          &bspc,            RT2 RT3,          ALL,   SLOW_COMBO_MS)
-        ZMK_COMBO_ADV(enter,              &kp ENTER,        RM2 RM3,          ALL,   FAST_COMBO_MS)
-        ZMK_COMBO_ADV(equal,              M_AS(EQUAL),      RT3 RT4,          ALL,   FAST_COMBO_MS)
+        ZMK_COMBO_ADV(tilde,         M_AS(GRAVE),      LT4 LT3,          ALL,   FAST_COMBO_MS)
+        ZMK_COMBO_ADV(lshift,        &kp LSHIFT,       LB4 LB3,          ALL,   SLOW_COMBO_MS)
+        ZMK_COMBO_ADV(rshift,        &kp RSHIFT,       RB3 RB4,          ALL,   SLOW_COMBO_MS)
+        ZMK_COMBO_ADV(lcapsword,     &caps_word,       LB3 LB2,          BASE,  SLOW_COMBO_MS)
+        ZMK_COMBO_ADV(rcapsword,     &caps_word,       RB2 RB3,          BASE,  SLOW_COMBO_MS)
+        ZMK_COMBO_ADV(esc,           &kp ESC,          LT3 LT2,          ALL,   FAST_COMBO_MS)
+        ZMK_COMBO_ADV(tab,           &kp TAB,          LM3 LM2,          ALL,   FAST_COMBO_MS)
+        ZMK_COMBO_ADV(backspace,     &bspc,            RT2 RT3,          ALL,   SLOW_COMBO_MS)
+        ZMK_COMBO_ADV(enter,         &kp ENTER,        RM2 RM3,          ALL,   FAST_COMBO_MS)
+        ZMK_COMBO_ADV(equal,         M_AS(EQUAL),      RT3 RT4,          ALL,   FAST_COMBO_MS)
         
         // vertical
-        ZMK_COMBO_ADV(pipe_qmark,         &mas QMARK PIPE,  LT3 LM3,          ALL,   VERT_COMBO_MS)
-        ZMK_COMBO_ADV(quotes,             M_AS(SQT),        RT3 RM3,          ALL,   VERT_COMBO_MS)
-                                                         
-        // angled                                        
-        ZMK_COMBO_ADV(fslash,             &kp FSLH,         LT2 LM3,          ALL,   FAST_COMBO_MS)
-        ZMK_COMBO_ADV(bslash,             &kp BSLH,         LT2 LM1,          ALL,   FAST_COMBO_MS)
-                                                         
-        // thumbs                                        
-        ZMK_COMBO_ADV(alt,                &kp LALT,         RH1 RH2,          ALL,   SLOW_COMBO_MS)
-                                                         
-        ZMK_COMBO_ADV(l_paren_brac1,      &mas RPAR LPAR,   LH0 LT3,          ALL,   SLOW_COMBO_MS)
-        ZMK_COMBO_ADV(l_curly_brac1,      &mas RBRC LBRC,   LH0 LT2,          ALL,   SLOW_COMBO_MS)
-        ZMK_COMBO_ADV(l_squar_brac1,      &mas RBKT LBKT,   LH0 LT1,          ALL,   SLOW_COMBO_MS)
-        ZMK_COMBO_ADV(l_angle_brac1,      &mas GT LT,       LH0 LT0,          ALL,   SLOW_COMBO_MS)
-                                                         
-        ZMK_COMBO_ADV(r_angle_brac1,      &mas LT GT,       LH0 RT0,          ALL,   SLOW_COMBO_MS)
-        ZMK_COMBO_ADV(r_squar_brac1,      &mas LBKT RBKT,   LH0 RT1,          ALL,   SLOW_COMBO_MS)
-        ZMK_COMBO_ADV(r_curly_brac1,      &mas LBRC RBRC,   LH0 RT2,          ALL,   SLOW_COMBO_MS)
-        ZMK_COMBO_ADV(r_paren_brac1,      &mas LPAR RPAR,   LH0 RT3,          ALL,   SLOW_COMBO_MS)
-                                                         
-        ZMK_COMBO_ADV(l_paren_brac2,      &mas RPAR LPAR,   RH0 LT3,          ALL,   SLOW_COMBO_MS)
-        ZMK_COMBO_ADV(l_curly_brac2,      &mas RBRC LBRC,   RH0 LT2,          ALL,   SLOW_COMBO_MS)
-        ZMK_COMBO_ADV(l_squar_brac2,      &mas RBKT LBKT,   RH0 LT1,          ALL,   SLOW_COMBO_MS)
-        ZMK_COMBO_ADV(l_angle_brac2,      &mas GT LT,       RH0 LT0,          ALL,   SLOW_COMBO_MS)
-                                                         
-        ZMK_COMBO_ADV(r_angle_brac2,      &mas LT GT,       RH0 RT0,          ALL,   SLOW_COMBO_MS)
-        ZMK_COMBO_ADV(r_squar_brac2,      &mas LBKT RBKT,   RH0 RT1,          ALL,   SLOW_COMBO_MS)
-        ZMK_COMBO_ADV(r_curly_brac2,      &mas LBRC RBRC,   RH0 RT2,          ALL,   SLOW_COMBO_MS)
-        ZMK_COMBO_ADV(r_paren_brac2,      &mas LPAR RPAR,   RH0 RT3,          ALL,   SLOW_COMBO_MS)
+        ZMK_COMBO_ADV(pipe_qmark,    &mas QMARK PIPE,  LT3 LM3,          ALL,   VERT_COMBO_MS)
+        ZMK_COMBO_ADV(quotes,        M_AS(SQT),        RT3 RM3,          ALL,   VERT_COMBO_MS)
+                                                    
+        // angled                                   
+        ZMK_COMBO_ADV(fslash,        &kp FSLH,         LT2 LM3,          ALL,   FAST_COMBO_MS)
+        ZMK_COMBO_ADV(bslash,        &kp BSLH,         LT2 LM1,          ALL,   FAST_COMBO_MS)
+                                                    
+        // thumbs                                   
+        ZMK_COMBO_ADV(alt,           &kp LALT,         RH1 RH2,          ALL,   SLOW_COMBO_MS)
+                                                    
+        ZMK_COMBO_ADV(l_braces1_pc,  &lbk_pc,          LH0 LT3,          ALL,   SLOW_COMBO_MS)
+        ZMK_COMBO_ADV(l_braces1_as,  &lbk_as,          LH0 LT2,          ALL,   SLOW_COMBO_MS)
+        ZMK_COMBO_ADV(r_braces1_pc,  &rbk_pc,          LH0 RT2,          ALL,   SLOW_COMBO_MS)
+        ZMK_COMBO_ADV(r_braces1_as,  &rbk_as,          LH0 RT3,          ALL,   SLOW_COMBO_MS)
+                                                    
+        ZMK_COMBO_ADV(l_braces2_pc,  &lbk_pc,          RH0 LT3,          ALL,   SLOW_COMBO_MS)
+        ZMK_COMBO_ADV(l_braces2_as,  &lbk_as,          RH0 LT2,          ALL,   SLOW_COMBO_MS)
+        ZMK_COMBO_ADV(r_braces2_pc,  &rbk_pc,          RH0 RT2,          ALL,   SLOW_COMBO_MS)
+        ZMK_COMBO_ADV(r_braces2_as,  &rbk_as,          RH0 RT3,          ALL,   SLOW_COMBO_MS)
 
         // admin
-        ZMK_COMBO_ADV(boot_left,          &bootloader,      LB0 LB1 LB2 LH0,  BASE,  SLOW_COMBO_MS)  
-        ZMK_COMBO_ADV(lock_screen_left,   &kp LCG(Q),       LT1 LT2 LT3 LT4,  BASE,  SLOW_COMBO_MS)  
-        ZMK_COMBO_ADV(lock_screen_right,  &kp LCG(Q),       RT1 RT2 RT3 RT4,  BASE,  SLOW_COMBO_MS)  
+        ZMK_COMBO_ADV(boot_left,     &bootloader,      LB0 LB1 LB2 LH0,  BASE,  SLOW_COMBO_MS)  
+        ZMK_COMBO_ADV(l_lock_scrn,   &kp LCG(Q),       LT1 LT2 LT3 LT4,  BASE,  SLOW_COMBO_MS)  
+        ZMK_COMBO_ADV(r_lock_scrn,   &kp LCG(Q),       RT1 RT2 RT3 RT4,  BASE,  SLOW_COMBO_MS)  
     };
 
     keymap {
