@@ -141,8 +141,8 @@
         ZMK_COMBO_ADV(quotes,        M_AS(SQT),        RT3 RM3,          ALL,   VERT_COMBO_MS)
                                                     
         // angled                                   
-        ZMK_COMBO_ADV(fslash,        &kp FSLH,         LT2 LM3,          ALL,   FAST_COMBO_MS)
-        ZMK_COMBO_ADV(bslash,        &kp BSLH,         LT2 LM1,          ALL,   FAST_COMBO_MS)
+        ZMK_COMBO_ADV(fslash,        &kp FSLH,         RH1 RB2,          ALL,   FAST_COMBO_MS)
+        ZMK_COMBO_ADV(bslash,        &kp BSLH,         RM3 RB4,          ALL,   FAST_COMBO_MS)
                                                     
         // thumbs                                   
         ZMK_COMBO_ADV(alt,           &kp LALT,         RH1 RH2,          ALL,   SLOW_COMBO_MS)
