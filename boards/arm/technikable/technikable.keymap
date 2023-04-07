@@ -104,7 +104,7 @@
         )
 
         // Tap Dances
-        ZMK_BEHAVIOR(sfcw, tap_dance,
+        ZMK_BEHAVIOR(sft_cw, tap_dance,
             tapping-term-ms = <400>; bindings = <&kp LSHIFT>, <&caps_word>; // 1:(shift), 2:(caps word)
         )
     };
@@ -183,12 +183,11 @@
         #define LC_CN()  &mod_sl LCTRL CDN1
         #define LA_CN()  &mod_sl LALT CDN1
         #define K_MIN()  AS(MINUS)
-        #define SF_CP()  &shift_caps
         #define SYMSP()  &lt SYMS SPACE
 
 ESC      CHAR(Q)  CHAR(W)  CHAR(F)  CHAR(P)  CHAR(D)   CHAR(J)  CHAR(L)  CHAR(U)  CHAR(Y)  K_MIN()  &bspc
 TAB      CHAR(A)  CHAR(R)  CHAR(S)  CHAR(T)  CHAR(G)   CHAR(M)  CHAR(N)  CHAR(E)  CHAR(I)  CHAR(O)  ENTER
-&sfcw    H_LB3()  H_LB3()  H_LB2()  CHAR(V)  CHAR(B)   CHAR(K)  CHAR(H)  H_RB1()  H_RB2()  H_RB3()  &sfcw
+&sft_cw  H_LB3()  H_LB3()  H_LB2()  CHAR(V)  CHAR(B)   CHAR(K)  CHAR(H)  H_RB1()  H_RB2()  H_RB3()  &sft_cw
                   LC_CN()  LG_CR()  SYMSP()    DEAD_THUMBS()    SYMSP()  LG_CR()  LA_CN()
         )
 
