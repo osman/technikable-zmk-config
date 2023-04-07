@@ -238,8 +238,8 @@ BT_CL()  FUNC(7)  FUNC(8)  FUNC(9)  XXXXXXX     DEAD_MIDDLE()    BT_S(0)  BT_S(1
 //         #define CDR_N()  &kp LAG(N)         // inline
 //         #define CDR_M()  &kp LAG(M)         // extract method
 //         #define CDR_L()  &kp LAG(L)         // format
-//         #define CDR_I()  &kp LAG(L)         // format (qwerty position)
-//         #define CDR_S()  &kp LAG(T)         // surround
+        #define CDR_I()  &kp LAG(L)         // format (qwerty position)
+        #define CDR_S()  &kp LAG(T)         // surround
 //         #define CDR_O()  &kp LA(ENTER)      // suggested actions
 //         #define CDR_B()  &cd LG(F9) LSG(F9) // build module, build all
 //         #define CDR_ES() &kp LA(UP)         // extend selection by scope
