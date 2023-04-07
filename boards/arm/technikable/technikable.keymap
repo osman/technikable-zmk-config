@@ -180,10 +180,10 @@
         #define M_CDN()  &mo CDN1
         #define SYMSP()  &lt SYMS SPACE
 
-ESC      CHAR(Q)  CHAR(W)  CHAR(F)  CHAR(P)  CHAR(D)   CHAR(J)  CHAR(L)  CHAR(U)  CHAR(Y)  K_MIN()  &bspc
+// ESC      CHAR(Q)  CHAR(W)  CHAR(F)  CHAR(P)  CHAR(D)   CHAR(J)  CHAR(L)  CHAR(U)  CHAR(Y)  K_MIN()  &bspc
 H_LM5()  H_LM4()  H_LM3()  CHAR(S)  CHAR(T)  CHAR(G)   CHAR(M)  CHAR(N)  CHAR(E)  H_RM3()  H_RM4()  H_RM5()
 H_LM5()  H_LM4()  H_LM3()  CHAR(S)  CHAR(T)  CHAR(G)   CHAR(M)  CHAR(N)  CHAR(E)  H_RM3()  H_RM4()  H_RM5()
-// LSHIFT   CHAR(Z)  CHAR(X)  CHAR(C)  CHAR(V)  CHAR(B)   CHAR(K)  CHAR(H)  K_COM()  K_DOT()  K_SEM()  RSHIFT
+&sft_cw  CHAR(Z)  CHAR(X)  CHAR(C)  CHAR(V)  CHAR(B)   CHAR(K)  CHAR(H)  K_COM()  K_DOT()  K_SEM()  &sft_cw
                   M_CDN()  M_CDR()  SYMSP()    DEAD_THUMBS()    SYMSP()  M_CDR()  M_CDN()
         )
 
@@ -215,14 +215,15 @@ _______  NUMB(7)  NUMB(8)  NUMB(9)  &kp AT   K_PCT()   K_HSH()  K_STR()  _______
         #define VMUTE()  &kp C_MUTE 
         #define CH_KB()  &kp LCA(SPACE)
         #define SNCAP()  &kp LSG(N4)
+        #define RCLIK()  &kp K_CONTEXT_MENU
         #define VOL(dir) &kp C_VOL_ ## dir
         #define BRI(dir) &kp C_BRI_ ## dir
         #define BT_S(n)  &bt BT_SEL n
         #define BT_CL()  &bt BT_CLR
 
-TO_BS()  XXXXXXX  FUNC(1)  FUNC(2)  FUNC(3)  XXXXXXX   VOL(DN)  VOL(UP)  VMUTE()  XXXXXXX  XXXXXXX  _______
-_______  XXXXXXX  FUNC(4)  FUNC(5)  FUNC(6)  XXXXXXX   BRI(DN)  BRI(UP)  SNCAP()  CH_KB()  XXXXXXX  _______
-_______  XXXXXXX  FUNC(7)  FUNC(8)  FUNC(9)  XXXXXXX   BT_S(0)  BT_S(1)  BT_S(2)  BT_S(3)  BT_S(4)  BT_CL()
+TO_BS()  FUNC(1)  FUNC(2)  FUNC(3)  XXXXXXX  XXXXXXX   XXXXXXX  VOL(DN)  VOL(UP)  VMUTE()  XXXXXXX  XXXXXXX
+_______  FUNC(4)  FUNC(5)  FUNC(6)  RCLIK()  XXXXXXX   XXXXXXX  BRI(DN)  BRI(UP)  SNCAP()  CH_KB()  XXXXXXX
+_______  FUNC(7)  FUNC(8)  FUNC(9)  XXXXXXX  XXXXXXX   BT_S(0)  BT_S(1)  BT_S(2)  BT_S(3)  BT_S(4)  BT_CL()
                   _______  _______  XXXXXXX    DEAD_THUMBS()    XXXXXXX  _______  _______
         )
 
