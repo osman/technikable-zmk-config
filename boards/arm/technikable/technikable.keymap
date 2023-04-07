@@ -171,7 +171,7 @@
         #define TO_BS()         &to BASE
         #define DEAD_MIDDLE()   XXXXXXX XXXXXXX
         #define DEAD_THUMBS()   XXXXXXX
-        #define CHAR(c)         ## c
+        #define CHAR(ch)        ch
 
         ZMK_LAYER(base_layer,
         #define H_LB4()  &hm &shift_caps Z
