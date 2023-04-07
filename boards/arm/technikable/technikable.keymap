@@ -173,21 +173,24 @@
         #define CHAR(ch)        ch
 
         ZMK_LAYER(base_layer,
-        #define H_LB4()  &hm LCTRL Z
-        #define H_LB3()  &hm LALT X
-        #define H_LB2()  &hm LCMD C
-        #define H_RB1()  &hm RCMD COMMA
-        #define H_RB2()  &hm RALT DOT
-        #define H_RB3()  &hm RCTRL SEMI
+        #define H_LM5()  &hm LCTRL TAB
+        #define H_LM4()  &hm LALT A
+        #define H_LM3()  &hm LCMD R
+        #define H_RM3()  &hm RCMD I
+        #define H_RM4()  &hm RALT O
+        #define H_RM5()  &hm RCTRL ENTER
         #define LG_CR()  &mod_sl LCMD CDR1
         #define LC_CN()  &mod_sl LCTRL CDN1
         #define LA_CN()  &mod_sl LALT CDN1
         #define K_MIN()  AS(MINUS)
+        #define K_COM()  AS(COMMA)
+        #define K_DOT()  AS(DOT)
+        #define K_SEM()  AS(SEMICOLON)
         #define SYMSP()  &lt SYMS SPACE
 
 ESC      CHAR(Q)  CHAR(W)  CHAR(F)  CHAR(P)  CHAR(D)   CHAR(J)  CHAR(L)  CHAR(U)  CHAR(Y)  K_MIN()  &bspc
-TAB      CHAR(A)  CHAR(R)  CHAR(S)  CHAR(T)  CHAR(G)   CHAR(M)  CHAR(N)  CHAR(E)  CHAR(I)  CHAR(O)  ENTER
-&sft_cw  H_LB3()  H_LB3()  H_LB2()  CHAR(V)  CHAR(B)   CHAR(K)  CHAR(H)  H_RB1()  H_RB2()  H_RB3()  &sft_cw
+H_LM5()  H_LM4()  H_LM3()  CHAR(S)  CHAR(T)  CHAR(G)   CHAR(M)  CHAR(N)  CHAR(E)  H_RM3()  H_RM4()  H_RM5()
+&sft_cw  CHAR(Z)  CHAR(X)  CHAR(C)  CHAR(V)  CHAR(B)   CHAR(K)  CHAR(H)  K_COM()  K_DOT()  K_SEM()  &sft_cw
                   LC_CN()  LG_CR()  SYMSP()    DEAD_THUMBS()    SYMSP()  LG_CR()  LA_CN()
         )
 
