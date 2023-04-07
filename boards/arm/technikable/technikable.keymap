@@ -180,8 +180,8 @@
         #define M_CDN()  &mo CDN1
         #define SYMSP()  &lt SYMS SPACE
 
-ESC      CHAR(Q)  CHAR(W)  CHAR(F)  CHAR(P)  CHAR(D)   CHAR(J)  CHAR(L)  CHAR(U)  CHAR(Y)  K_MIN()  &bspc
 A A A A A A A A A A A A
+H_LM5()  H_LM4()  H_LM3()  CHAR(S)  CHAR(T)  CHAR(G)   CHAR(M)  CHAR(N)  CHAR(E)  H_RM3()  H_RM4()  H_RM5()
 A A A A A A A A A A A A
 // ESC      CHAR(Q)  CHAR(W)  CHAR(F)  CHAR(P)  CHAR(D)   CHAR(J)  CHAR(L)  CHAR(U)  CHAR(Y)  K_MIN()  &bspc
 // H_LM5()  H_LM4()  H_LM3()  CHAR(S)  CHAR(T)  CHAR(G)   CHAR(M)  CHAR(N)  CHAR(E)  H_RM3()  H_RM4()  H_RM5()
