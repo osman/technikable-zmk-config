@@ -100,7 +100,7 @@
         // Mod Morphs
         ZMK_BEHAVIOR(bspc, mod_morph,
             bindings = <&nav LA(BSPC) BSPC>, <&nav LA(DEL) DEL>;
-            mods = <(MOD_LSFT)>;
+            mods = <(MOD_LSFT|MOD_RSHT)>;
         )
 
         // Tap Dances
@@ -120,12 +120,12 @@
 
         // horizontal
         ZMK_COMBO_ADV(tilde,         AS(GRAVE),        LT4 LT3,          ALL,   FAST_COMBO_MS)
-        ZMK_COMBO_ADV(lshift,        &shift_caps,      LB4 LB3,          ALL,   SLOW_COMBO_MS)
-        ZMK_COMBO_ADV(rshift,        &shift_caps,      RB3 RB4,          ALL,   SLOW_COMBO_MS)
-        ZMK_COMBO_ADV(esc,           &kp ESC,          LT3 LT2,          ALL,   FAST_COMBO_MS)
-        ZMK_COMBO_ADV(tab,           &kp TAB,          LM3 LM2,          ALL,   FAST_COMBO_MS)
-        ZMK_COMBO_ADV(backspace,     &bspc,            RT2 RT3,          ALL,   SLOW_COMBO_MS)
-        ZMK_COMBO_ADV(enter,         &kp ENTER,        RM2 RM3,          ALL,   FAST_COMBO_MS)
+        // ZMK_COMBO_ADV(lshift,        &shift_caps,      LB4 LB3,          ALL,   SLOW_COMBO_MS)
+        // ZMK_COMBO_ADV(rshift,        &shift_caps,      RB3 RB4,          ALL,   SLOW_COMBO_MS)
+        // ZMK_COMBO_ADV(esc,           &kp ESC,          LT3 LT2,          ALL,   FAST_COMBO_MS)
+        // ZMK_COMBO_ADV(tab,           &kp TAB,          LM3 LM2,          ALL,   FAST_COMBO_MS)
+        // ZMK_COMBO_ADV(backspace,     &bspc,            RT2 RT3,          ALL,   SLOW_COMBO_MS)
+        // ZMK_COMBO_ADV(enter,         &kp ENTER,        RM2 RM3,          ALL,   FAST_COMBO_MS)
         ZMK_COMBO_ADV(equal,         AS(EQUAL),        RT3 RT4,          ALL,   FAST_COMBO_MS)
         
         // vertical
@@ -185,13 +185,13 @@
         #define LG_CR()  &mod_sl LCMD CDR1
         #define LC_CN()  &mod_sl LCTRL CDN1
         #define LA_CN()  &mod_sl LALT CDN1
-        #define K_COM()  &kp COMMA
+        #define K_MIN()  AS(MINUS)
         #define SYMSP()  &lt SYMS SPACE
 
-CHAR(Q)  CHAR(W)  CHAR(F)  CHAR(P)  CHAR(D)     DEAD_MIDDLE()    CHAR(J)  CHAR(L)  CHAR(U)  CHAR(Y)  AS(MINUS)
-CHAR(A)  CHAR(R)  CHAR(S)  CHAR(T)  CHAR(G)     DEAD_MIDDLE()    CHAR(M)  CHAR(N)  CHAR(E)  CHAR(I)  CHAR(O)
-H_LB4()  H_LB3()  H_LB2()  H_LB1()  CHAR(B)     DEAD_MIDDLE()    CHAR(K)  H_RB1()  H_RB2()  H_RB3()  H_RB4()
-                  LC_CN()  LG_CR()  SYMSP()     DEAD_THUMBS()    SYMSP()  LG_CR()  LA_CN()
+ESC      CHAR(Q)  CHAR(W)  CHAR(F)  CHAR(P)  CHAR(D)   CHAR(J)  CHAR(L)  CHAR(U)  CHAR(Y)  K_MIN()  &bspc
+TAB      CHAR(A)  CHAR(R)  CHAR(S)  CHAR(T)  CHAR(G)   CHAR(M)  CHAR(N)  CHAR(E)  CHAR(I)  CHAR(O)  ENTER
+LSHIFT   H_LB3()  H_LB3()  H_LB2()  CHAR(V)  CHAR(B)   CHAR(K)  CHAR(H)  H_RB2()  H_RB3()  H_RB4()  RSHIFT
+                  LC_CN()  LG_CR()  SYMSP()    DEAD_THUMBS()    SYMSP()  LG_CR()  LA_CN()
         )
 
         ZMK_LAYER(symbols_layer,
@@ -203,11 +203,18 @@ H_LB4()  H_LB3()  H_LB2()  H_LB1()  CHAR(B)     DEAD_MIDDLE()    CHAR(K)  H_RB1(
         #define NAV_R()  &nav LA(RIGHT) RIGHT   // left, left by a word
         #define K_BWD()  &nav LG(LBRC) LG(LBKT) // back, move to tab on left
         #define K_FWD()  &nav LG(RBRC) LG(RBKT) // forwards, move to tab on right
+        #define K_CRT()  &kp CARET
+        #define K_DLR()  &kp DLLR
+        #define K_PCT()  &kp PRCNT
+        #define K_AMP()  &kp AMPS
+        #define K_HSH()  &kp HASH
+        #define K_STR()  &kp STAR
+        #define K_EXC()  &kp EXCL
 
-NUMB(0)  NUMB(1)  NUMB(2)  NUMB(3)  &kp CARET   DEAD_MIDDLE()    K_BWD()  K_FWD()  NAV_U()  XXXXXXX  _______
-&kp EXCL NUMB(4)  NUMB(5)  NUMB(6)  &kp DLLR    DEAD_MIDDLE()    &kp AMPS NAV_L()  NAV_D()  NAV_R()  XXXXXXX
-&kp AT   NUMB(7)  NUMB(8)  NUMB(9)  &kp PRCNT   DEAD_MIDDLE()    &kp HASH &kp STAR _______  _______  _______
-                  _______  _______  ADJSP()     DEAD_THUMBS()    ADJSP()  _______  _______
+_______  NUMB(1)  NUMB(2)  NUMB(3)  XXXXXXX  K_CRT()   XXXXXXX  K_BWD()  NAV_U()  K_FWD()  _______  _______
+_______  NUMB(4)  NUMB(5)  NUMB(6)  K_EXC()  K_DLR()   K_AMP()  NAV_L()  NAV_D()  NAV_R()  XXXXXXX  _______
+_______  NUMB(7)  NUMB(8)  NUMB(9)  &kp AT   K_PCT()   K_HSH()  K_STR()  _______  _______  _______  _______
+                  NUMB(0)  _______  ADJSP()    DEAD_THUMBS()    ADJSP()  _______  _______
         )
 
         ZMK_LAYER(adjust_layer,
@@ -220,10 +227,10 @@ NUMB(0)  NUMB(1)  NUMB(2)  NUMB(3)  &kp CARET   DEAD_MIDDLE()    K_BWD()  K_FWD(
         #define BT_S(n)  &bt BT_SEL n
         #define BT_CL()  &bt BT_CLR
 
-TO_BS()  FUNC(1)  FUNC(2)  FUNC(3)  XXXXXXX     DEAD_MIDDLE()    VOL(DN)  VOL(UP)  VMUTE()  XXXXXXX  XXXXXXX
-XXXXXXX  FUNC(4)  FUNC(5)  FUNC(6)  XXXXXXX     DEAD_MIDDLE()    BRI(DN)  BRI(UP)  SNCAP()  CH_KB()  XXXXXXX
-BT_CL()  FUNC(7)  FUNC(8)  FUNC(9)  XXXXXXX     DEAD_MIDDLE()    BT_S(0)  BT_S(1)  BT_S(2)  BT_S(3)  BT_S(4)
-                  _______  _______  XXXXXXX     DEAD_THUMBS()    XXXXXXX  _______  _______
+TO_BS()  XXXXXXX  FUNC(1)  FUNC(2)  FUNC(3)  XXXXXXX   VOL(DN)  VOL(UP)  VMUTE()  XXXXXXX  XXXXXXX  _______
+_______  XXXXXXX  FUNC(4)  FUNC(5)  FUNC(6)  XXXXXXX   BRI(DN)  BRI(UP)  SNCAP()  CH_KB()  XXXXXXX  _______
+_______  XXXXXXX  FUNC(7)  FUNC(8)  FUNC(9)  XXXXXXX   BT_S(0)  BT_S(1)  BT_S(2)  BT_S(3)  BT_S(4)  BT_CL()
+                  _______  _______  XXXXXXX    DEAD_THUMBS()    XXXXXXX  _______  _______
         )
 
         ZMK_LAYER(code_ref1_layer,
@@ -244,10 +251,10 @@ BT_CL()  FUNC(7)  FUNC(8)  FUNC(9)  XXXXXXX     DEAD_MIDDLE()    BT_S(0)  BT_S(1
         #define CR1_E() &kp LA(DOWN)       // decrease selection by scope
         #define CDR_2() &sl CDR2           // go to CDR2
 
-TO_BS()  XXXXXXX  CR1_F()  CR1_P()  XXXXXXX     DEAD_MIDDLE()    XXXXXXX  CR1_L()  CR1_U()  XXXXXXX  XXXXXXX
-CR1_A()  CR1_R()  CR1_S()  XXXXXXX  XXXXXXX     DEAD_MIDDLE()    CR1_M()  CR1_N()  CR1_E()  CR1_I()  CR1_O()
-XXXXXXX  XXXXXXX  CR1_C()  CR1_V()  CR1_B()     DEAD_MIDDLE()    XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX
-                  XXXXXXX  CDR_2()  XXXXXXX     DEAD_THUMBS()    XXXXXXX  CDR_2()  XXXXXXX
+TO_BS()  XXXXXXX  XXXXXXX  CR1_F()  CR1_P()  XXXXXXX   XXXXXXX  CR1_L()  CR1_U()  XXXXXXX  XXXXXXX  _______
+_______  CR1_A()  CR1_R()  CR1_S()  XXXXXXX  XXXXXXX   CR1_M()  CR1_N()  CR1_E()  CR1_I()  XXXXXXX  CR1_O()
+_______  XXXXXXX  XXXXXXX  CR1_C()  CR1_V()  CR1_B()   XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  _______
+                  XXXXXXX  CDR_2()  XXXXXXX    DEAD_THUMBS()    XXXXXXX  CDR_2()  XXXXXXX
         )
 
         ZMK_LAYER(code_ref2_layer,
@@ -255,10 +262,10 @@ XXXXXXX  XXXXXXX  CR1_C()  CR1_V()  CR1_B()     DEAD_MIDDLE()    XXXXXXX  XXXXXX
         #define CR2_U() &cd LSG(UP) LSA(UP)      // move line up, move block up
         #define CR2_E() &cd LSG(DOWN) LSA(DOWN)  // move line down, move block down
 
-TO_BS()  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX     DEAD_MIDDLE()    XXXXXXX  XXXXXXX  CR2_U()  XXXXXXX  XXXXXXX
-XXXXXXX  CR2_S()  XXXXXXX  XXXXXXX  XXXXXXX     DEAD_MIDDLE()    XXXXXXX  XXXXXXX  CR2_E()  CR1_I()  CR1_O()
-XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX     DEAD_MIDDLE()    XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX
-                  XXXXXXX  XXXXXXX  XXXXXXX     DEAD_THUMBS()    XXXXXXX  XXXXXXX  XXXXXXX
+TO_BS()  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX   XXXXXXX  XXXXXXX  CR2_U()  XXXXXXX  XXXXXXX  _______
+_______  XXXXXXX  CR2_S()  XXXXXXX  XXXXXXX  XXXXXXX   XXXXXXX  XXXXXXX  CR2_E()  CR1_I()  XXXXXXX  CR1_O()
+_______  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX   XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  _______
+                  XXXXXXX  XXXXXXX  XXXXXXX    DEAD_THUMBS()    XXXXXXX  XXXXXXX  XXXXXXX
         )
 
         ZMK_LAYER(code_nav_layer,
@@ -274,10 +281,10 @@ XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX     DEAD_MIDDLE()    XXXXXXX  XXXXXX
         #define DBG_R() &cd LA(F9) LAG(R)   // debug: run until breakpoint, run until cursor
         #define DBG_B() &cd LG(F8) LA(F8)   // debug: evaluate expression, set breakpoint
 
-TO_BS()  XXXXXXX  CN1_F()  CN1_P()  CN1_D()     DEAD_MIDDLE()    XXXXXXX  DBG_I()  DBG_O()  DBG_R()  DBG_B()
-XXXXXXX  CN1_R()  CN1_S()  CN1_T()  XXXXXXX     DEAD_MIDDLE()    XXXXXXX  XXXXXXX  CN1_E()  XXXXXXX  CR1_O()
-XXXXXXX  XXXXXXX  &dif_co  XXXXXXX  &dif_br     DEAD_MIDDLE()    XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX
-                  XXXXXXX  XXXXXXX  XXXXXXX     DEAD_THUMBS()    XXXXXXX  XXXXXXX  XXXXXXX
+TO_BS()  XXXXXXX  XXXXXXX  CN1_F()  CN1_P()  CN1_D()   XXXXXXX  DBG_I()  DBG_O()  DBG_R()  DBG_B()  _______
+_______  XXXXXXX  CN1_R()  CN1_S()  CN1_T()  XXXXXXX   XXXXXXX  XXXXXXX  CN1_E()  CR1_I()  XXXXXXX  CR1_O()
+_______  XXXXXXX  XXXXXXX  &dif_co  XXXXXXX  &dif_br   XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  _______
+                  XXXXXXX  XXXXXXX  XXXXXXX    DEAD_THUMBS()    XXXXXXX  XXXXXXX  XXXXXXX
         )
     };
 };
