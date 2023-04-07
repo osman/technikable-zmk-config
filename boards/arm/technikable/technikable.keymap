@@ -251,12 +251,12 @@ _______  XXXXXXX  XXXXXXX  CR1_C()  CR1_V()  CR1_B()   XXXXXXX  XXXXXXX  XXXXXXX
         )
 
         ZMK_LAYER(code_ref2_layer,
-        #define CR2_S() &kp LG(F6)               // change signature
+        #define CR2_R() &kp LG(F6)               // change signature
         #define CR2_U() &cd LSG(UP) LSA(UP)      // move line up, move block up
         #define CR2_E() &cd LSG(DOWN) LSA(DOWN)  // move line down, move block down
 
 TO_BS()  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX   XXXXXXX  XXXXXXX  CR2_U()  XXXXXXX  XXXXXXX  _______
-_______  XXXXXXX  CR2_S()  XXXXXXX  XXXXXXX  XXXXXXX   XXXXXXX  XXXXXXX  CR2_E()  CR1_I()  XXXXXXX  CR1_O()
+_______  XXXXXXX  CR2_R()  XXXXXXX  XXXXXXX  XXXXXXX   XXXXXXX  XXXXXXX  CR2_E()  CR1_I()  XXXXXXX  CR1_O()
 _______  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX   XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  _______
                   XXXXXXX  XXXXXXX  XXXXXXX    DEAD_THUMBS()    XXXXXXX  XXXXXXX  XXXXXXX
         )
