@@ -163,7 +163,7 @@
         #define _______         &trans
         #define TO_BS()         &to BASE
         #define DEAD_THUMBS()   XXXXXXX
-        #define LTTR(ch)        ch
+        #define CHAR(ch)        ch
 
         ZMK_LAYER(base_layer,
         #define H_LM5()  &hm LCTRL TAB
@@ -181,9 +181,9 @@
         #define K_SEM()  AS(SEMICOLON)
         #define SYMSP()  &lt SYMS SPACE
 
-ESC      LTTR(Q)  LTTR(W)  LTTR(F)  LTTR(P)  LTTR(D)   LTTR(J)  LTTR(L)  LTTR(U)  LTTR(Y)  K_MIN()  &bspc
-H_LM5()  H_LM4()  H_LM3()  LTTR(S)  LTTR(T)  LTTR(G)   LTTR(M)  LTTR(N)  LTTR(E)  H_RM3()  H_RM4()  H_RM5()
-&sft_cw  LTTR(Z)  LTTR(X)  LTTR(C)  LTTR(V)  LTTR(B)   LTTR(K)  LTTR(H)  K_COM()  K_DOT()  K_SEM()  &sft_cw
+ESC      CHAR(Q)  CHAR(W)  CHAR(F)  CHAR(P)  CHAR(D)   CHAR(J)  CHAR(L)  CHAR(U)  CHAR(Y)  K_MIN()  &bspc
+H_LM5()  H_LM4()  H_LM3()  CHAR(S)  CHAR(T)  CHAR(G)   CHAR(M)  CHAR(N)  CHAR(E)  H_RM3()  H_RM4()  H_RM5()
+&sft_cw  CHAR(Z)  CHAR(X)  CHAR(C)  CHAR(V)  CHAR(B)   CHAR(K)  CHAR(H)  K_COM()  K_DOT()  K_SEM()  &sft_cw
                   LC_CN()  LG_CR()  SYMSP()    DEAD_THUMBS()    SYMSP()  LG_CR()  LA_CN()
         )
 
