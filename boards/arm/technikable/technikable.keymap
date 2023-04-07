@@ -129,7 +129,7 @@
         ZMK_COMBO_ADV(equal,         AS(EQUAL),        RT3 RT4,          ALL,   FAST_COMBO_MS)
         
         // vertical
-        ZMK_COMBO_ADV(pipe_qmark,    &mas QMARK PIPE,  LT3 LM3,          ALL,   VERT_COMBO_MS)
+        ZMK_COMBO_ADV(pipe_qmark,    &as QMARK PIPE,   LT3 LM3,          ALL,   VERT_COMBO_MS)
         ZMK_COMBO_ADV(quotes,        AS(SQT),          RT3 RM3,          ALL,   VERT_COMBO_MS)
                                                     
         // angled                                   
@@ -137,25 +137,25 @@
         ZMK_COMBO_ADV(bslash,        &kp BSLH,         RM3 RB4,          ALL,   FAST_COMBO_MS)
                                                     
         // thumbs                                   
-        ZMK_COMBO_ADV(lh_brc_lp,     &mas RPAR LPAR,   LH0 LT3,          ALL,   SLOW_COMBO_MS)
-        ZMK_COMBO_ADV(lh_brc_lc,     &mas RBRC LBRC,   LH0 LT2,          ALL,   SLOW_COMBO_MS)
-        ZMK_COMBO_ADV(lh_brc_la,     &mas GT LT,       LH0 LM3,          ALL,   SLOW_COMBO_MS)
-        ZMK_COMBO_ADV(lh_brc_ls,     &mas RBKT LBKT,   LH0 LM2,          ALL,   SLOW_COMBO_MS)
+        ZMK_COMBO_ADV(lh_brc_lp,     &as RPAR LPAR,    LH0 LT3,          ALL,   SLOW_COMBO_MS)
+        ZMK_COMBO_ADV(lh_brc_lc,     &as RBRC LBRC,    LH0 LT2,          ALL,   SLOW_COMBO_MS)
+        ZMK_COMBO_ADV(lh_brc_la,     &as GT LT,        LH0 LM3,          ALL,   SLOW_COMBO_MS)
+        ZMK_COMBO_ADV(lh_brc_ls,     &as RBKT LBKT,    LH0 LM2,          ALL,   SLOW_COMBO_MS)
         
-        ZMK_COMBO_ADV(rh_brc_lp,     &mas RPAR LPAR,   RH0 LT3,          ALL,   SLOW_COMBO_MS)
-        ZMK_COMBO_ADV(rh_brc_lc,     &mas RBRC LBRC,   RH0 LT2,          ALL,   SLOW_COMBO_MS)
-        ZMK_COMBO_ADV(rh_brc_la,     &mas GT LT,       RH0 LM3,          ALL,   SLOW_COMBO_MS)
-        ZMK_COMBO_ADV(rh_brc_ls,     &mas RBKT LBKT,   RH0 LM2,          ALL,   SLOW_COMBO_MS)
+        ZMK_COMBO_ADV(rh_brc_lp,     &as RPAR LPAR,    RH0 LT3,          ALL,   SLOW_COMBO_MS)
+        ZMK_COMBO_ADV(rh_brc_lc,     &as RBRC LBRC,    RH0 LT2,          ALL,   SLOW_COMBO_MS)
+        ZMK_COMBO_ADV(rh_brc_la,     &as GT LT,        RH0 LM3,          ALL,   SLOW_COMBO_MS)
+        ZMK_COMBO_ADV(rh_brc_ls,     &as RBKT LBKT,    RH0 LM2,          ALL,   SLOW_COMBO_MS)
 
-        ZMK_COMBO_ADV(lh_brc_rp,     &mas LPAR RPAR,   LH0 RT3,          ALL,   SLOW_COMBO_MS)
-        ZMK_COMBO_ADV(lh_brc_rc,     &mas LBRC RBRC,   LH0 RT2,          ALL,   SLOW_COMBO_MS)
-        ZMK_COMBO_ADV(lh_brc_ra,     &mas LT GT,       LH0 RM3,          ALL,   SLOW_COMBO_MS)
-        ZMK_COMBO_ADV(lh_brc_rs,     &mas LBKT RBKT,   LH0 RM2,          ALL,   SLOW_COMBO_MS)
+        ZMK_COMBO_ADV(lh_brc_rp,     &as LPAR RPAR,    LH0 RT3,          ALL,   SLOW_COMBO_MS)
+        ZMK_COMBO_ADV(lh_brc_rc,     &as LBRC RBRC,    LH0 RT2,          ALL,   SLOW_COMBO_MS)
+        ZMK_COMBO_ADV(lh_brc_ra,     &as LT GT,        LH0 RM3,          ALL,   SLOW_COMBO_MS)
+        ZMK_COMBO_ADV(lh_brc_rs,     &as LBKT RBKT,    LH0 RM2,          ALL,   SLOW_COMBO_MS)
         
-        ZMK_COMBO_ADV(rh_brc_rp,     &mas LPAR RPAR,   RH0 RT3,          ALL,   SLOW_COMBO_MS)
-        ZMK_COMBO_ADV(rh_brc_rc,     &mas LBRC RBRC,   RH0 RT2,          ALL,   SLOW_COMBO_MS)
-        ZMK_COMBO_ADV(rh_brc_ra,     &mas LT GT,       RH0 RM3,          ALL,   SLOW_COMBO_MS)
-        ZMK_COMBO_ADV(rh_brc_rs,     &mas LBKT RBKT,   RH0 RM2,          ALL,   SLOW_COMBO_MS)
+        ZMK_COMBO_ADV(rh_brc_rp,     &as LPAR RPAR,    RH0 RT3,          ALL,   SLOW_COMBO_MS)
+        ZMK_COMBO_ADV(rh_brc_rc,     &as LBRC RBRC,    RH0 RT2,          ALL,   SLOW_COMBO_MS)
+        ZMK_COMBO_ADV(rh_brc_ra,     &as LT GT,        RH0 RM3,          ALL,   SLOW_COMBO_MS)
+        ZMK_COMBO_ADV(rh_brc_rs,     &as LBKT RBKT,    RH0 RM2,          ALL,   SLOW_COMBO_MS)
 
         // admin
         ZMK_COMBO_ADV(lh_boot,       &bootloader,      LH0 LB0 LB1 LB2,  BASE,  SLOW_COMBO_MS)  
