@@ -228,7 +228,7 @@ BT_CL()  FUNC(7)  FUNC(8)  FUNC(9)  XXXXXXX     DEAD_MIDDLE()    BT_S(0)  BT_S(1
                   _______  _______  XXXXXXX     DEAD_THUMBS()    XXXXXXX  _______  _______
         )
 
-        ZMK_LAYER(code_refactor1_layer,
+        ZMK_LAYER(code_refactor_one_layer,
         #define CDR_A()  &kp F5             // copy (putting it beside R which is rename/move)
         #define CDR_R()  &cd LS(F6) F6      // rename, move
         #define CDR_C()  &kp LAG(C)         // extract constant
@@ -251,7 +251,7 @@ XXXXXXX  XXXXXXX  CDR_C()  CDR_V()  CDR_B()     DEAD_MIDDLE()    XXXXXXX  XXXXXX
                   XXXXXXX  &sl CDR2 XXXXXXX     DEAD_THUMBS()    XXXXXXX  &sl CDR2 XXXXXXX
         )
 
-        ZMK_LAYER(code_refactor2_layer,
+        ZMK_LAYER(code_refactor_two_layer,
         #define CDR_CS() &kp LG(F6)               // change signature
         #define CDR_MU() &cd LSA(UP) LSG(UP)      // move line up, move block up
         #define CDR_MD() &cd LSA(DOWN) LSG(DOWN)  // move line down, move block down
