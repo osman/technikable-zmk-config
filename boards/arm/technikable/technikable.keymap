@@ -146,8 +146,6 @@
         ZMK_COMBO_ADV(bslash,        &kp BSLH,         RM3 RB4,          ALL,   FAST_COMBO_MS)
                                                     
         // thumbs                                   
-        ZMK_COMBO_ADV(alt,           &kp LALT,         RH1 RH2,          ALL,   SLOW_COMBO_MS)
-                                                    
         ZMK_COMBO_ADV(lh_brc_lp,     &mas RPAR LPAR,   LH0 LT3,          ALL,   SLOW_COMBO_MS)
         ZMK_COMBO_ADV(lh_brc_lc,     &mas RBRC LBRC,   LH0 LT2,          ALL,   SLOW_COMBO_MS)
         ZMK_COMBO_ADV(lh_brc_la,     &mas GT LT,       LH0 LM3,          ALL,   SLOW_COMBO_MS)
