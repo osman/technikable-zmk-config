@@ -78,8 +78,7 @@
         ZMK_BEHAVIOR(hm, hold_tap,
             flavor = "balanced";
             tapping-term-ms = <180>;
-            quick-tap-ms = <50>;
-            global-quick-tap;
+            quick-tap-ms = <0>;
             bindings = <&kp>, <&kp>;
         )
         ZMK_BEHAVIOR(cd, hold_tap,
@@ -120,12 +119,6 @@
 
         // horizontal
         ZMK_COMBO_ADV(tilde,         AS(GRAVE),        LT4 LT3,          ALL,   FAST_COMBO_MS)
-        // ZMK_COMBO_ADV(lshift,        &shift_caps,      LB4 LB3,          ALL,   SLOW_COMBO_MS)
-        // ZMK_COMBO_ADV(rshift,        &shift_caps,      RB3 RB4,          ALL,   SLOW_COMBO_MS)
-        // ZMK_COMBO_ADV(esc,           &kp ESC,          LT3 LT2,          ALL,   FAST_COMBO_MS)
-        // ZMK_COMBO_ADV(tab,           &kp TAB,          LM3 LM2,          ALL,   FAST_COMBO_MS)
-        // ZMK_COMBO_ADV(backspace,     &bspc,            RT2 RT3,          ALL,   SLOW_COMBO_MS)
-        // ZMK_COMBO_ADV(enter,         &kp ENTER,        RM2 RM3,          ALL,   FAST_COMBO_MS)
         ZMK_COMBO_ADV(equal,         AS(EQUAL),        RT3 RT4,          ALL,   FAST_COMBO_MS)
         
         // vertical
@@ -170,7 +163,7 @@
         #define _______         &trans
         #define TO_BS()         &to BASE
         #define DEAD_THUMBS()   XXXXXXX
-        #define CHAR(ch)        ch
+        #define LTTR(ch)        ch
 
         ZMK_LAYER(base_layer,
         #define H_LM5()  &hm LCTRL TAB
@@ -188,9 +181,9 @@
         #define K_SEM()  AS(SEMICOLON)
         #define SYMSP()  &lt SYMS SPACE
 
-ESC      CHAR(Q)  CHAR(W)  CHAR(F)  CHAR(P)  CHAR(D)   CHAR(J)  CHAR(L)  CHAR(U)  CHAR(Y)  K_MIN()  &bspc
-H_LM5()  H_LM4()  H_LM3()  CHAR(S)  CHAR(T)  CHAR(G)   CHAR(M)  CHAR(N)  CHAR(E)  H_RM3()  H_RM4()  H_RM5()
-&sft_cw  CHAR(Z)  CHAR(X)  CHAR(C)  CHAR(V)  CHAR(B)   CHAR(K)  CHAR(H)  K_COM()  K_DOT()  K_SEM()  &sft_cw
+ESC      LTTR(Q)  LTTR(W)  LTTR(F)  LTTR(P)  LTTR(D)   LTTR(J)  LTTR(L)  LTTR(U)  LTTR(Y)  K_MIN()  &bspc
+H_LM5()  H_LM4()  H_LM3()  LTTR(S)  LTTR(T)  LTTR(G)   LTTR(M)  LTTR(N)  LTTR(E)  H_RM3()  H_RM4()  H_RM5()
+&sft_cw  LTTR(Z)  LTTR(X)  LTTR(C)  LTTR(V)  LTTR(B)   LTTR(K)  LTTR(H)  K_COM()  K_DOT()  K_SEM()  &sft_cw
                   LC_CN()  LG_CR()  SYMSP()    DEAD_THUMBS()    SYMSP()  LG_CR()  LA_CN()
         )
 
