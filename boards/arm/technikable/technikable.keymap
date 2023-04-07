@@ -245,14 +245,10 @@ BT_CL()  FUNC(7)  FUNC(8)  FUNC(9)  XXXXXXX     DEAD_MIDDLE()    BT_S(0)  BT_S(1
         #define CR1_U() &kp LA(UP)         // extend selection by scope
         #define CR1_E() &kp LA(DOWN)       // decrease selection by scope
 
-// TO_BS()  XXXXXXX  CR1_F()  CR1_P()  XXXXXXX     DEAD_MIDDLE()    XXXXXXX  CR1_L()  CR1_ES() XXXXXXX  XXXXXXX
-// CR1_A()  CR1_R()  CR1_S()  CDN_T()  XXXXXXX     DEAD_MIDDLE()    CR1_M()  CR1_N()  CR1_DS() CR1_I()  CR1_O()
-// XXXXXXX  XXXXXXX  CR1_C()  CR1_V()  CR1_B()     DEAD_MIDDLE()    XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX
-//                   XXXXXXX  &sl CDR2 XXXXXXX     DEAD_THUMBS()    XXXXXXX  &sl CDR2 XXXXXXX
 TO_BS()  XXXXXXX  CR1_F()  CR1_P()  XXXXXXX     DEAD_MIDDLE()    XXXXXXX  CR1_L()  CR1_U()  XXXXXXX  XXXXXXX
-CR1_A()  CR1_R()  CR1_S()  CDN_T()  XXXXXXX     DEAD_MIDDLE()    CR1_M()  CR1_N()  CR1_E()  CR1_I()  CR1_O()
+CR1_A()  CR1_R()  CR1_S()  XXXXXXX  XXXXXXX     DEAD_MIDDLE()    CR1_M()  CR1_N()  CR1_E()  CR1_I()  CR1_O()
 XXXXXXX  XXXXXXX  CR1_C()  CR1_V()  CR1_B()     DEAD_MIDDLE()    XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX
-                  XXXXXXX  XXXXXXX  XXXXXXX     DEAD_THUMBS()    XXXXXXX  XXXXXXX  XXXXXXX
+                  XXXXXXX  &sl CDR2 XXXXXXX     DEAD_THUMBS()    XXXXXXX  &sl CDR2 XXXXXXX
         )
 
         ZMK_LAYER(code_ref2_layer,
