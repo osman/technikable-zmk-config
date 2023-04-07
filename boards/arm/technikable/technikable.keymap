@@ -163,31 +163,27 @@
         #define _______         &trans
         #define TO_BS()         &to BASE
         #define DEAD_THUMBS()   XXXXXXX
-        #define CHAR(ch)        ch
+        #define CHAR(ch)        &kp ch
 
         ZMK_LAYER(base_layer,
-        // #define H_LM5()  &hm LCTRL TAB
-        // #define H_LM4()  &hm LALT A
-        // #define H_LM3()  &hm LCMD R
-        // #define H_RM3()  &hm RCMD I
-        // #define H_RM4()  &hm RALT O
-        // #define H_RM5()  &hm RCTRL ENTER
-        // #define K_MIN()  &as UNDERSCORE MINUS
-        // #define K_COM()  &as LT COMMA
-        // #define K_DOT()  &as GT DOT
-        // #define K_SEM()  &as COLON SEMICOLON
-        // #define M_CDR()  &mo CDR1
-        // #define M_CDN()  &mo CDN1
-        // #define SYMSP()  &lt SYMS SPACE
+        #define H_LM5()  &hm LCTRL TAB
+        #define H_LM4()  &hm LALT A
+        #define H_LM3()  &hm LCMD R
+        #define H_RM3()  &hm RCMD I
+        #define H_RM4()  &hm RALT O
+        #define H_RM5()  &hm RCTRL ENTER
+        #define K_MIN()  &as UNDERSCORE MINUS
+        #define K_COM()  &as LT COMMA
+        #define K_DOT()  &as GT DOT
+        #define K_SEM()  &as COLON SEMICOLON
+        #define M_CDR()  &mo_sl CDR1 CDR2
+        #define M_CDN()  &mo CDN1
+        #define SYMSP()  &lt SYMS SPACE
 
-A A A A A A A A A A A A
-A A A A A A A A A A A A
-A A A A A A A A A A A A
-A A A A A A A
-// ESC      CHAR(Q)  CHAR(W)  CHAR(F)  CHAR(P)  CHAR(D)   CHAR(J)  CHAR(L)  CHAR(U)  CHAR(Y)  K_MIN()  &bspc
-// H_LM5()  H_LM4()  H_LM3()  CHAR(S)  CHAR(T)  CHAR(G)   CHAR(M)  CHAR(N)  CHAR(E)  H_RM3()  H_RM4()  H_RM5()
-// LSHIFT   CHAR(Z)  CHAR(X)  CHAR(C)  CHAR(V)  CHAR(B)   CHAR(K)  CHAR(H)  K_COM()  K_DOT()  K_SEM()  LSHIFT
-                //   M_CDN()  M_CDR()  SYMSP()    DEAD_THUMBS()    SYMSP()  M_CDR()  M_CDN()
+ESC      CHAR(Q)  CHAR(W)  CHAR(F)  CHAR(P)  CHAR(D)   CHAR(J)  CHAR(L)  CHAR(U)  CHAR(Y)  K_MIN()  &bspc
+H_LM5()  H_LM4()  H_LM3()  CHAR(S)  CHAR(T)  CHAR(G)   CHAR(M)  CHAR(N)  CHAR(E)  H_RM3()  H_RM4()  H_RM5()
+&sft_cw  CHAR(Z)  CHAR(X)  CHAR(C)  CHAR(V)  CHAR(B)   CHAR(K)  CHAR(H)  K_COM()  K_DOT()  K_SEM()  &sft_cw
+                  M_CDN()  M_CDR()  SYMSP()    DEAD_THUMBS()    SYMSP()  M_CDR()  M_CDN()
         )
 
         ZMK_LAYER(symbols_layer,
