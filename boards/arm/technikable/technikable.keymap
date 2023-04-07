@@ -100,7 +100,7 @@
         // Mod Morphs
         ZMK_BEHAVIOR(bspc, mod_morph,
             bindings = <&nav LA(BSPC) BSPC>, <&nav LA(DEL) DEL>;
-            mods = <(MOD_LSFT|MOD_RSHT)>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
         )
 
         // Tap Dances
