@@ -172,10 +172,10 @@
         // #define H_RM3()  &hm RCMD I
         // #define H_RM4()  &hm RALT O
         // #define H_RM5()  &hm RCTRL ENTER
-        #define K_MIN()  &as UNDERSCORE MINUS
-        #define K_COM()  &as LT COMMA
-        #define K_DOT()  &as GT DOT
-        #define K_SEM()  &as COLON SEMICOLON
+        // #define K_MIN()  &as UNDERSCORE MINUS
+        // #define K_COM()  &as LT COMMA
+        // #define K_DOT()  &as GT DOT
+        // #define K_SEM()  &as COLON SEMICOLON
         #define M_CDR()  &mo CDR1
         #define M_CDN()  &mo CDN1
         #define SYMSP()  &lt SYMS SPACE
