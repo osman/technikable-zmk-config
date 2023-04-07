@@ -70,10 +70,10 @@
             global-quick-tap;
             bindings = <&kp>, <&kp>;
         ) 
-        ZMK_BEHAVIOR(mod_sl, hold_tap,
-            flavor = "balanced";
+        ZMK_BEHAVIOR(mo_sl, hold_tap,
+            flavor = "hold-preferred";
             tapping-term-ms = <200>;
-            bindings = <&kp>, <&sl>;
+            bindings = <&mo>, <&sl>;
         )
         ZMK_BEHAVIOR(hm, hold_tap,
             flavor = "balanced";
