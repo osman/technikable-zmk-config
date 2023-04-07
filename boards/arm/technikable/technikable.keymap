@@ -181,9 +181,9 @@
         #define SYMSP()  &lt SYMS SPACE
 
 ESC      CHAR(Q)  CHAR(W)  CHAR(F)  CHAR(P)  CHAR(D)   CHAR(J)  CHAR(L)  CHAR(U)  CHAR(Y)  K_MIN()  &bspc
-// H_LM5()  H_LM4()  H_LM3()  CHAR(S)  CHAR(T)  CHAR(G)   CHAR(M)  CHAR(N)  CHAR(E)  H_RM3()  H_RM4()  H_RM5()
-LSHIFT   CHAR(Z)  CHAR(X)  CHAR(C)  CHAR(V)  CHAR(B)   CHAR(K)  CHAR(H)  K_COM()  K_DOT()  K_SEM()  RSHIFT
-LSHIFT   CHAR(Z)  CHAR(X)  CHAR(C)  CHAR(V)  CHAR(B)   CHAR(K)  CHAR(H)  K_COM()  K_DOT()  K_SEM()  RSHIFT
+H_LM5()  H_LM4()  H_LM3()  CHAR(S)  CHAR(T)  CHAR(G)   CHAR(M)  CHAR(N)  CHAR(E)  H_RM3()  H_RM4()  H_RM5()
+H_LM5()  H_LM4()  H_LM3()  CHAR(S)  CHAR(T)  CHAR(G)   CHAR(M)  CHAR(N)  CHAR(E)  H_RM3()  H_RM4()  H_RM5()
+// LSHIFT   CHAR(Z)  CHAR(X)  CHAR(C)  CHAR(V)  CHAR(B)   CHAR(K)  CHAR(H)  K_COM()  K_DOT()  K_SEM()  RSHIFT
                   M_CDN()  M_CDR()  SYMSP()    DEAD_THUMBS()    SYMSP()  M_CDR()  M_CDN()
         )
 
