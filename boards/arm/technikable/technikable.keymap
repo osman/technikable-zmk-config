@@ -17,8 +17,8 @@
 // Modifier Combos
 #define LSG(kc) LS(LG(kc))
 #define LSA(kc) LS(LA(kc))
+#define LSC(kc) LS(LC(kc))
 #define LAG(kc) LA(LG(kc))
-#define LCS(kc) LC(LS(kc))
 #define LCG(kc) LC(LG(kc))
 #define LCA(kc) LC(LA(kc))
 
@@ -256,8 +256,12 @@ BT_CL()  FUNC(7)  FUNC(8)  FUNC(9)  XXXXXXX     DEAD_MIDDLE()    BT_S(0)  BT_S(1
         #define CDR_MU() &cd LSA(UP) LSG(UP)      // move line up, move block up
         #define CDR_MD() &cd LSA(DOWN) LSG(DOWN)  // move line down, move block down
 
-TO_BS()  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX     DEAD_MIDDLE()    XXXXXXX  XXXXXXX  CDR_MU() XXXXXXX  XXXXXXX
-XXXXXXX  CDR_CS() XXXXXXX  XXXXXXX  XXXXXXX     DEAD_MIDDLE()    XXXXXXX  XXXXXXX  CDR_MD() CDR_I()  CDR_O()
+// TO_BS()  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX     DEAD_MIDDLE()    XXXXXXX  XXXXXXX  CDR_MU() XXXXXXX  XXXXXXX
+// XXXXXXX  CDR_CS() XXXXXXX  XXXXXXX  XXXXXXX     DEAD_MIDDLE()    XXXXXXX  XXXXXXX  CDR_MD() CDR_I()  CDR_O()
+// XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX     DEAD_MIDDLE()    XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX
+//                   XXXXXXX  XXXXXXX  XXXXXXX     DEAD_THUMBS()    XXXXXXX  XXXXXXX  XXXXXXX
+TO_BS()  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX     DEAD_MIDDLE()    XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX
+XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX     DEAD_MIDDLE()    XXXXXXX  XXXXXXX  XXXXXXX  CDR_I()  CDR_O()
 XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX     DEAD_MIDDLE()    XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX
                   XXXXXXX  XXXXXXX  XXXXXXX     DEAD_THUMBS()    XXXXXXX  XXXXXXX  XXXXXXX
         )
@@ -268,8 +272,8 @@ XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX     DEAD_MIDDLE()    XXXXXXX  XXXXXX
         #define CDN_S() &kp LG(F12)         // find symbol in file
         #define CDN_T() &kp LSG(T)          // navigate to/from tests
         #define CDN_E() &cd LS(F2) F2       // go to next/last error
-        #define CDN_R() &cd LG(N4) LCS(R)   // run tests, open run window
-        #define CDN_D() &cd LG(N5) LCS(D)   // run tests in debug mode, open debug window
+        #define CDN_R() &cd LG(N4) LSC(R)   // run tests, open run window
+        #define CDN_D() &cd LG(N5) LSC(D)   // run tests in debug mode, open debug window
         #define DBG_I() &cd F7 LS(F7)       // debug: smart step into, step into
         #define DBG_O() &cd LS(F8) F8       // debug: step over, step out
         #define DBG_R() &cd LA(F9) LAG(R)   // debug: run until breakpoint, run until cursor
