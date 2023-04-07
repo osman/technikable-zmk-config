@@ -16,6 +16,7 @@
 
 // Modifier Combos
 #define LSG(kc) LS(LG(kc))
+#define LSA(kc) LS(LA(kc))
 #define LAG(kc) LA(LG(kc))
 #define LCS(kc) LC(LS(kc))
 #define LCG(kc) LC(LG(kc))
@@ -110,6 +111,7 @@
             bindings = <&nav LA(BSPC) BSPC>, <&nav LA(DEL) DEL>;
             mods = <(MOD_LSFT)>;
         )
+
         // Tap Dances
         ZMK_BEHAVIOR(shift_caps, tap_dance,
             tapping-term-ms = <400>; bindings = <&kp LSHIFT>, <&caps_word>; // 1:(shift), 2:(caps word)
@@ -227,19 +229,19 @@ BT_CL()  FUNC(7)  FUNC(8)  FUNC(9)  XXXXXXX     DEAD_MIDDLE()    BT_S(0)  BT_S(1
         )
 
         ZMK_LAYER(code_refactor1_layer,
-        #define CDR_A() &kp F5              // copy (putting it beside R which is rename/move)
-        #define CDR_R() &cd LS(F6) F6       // rename, move
-        #define CDR_C() &kp LAG(C)          // extract constant
-        #define CDR_F() &kp LAG(F)          // extract field
-        #define CDR_P() &kp LAG(P)          // extract parameter
-        #define CDR_V() &kp LAG(V)          // extract variable
-        #define CDR_N() &kp LAG(N)          // inline
-        #define CDR_M() &kp LAG(M)          // extract method
-        #define CDR_L() &kp LAG(L)          // format
-        #define CDR_I() &kp LAG(L)          // format (qwerty position)
-        #define CDR_S() &kp LAG(T)          // surround
-        #define CDR_O() &kp LA(ENTER)       // suggested actions
-        #define CDR_B() &cd LG(F9) LSG(F9)  // build module, build all
+        #define CDR_A()  &kp F5             // copy (putting it beside R which is rename/move)
+        #define CDR_R()  &cd LS(F6) F6      // rename, move
+        #define CDR_C()  &kp LAG(C)         // extract constant
+        #define CDR_F()  &kp LAG(F)         // extract field
+        #define CDR_P()  &kp LAG(P)         // extract parameter
+        #define CDR_V()  &kp LAG(V)         // extract variable
+        #define CDR_N()  &kp LAG(N)         // inline
+        #define CDR_M()  &kp LAG(M)         // extract method
+        #define CDR_L()  &kp LAG(L)         // format
+        #define CDR_I()  &kp LAG(L)         // format (qwerty position)
+        #define CDR_S()  &kp LAG(T)         // surround
+        #define CDR_O()  &kp LA(ENTER)      // suggested actions
+        #define CDR_B()  &cd LG(F9) LSG(F9) // build module, build all
         #define CDR_ES() &kp LA(UP)         // extend selection by scope
         #define CDR_DS() &kp LA(DOWN)       // decrease selection by scope
 
@@ -250,9 +252,9 @@ XXXXXXX  XXXXXXX  CDR_C()  CDR_V()  CDR_B()     DEAD_MIDDLE()    XXXXXXX  XXXXXX
         )
 
         ZMK_LAYER(code_refactor2_layer,
-        #define CDR_CS() &kp LG(F6)                     // change signature
-        #define CDR_MU() &cd LS(LA(UP)) LS(LG(UP))      // move line up, move block up
-        #define CDR_MD() &cd LS(LA(DOWN)) LS(LG(DOWN))  // move line down, move block down
+        #define CDR_CS() &kp LG(F6)               // change signature
+        #define CDR_MU() &cd LSA(UP) LSG(UP)      // move line up, move block up
+        #define CDR_MD() &cd LSA(DOWN) LSG(DOWN)  // move line down, move block down
 
 TO_BS()  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX     DEAD_MIDDLE()    XXXXXXX  XXXXXXX  CDR_MU() XXXXXXX  XXXXXXX
 XXXXXXX  CDR_CS() XXXXXXX  XXXXXXX  XXXXXXX     DEAD_MIDDLE()    XXXXXXX  XXXXXXX  CDR_MD() CDR_I()  CDR_O()
