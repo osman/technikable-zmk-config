@@ -229,21 +229,21 @@ BT_CL()  FUNC(7)  FUNC(8)  FUNC(9)  XXXXXXX     DEAD_MIDDLE()    BT_S(0)  BT_S(1
         )
 
 //         ZMK_LAYER(code_ref1_layer,
-//         #define CDR_A()  &kp F5             // copy (putting it beside R which is rename/move)
-//         #define CDR_R()  &cd LS(F6) F6      // rename, move
-//         #define CDR_C()  &kp LAG(C)         // extract constant
-//         #define CDR_F()  &kp LAG(F)         // extract field
-//         #define CDR_P()  &kp LAG(P)         // extract parameter
-//         #define CDR_V()  &kp LAG(V)         // extract variable
-//         #define CDR_N()  &kp LAG(N)         // inline
-//         #define CDR_M()  &kp LAG(M)         // extract method
-//         #define CDR_L()  &kp LAG(L)         // format
+        #define CDR_A()  &kp F5             // copy (putting it beside R which is rename/move)
+        #define CDR_R()  &cd LS(F6) F6      // rename, move
+        #define CDR_C()  &kp LAG(C)         // extract constant
+        #define CDR_F()  &kp LAG(F)         // extract field
+        #define CDR_P()  &kp LAG(P)         // extract parameter
+        #define CDR_V()  &kp LAG(V)         // extract variable
+        #define CDR_N()  &kp LAG(N)         // inline
+        #define CDR_M()  &kp LAG(M)         // extract method
+        #define CDR_L()  &kp LAG(L)         // format
         #define CDR_I()  &kp LAG(L)         // format (qwerty position)
         #define CDR_S()  &kp LAG(T)         // surround
-//         #define CDR_O()  &kp LA(ENTER)      // suggested actions
-//         #define CDR_B()  &cd LG(F9) LSG(F9) // build module, build all
-//         #define CDR_ES() &kp LA(UP)         // extend selection by scope
-//         #define CDR_DS() &kp LA(DOWN)       // decrease selection by scope
+        #define CDR_O()  &kp LA(ENTER)      // suggested actions
+        #define CDR_B()  &cd LG(F9) LSG(F9) // build module, build all
+        #define CDR_ES() &kp LA(UP)         // extend selection by scope
+        #define CDR_DS() &kp LA(DOWN)       // decrease selection by scope
 
 // TO_BS()  XXXXXXX  CDR_F()  CDR_P()  XXXXXXX     DEAD_MIDDLE()    XXXXXXX  CDR_L()  CDR_ES() XXXXXXX  XXXXXXX
 // CDR_A()  CDR_R()  CDR_S()  CDN_T()  XXXXXXX     DEAD_MIDDLE()    CDR_M()  CDR_N()  CDR_DS() CDR_I()  CDR_O()
