@@ -60,36 +60,27 @@
     };
 
     behaviors {
-        #define F_AS(kc) &fas LS(kc) kc
-        #define M_AS(kc) &mas LS(kc) kc
-        #define S_AS(kc) &sas LS(kc) kc
+        #define AS(kc) &as LS(kc) kc
 
         // Hold Taps
-        ZMK_BEHAVIOR(fas, hold_tap,
+        ZMK_BEHAVIOR(as, hold_tap,
             flavor = "tap-preferred";
-            tapping-term-ms = <145>;
-            quick-tap-ms = <50>;
-            global-quick-tap;
-            bindings = <&kp>, <&kp>;
-        )
-        ZMK_BEHAVIOR(mas, hold_tap,
-            flavor = "tap-preferred";
-            tapping-term-ms = <175>;
+            tapping-term-ms = <150>;
             quick-tap-ms = <50>;
             global-quick-tap;
             bindings = <&kp>, <&kp>;
         ) 
-        ZMK_BEHAVIOR(sas, hold_tap,
-            flavor = "tap-preferred";
-            tapping-term-ms = <200>;
-            quick-tap-ms = <50>;
-            global-quick-tap;
-            bindings = <&kp>, <&kp>;
-        )
         ZMK_BEHAVIOR(mod_sl, hold_tap,
             flavor = "balanced";
             tapping-term-ms = <200>;
             bindings = <&kp>, <&sl>;
+        )
+        ZMK_BEHAVIOR(hm, hold_tap,
+            flavor = "balanced";
+            tapping-term-ms = <180>;
+            quick-tap-ms = <50>;
+            global-quick-tap;
+            bindings = <&kp>, <&kp>;
         )
         ZMK_BEHAVIOR(cd, hold_tap,
             flavor = "tap-preferred";
@@ -128,18 +119,18 @@
         #define SLOW_COMBO_MS 60
 
         // horizontal
-        ZMK_COMBO_ADV(tilde,         M_AS(GRAVE),      LT4 LT3,          ALL,   FAST_COMBO_MS)
+        ZMK_COMBO_ADV(tilde,         AS(GRAVE),        LT4 LT3,          ALL,   FAST_COMBO_MS)
         ZMK_COMBO_ADV(lshift,        &shift_caps,      LB4 LB3,          ALL,   SLOW_COMBO_MS)
         ZMK_COMBO_ADV(rshift,        &shift_caps,      RB3 RB4,          ALL,   SLOW_COMBO_MS)
         ZMK_COMBO_ADV(esc,           &kp ESC,          LT3 LT2,          ALL,   FAST_COMBO_MS)
         ZMK_COMBO_ADV(tab,           &kp TAB,          LM3 LM2,          ALL,   FAST_COMBO_MS)
         ZMK_COMBO_ADV(backspace,     &bspc,            RT2 RT3,          ALL,   SLOW_COMBO_MS)
         ZMK_COMBO_ADV(enter,         &kp ENTER,        RM2 RM3,          ALL,   FAST_COMBO_MS)
-        ZMK_COMBO_ADV(equal,         M_AS(EQUAL),      RT3 RT4,          ALL,   FAST_COMBO_MS)
+        ZMK_COMBO_ADV(equal,         AS(EQUAL),        RT3 RT4,          ALL,   FAST_COMBO_MS)
         
         // vertical
         ZMK_COMBO_ADV(pipe_qmark,    &mas QMARK PIPE,  LT3 LM3,          ALL,   VERT_COMBO_MS)
-        ZMK_COMBO_ADV(quotes,        M_AS(SQT),        RT3 RM3,          ALL,   VERT_COMBO_MS)
+        ZMK_COMBO_ADV(quotes,        AS(SQT),          RT3 RM3,          ALL,   VERT_COMBO_MS)
                                                     
         // angled                                   
         ZMK_COMBO_ADV(fslash,        &kp FSLH,         RH1 RB2,          ALL,   FAST_COMBO_MS)
@@ -175,22 +166,31 @@
     keymap {
         compatible = "zmk,keymap";
 
-        #define XXXXXXX  &none
-        #define _______  &trans
-        #define TO_BS()  &to BASE
-        #define DEAD_MIDDLE()  XXXXXXX XXXXXXX
-        #define DEAD_THUMBS()  XXXXXXX
+        #define XXXXXXX         &none
+        #define _______         &trans
+        #define TO_BS()         &to BASE
+        #define DEAD_MIDDLE()   XXXXXXX XXXXXXX
+        #define DEAD_THUMBS()   XXXXXXX
+        #define CHAR(c)         ## c
 
         ZMK_LAYER(base_layer,
+        #define H_LB4()  &hm &shift_caps Z
+        #define H_LB3()  &hm LCTRL X
+        #define H_LB2()  &hm LALT C
+        #define H_LB1()  &hm LCMD V
+        #define H_RB1()  &hm RCMD H
+        #define H_RB2()  &hm RALT COMMA
+        #define H_RB3()  &hm RCTRL DOT
+        #define H_RB4()  &hm &shift_caps SEMI
         #define LG_CR()  &mod_sl LCMD CDR1
         #define LC_CN()  &mod_sl LCTRL CDN1
         #define LA_CN()  &mod_sl LALT CDN1
         #define K_COM()  &kp COMMA
         #define SYMSP()  &lt SYMS SPACE
 
-S_AS(Q)  M_AS(W)  F_AS(F)  F_AS(P)  M_AS(D)     DEAD_MIDDLE()    M_AS(J)  F_AS(L)  F_AS(U)  M_AS(Y)  S_AS(MINUS)
-S_AS(A)  M_AS(R)  F_AS(S)  F_AS(T)  F_AS(G)     DEAD_MIDDLE()    F_AS(M)  F_AS(N)  F_AS(E)  M_AS(I)  S_AS(O)
-S_AS(Z)  M_AS(X)  F_AS(C)  F_AS(V)  F_AS(B)     DEAD_MIDDLE()    F_AS(K)  F_AS(H)  K_COM()  &kp DOT  S_AS(SEMI)
+CHAR(Q)  CHAR(W)  CHAR(F)  CHAR(P)  CHAR(D)     DEAD_MIDDLE()    CHAR(J)  CHAR(L)  CHAR(U)  CHAR(Y)  AS(MINUS)
+CHAR(A)  CHAR(R)  CHAR(S)  CHAR(T)  CHAR(G)     DEAD_MIDDLE()    CHAR(M)  CHAR(N)  CHAR(E)  CHAR(I)  CHAR(O)
+H_LB4()  H_LB3()  H_LB2()  H_LB1()  CHAR(B)     DEAD_MIDDLE()    CHAR(K)  H_RB1()  H_RB2()  H_RB3()  H_RB4()
                   LC_CN()  LG_CR()  SYMSP()     DEAD_THUMBS()    SYMSP()  LG_CR()  LA_CN()
         )
 
@@ -242,11 +242,12 @@ BT_CL()  FUNC(7)  FUNC(8)  FUNC(9)  XXXXXXX     DEAD_MIDDLE()    BT_S(0)  BT_S(1
         #define CR1_B() &cd LG(F9) LSG(F9) // build module, build all
         #define CR1_U() &kp LA(UP)         // extend selection by scope
         #define CR1_E() &kp LA(DOWN)       // decrease selection by scope
+        #define CDR_2() &sl CDR2           // go to CDR2
 
 TO_BS()  XXXXXXX  CR1_F()  CR1_P()  XXXXXXX     DEAD_MIDDLE()    XXXXXXX  CR1_L()  CR1_U()  XXXXXXX  XXXXXXX
 CR1_A()  CR1_R()  CR1_S()  XXXXXXX  XXXXXXX     DEAD_MIDDLE()    CR1_M()  CR1_N()  CR1_E()  CR1_I()  CR1_O()
 XXXXXXX  XXXXXXX  CR1_C()  CR1_V()  CR1_B()     DEAD_MIDDLE()    XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX
-                  XXXXXXX  &sl CDR2 XXXXXXX     DEAD_THUMBS()    XXXXXXX  &sl CDR2 XXXXXXX
+                  XXXXXXX  CDR_2()  XXXXXXX     DEAD_THUMBS()    XXXXXXX  CDR_2()  XXXXXXX
         )
 
         ZMK_LAYER(code_ref2_layer,
@@ -258,7 +259,7 @@ TO_BS()  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX     DEAD_MIDDLE()    XXXXXXX  XXXXXX
 XXXXXXX  CR2_S()  XXXXXXX  XXXXXXX  XXXXXXX     DEAD_MIDDLE()    XXXXXXX  XXXXXXX  CR2_E()  CR1_I()  CR1_O()
 XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX     DEAD_MIDDLE()    XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX
                   XXXXXXX  XXXXXXX  XXXXXXX     DEAD_THUMBS()    XXXXXXX  XXXXXXX  XXXXXXX
-        )        
+        )
 
         ZMK_LAYER(code_nav_layer,
         #define CN1_F() &cd LSG(R) LSG(F)   // find in project, replace in project
