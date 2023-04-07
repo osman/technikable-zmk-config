@@ -228,7 +228,7 @@ BT_CL()  FUNC(7)  FUNC(8)  FUNC(9)  XXXXXXX     DEAD_MIDDLE()    BT_S(0)  BT_S(1
                   _______  _______  XXXXXXX     DEAD_THUMBS()    XXXXXXX  _______  _______
         )
 
-//         ZMK_LAYER(code_ref1_layer,
+        ZMK_LAYER(code_ref1_layer,
         #define CDR_A()  &kp F5             // copy (putting it beside R which is rename/move)
         #define CDR_R()  &cd LS(F6) F6      // rename, move
         #define CDR_C()  &kp LAG(C)         // extract constant
@@ -245,11 +245,11 @@ BT_CL()  FUNC(7)  FUNC(8)  FUNC(9)  XXXXXXX     DEAD_MIDDLE()    BT_S(0)  BT_S(1
         #define CDR_ES() &kp LA(UP)         // extend selection by scope
         #define CDR_DS() &kp LA(DOWN)       // decrease selection by scope
 
-// TO_BS()  XXXXXXX  CDR_F()  CDR_P()  XXXXXXX     DEAD_MIDDLE()    XXXXXXX  CDR_L()  CDR_ES() XXXXXXX  XXXXXXX
-// CDR_A()  CDR_R()  CDR_S()  CDN_T()  XXXXXXX     DEAD_MIDDLE()    CDR_M()  CDR_N()  CDR_DS() CDR_I()  CDR_O()
-// XXXXXXX  XXXXXXX  CDR_C()  CDR_V()  CDR_B()     DEAD_MIDDLE()    XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX
-//                   XXXXXXX  XXXXXXX  XXXXXXX     DEAD_THUMBS()    XXXXXXX  XXXXXXX  XXXXXXX
-//         )
+TO_BS()  XXXXXXX  CDR_F()  CDR_P()  XXXXXXX     DEAD_MIDDLE()    XXXXXXX  CDR_L()  CDR_ES() XXXXXXX  XXXXXXX
+CDR_A()  CDR_R()  CDR_S()  CDN_T()  XXXXXXX     DEAD_MIDDLE()    CDR_M()  CDR_N()  CDR_DS() CDR_I()  CDR_O()
+XXXXXXX  XXXXXXX  CDR_C()  CDR_V()  CDR_B()     DEAD_MIDDLE()    XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX
+                  XXXXXXX  XXXXXXX  XXXXXXX     DEAD_THUMBS()    XXXXXXX  XXXXXXX  XXXXXXX
+        )
 
         ZMK_LAYER(code_ref2_layer,
         #define CDR_CS() &kp LG(F6)               // change signature
@@ -261,7 +261,7 @@ BT_CL()  FUNC(7)  FUNC(8)  FUNC(9)  XXXXXXX     DEAD_MIDDLE()    BT_S(0)  BT_S(1
 // XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX     DEAD_MIDDLE()    XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX
 //                   XXXXXXX  XXXXXXX  XXXXXXX     DEAD_THUMBS()    XXXXXXX  XXXXXXX  XXXXXXX
 TO_BS()  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX     DEAD_MIDDLE()    XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX
-XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX     DEAD_MIDDLE()    XXXXXXX  XXXXXXX  XXXXXXX  CDR_I()  CDR_O()
+XXXXXXX  CDR_CS() XXXXXXX  XXXXXXX  XXXXXXX     DEAD_MIDDLE()    XXXXXXX  XXXXXXX  XXXXXXX  CDR_I()  CDR_O()
 XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX     DEAD_MIDDLE()    XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX
                   XXXXXXX  XXXXXXX  XXXXXXX     DEAD_THUMBS()    XXXXXXX  XXXXXXX  XXXXXXX
         )
