@@ -245,16 +245,20 @@ BT_CL()  FUNC(7)  FUNC(8)  FUNC(9)  XXXXXXX     DEAD_MIDDLE()    BT_S(0)  BT_S(1
         #define CDR_ES() &kp LA(UP)         // extend selection by scope
         #define CDR_DS() &kp LA(DOWN)       // decrease selection by scope
 
-TO_BS()  XXXXXXX  CDR_F()  CDR_P()  XXXXXXX     DEAD_MIDDLE()    XXXXXXX  CDR_L()  CDR_ES() XXXXXXX  XXXXXXX
-CDR_A()  CDR_R()  CDR_S()  CDN_T()  XXXXXXX     DEAD_MIDDLE()    CDR_M()  CDR_N()  CDR_DS() CDR_I()  CDR_O()
+// TO_BS()  XXXXXXX  CDR_F()  CDR_P()  XXXXXXX     DEAD_MIDDLE()    XXXXXXX  CDR_L()  CDR_ES() XXXXXXX  XXXXXXX
+// CDR_A()  CDR_R()  CDR_S()  CDN_T()  XXXXXXX     DEAD_MIDDLE()    CDR_M()  CDR_N()  CDR_DS() CDR_I()  CDR_O()
+// XXXXXXX  XXXXXXX  CDR_C()  CDR_V()  CDR_B()     DEAD_MIDDLE()    XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX
+//                   XXXXXXX  XXXXXXX  XXXXXXX     DEAD_THUMBS()    XXXXXXX  XXXXXXX  XXXXXXX
+TO_BS()  XXXXXXX  CDR_F()  CDR_P()  XXXXXXX     DEAD_MIDDLE()    XXXXXXX  CDR_L()  XXXXXXX  XXXXXXX  XXXXXXX
+CDR_A()  CDR_R()  CDR_S()  CDN_T()  XXXXXXX     DEAD_MIDDLE()    CDR_M()  CDR_N()  XXXXXXX  CDR_I()  CDR_O()
 XXXXXXX  XXXXXXX  CDR_C()  CDR_V()  CDR_B()     DEAD_MIDDLE()    XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX
                   XXXXXXX  XXXXXXX  XXXXXXX     DEAD_THUMBS()    XXXXXXX  XXXXXXX  XXXXXXX
         )
 
         ZMK_LAYER(code_ref2_layer,
         #define CDR_CS() &kp LG(F6)               // change signature
-        #define CDR_MU() &cd LSA(UP) LSG(UP)      // move line up, move block up
-        #define CDR_MD() &cd LSA(DOWN) LSG(DOWN)  // move line down, move block down
+        #define CDR_MU() &cd LSG(UP) LSA(UP)      // move line up, move block up
+        #define CDR_MD() &cd LSG(DOWN) LSA(DOWN)  // move line down, move block down
 
 // TO_BS()  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX     DEAD_MIDDLE()    XXXXXXX  XXXXXXX  CDR_MU() XXXXXXX  XXXXXXX
 // XXXXXXX  CDR_CS() XXXXXXX  XXXXXXX  XXXXXXX     DEAD_MIDDLE()    XXXXXXX  XXXXXXX  CDR_MD() CDR_I()  CDR_O()
