@@ -10,8 +10,9 @@
 #define BASE 0
 #define SYMS 1
 #define ADJT 2
-#define CREF 3
-#define CNAV 4
+#define CDR1 3
+#define CDR2 4
+#define CDN1 5
 
 // Modifier Combos
 #define LSG(kc) LS(LG(kc))
@@ -33,6 +34,10 @@
     release-after-ms = <2000>;
     quick-release;
     ignore-modifiers;
+};
+
+&sl {
+    release-after-ms = <2000>;
 };
 
 &caps_word {
@@ -80,6 +85,11 @@
             global-quick-tap;
             bindings = <&kp>, <&kp>;
         )
+        ZMK_BEHAVIOR(msl, hold_tap,
+            flavor = "balanced";
+            tapping-term-ms = <200>;
+            bindings = <&kp>, <&sl>;
+        )
         ZMK_BEHAVIOR(cd, hold_tap,
             flavor = "tap-preferred";
             tapping-term-ms = <180>;
@@ -100,19 +110,9 @@
             bindings = <&nav LA(BSPC) BSPC>, <&nav LA(DEL) DEL>;
             mods = <(MOD_LSFT)>;
         )
-        
         // Tap Dances
-        ZMK_BEHAVIOR(cdr_r, tap_dance,
-            tapping-term-ms = <400>; bindings = <&kp LS(F6)>, <&kp F6>, <&kp LG(F6)>;               // 1:(rename), 2:(move), 3:(change signature)
-        )
-        ZMK_BEHAVIOR(cdn_f, tap_dance,
-            tapping-term-ms = <400>; bindings = <&cd LSG(R) LSG(F)>, <&kp LG(F12)>;                 // 1:(find in project, replace in project), 2:(find symbol in file)
-        )
-        ZMK_BEHAVIOR(cdn_up, tap_dance,
-            tapping-term-ms = <280>; bindings = <&kp LA(UP)>, <&kp LG(UP)>, <&kp PAGE_UP>;          // 1:(extend selection by scope), 2:(move code up), 3:(page up)
-        )
-        ZMK_BEHAVIOR(cdn_dn, tap_dance,
-             tapping-term-ms = <280>; bindings = <&kp LA(DOWN)>, <&kp LG(DOWN)>, <&kp PAGE_DOWN>;   // 1:(decrease selection by scope), 2:(move code down), 3:(page down)
+        ZMK_BEHAVIOR(shift_caps, tap_dance,
+            tapping-term-ms = <400>; bindings = <&kp LSHIFT>, <&caps_word>; // 1:(shift), 2:(caps word)
         )
     };
 
@@ -127,10 +127,8 @@
 
         // horizontal
         ZMK_COMBO_ADV(tilde,         M_AS(GRAVE),      LT4 LT3,          ALL,   FAST_COMBO_MS)
-        ZMK_COMBO_ADV(lshift,        &kp LSHIFT,       LB4 LB3,          ALL,   SLOW_COMBO_MS)
-        ZMK_COMBO_ADV(rshift,        &kp RSHIFT,       RB3 RB4,          ALL,   SLOW_COMBO_MS)
-        ZMK_COMBO_ADV(lcapsword,     &caps_word,       LB3 LB2,          BASE,  SLOW_COMBO_MS)
-        ZMK_COMBO_ADV(rcapsword,     &caps_word,       RB2 RB3,          BASE,  SLOW_COMBO_MS)
+        ZMK_COMBO_ADV(lshift,        &shift_caps,      LB4 LB3,          ALL,   SLOW_COMBO_MS)
+        ZMK_COMBO_ADV(rshift,        &shift_caps,      RB3 RB4,          ALL,   SLOW_COMBO_MS)
         ZMK_COMBO_ADV(esc,           &kp ESC,          LT3 LT2,          ALL,   FAST_COMBO_MS)
         ZMK_COMBO_ADV(tab,           &kp TAB,          LM3 LM2,          ALL,   FAST_COMBO_MS)
         ZMK_COMBO_ADV(backspace,     &bspc,            RT2 RT3,          ALL,   SLOW_COMBO_MS)
@@ -184,15 +182,16 @@
         #define DEAD_THUMBS()  XXXXXXX
 
         ZMK_LAYER(base_layer,
-        #define KP_LC()  &kp LCTRL
-        #define KP_LG()  &kp LCMD
+        #define LG_CR()  &msl LCMD CDR1
+        #define LC_CN()  &msl LCTRL CDN1
+        #define LA_CN()  &msl LALT CDN1
         #define K_COM()  &kp COMMA
         #define SYMSP()  &lt SYMS SPACE
 
 S_AS(Q)  M_AS(W)  F_AS(F)  F_AS(P)  M_AS(D)     DEAD_MIDDLE()    M_AS(J)  F_AS(L)  F_AS(U)  M_AS(Y)  S_AS(MINUS)
 S_AS(A)  M_AS(R)  F_AS(S)  F_AS(T)  F_AS(G)     DEAD_MIDDLE()    F_AS(M)  F_AS(N)  F_AS(E)  M_AS(I)  S_AS(O)
 S_AS(Z)  M_AS(X)  F_AS(C)  F_AS(V)  F_AS(B)     DEAD_MIDDLE()    F_AS(K)  F_AS(H)  K_COM()  &kp DOT  S_AS(SEMI)
-                  KP_LC()  KP_LG()  SYMSP()     DEAD_THUMBS()    SYMSP()  &mo CREF &mo CNAV
+                  LC_CN()  LG_CR()  SYMSP()     DEAD_THUMBS()    SYMSP()  LG_CR()  LA_CN()
         )
 
         ZMK_LAYER(symbols_layer,
@@ -227,9 +226,9 @@ BT_CL()  FUNC(7)  FUNC(8)  FUNC(9)  XXXXXXX     DEAD_MIDDLE()    BT_S(0)  BT_S(1
                   _______  _______  XXXXXXX     DEAD_THUMBS()    XXXXXXX  _______  _______
         )
 
-        ZMK_LAYER(code_refactor_layer,
-        #define CDN_T() &kp LSG(T)          // navigate to/from tests
+        ZMK_LAYER(code_refactor1_layer,
         #define CDR_A() &kp F5              // copy (putting it beside R which is rename/move)
+        #define CDR_R() &cd LS(F6) F6       // rename, move
         #define CDR_C() &kp LAG(C)          // extract constant
         #define CDR_F() &kp LAG(F)          // extract field
         #define CDR_P() &kp LAG(P)          // extract parameter
@@ -241,15 +240,31 @@ BT_CL()  FUNC(7)  FUNC(8)  FUNC(9)  XXXXXXX     DEAD_MIDDLE()    BT_S(0)  BT_S(1
         #define CDR_S() &kp LAG(T)          // surround
         #define CDR_O() &kp LA(ENTER)       // suggested actions
         #define CDR_B() &cd LG(F9) LSG(F9)  // build module, build all
+        #define CDR_ES() &kp LA(UP)         // extend selection by scope
+        #define CDR_DS() &kp LA(DOWN)       // decrease selection by scope
 
-TO_BS()  XXXXXXX  CDR_F()  CDR_P()  XXXXXXX     DEAD_MIDDLE()    XXXXXXX  CDR_L()  &cdn_up  XXXXXXX  XXXXXXX
-CDR_A()  &cdr_r   CDR_S()  CDN_T()  XXXXXXX     DEAD_MIDDLE()    CDR_M()  CDR_N()  &cdn_dn  CDR_I()  CDR_O()
+TO_BS()  XXXXXXX  CDR_F()  CDR_P()  XXXXXXX     DEAD_MIDDLE()    XXXXXXX  CDR_L()  CDR_ES() XXXXXXX  XXXXXXX
+CDR_A()  CDR_R()  CDR_S()  CDN_T()  XXXXXXX     DEAD_MIDDLE()    CDR_M()  CDR_N()  CDR_DS() CDR_I()  CDR_O()
 XXXXXXX  XXXXXXX  CDR_C()  CDR_V()  CDR_B()     DEAD_MIDDLE()    XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX
+                  XXXXXXX  &sl CDR2 XXXXXXX     DEAD_THUMBS()    XXXXXXX  &sl CDR2 XXXXXXX
+        )
+
+        ZMK_LAYER(code_refactor2_layer,
+        #define CDR_CS() &kp LG(F6)                     // change signature
+        #define CDR_MU() &cd LS(LA(UP)) LS(LG(UP))      // move line up, move block up
+        #define CDR_MD() &cd LS(LA(DOWN)) LS(LG(DOWN))  // move line down, move block down
+
+TO_BS()  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX     DEAD_MIDDLE()    XXXXXXX  XXXXXXX  CDR_MU() XXXXXXX  XXXXXXX
+XXXXXXX  CDR_CS() XXXXXXX  XXXXXXX  XXXXXXX     DEAD_MIDDLE()    XXXXXXX  XXXXXXX  CDR_MD() CDR_I()  CDR_O()
+XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX     DEAD_MIDDLE()    XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX
                   XXXXXXX  XXXXXXX  XXXXXXX     DEAD_THUMBS()    XXXXXXX  XXXXXXX  XXXXXXX
         )
 
         ZMK_LAYER(code_nav_layer,
+        #define CDN_F() &cd LSG(R) LSG(F)   // find in project, replace in project
         #define CDN_P() &kp LG(N1)          // project tree tab
+        #define CDN_S() &kp LG(F12)         // find symbol in file
+        #define CDN_T() &kp LSG(T)          // navigate to/from tests
         #define CDN_E() &cd LS(F2) F2       // go to next/last error
         #define CDN_R() &cd LG(N4) LCS(R)   // run tests, open run window
         #define CDN_D() &cd LG(N5) LCS(D)   // run tests in debug mode, open debug window
@@ -257,11 +272,9 @@ XXXXXXX  XXXXXXX  CDR_C()  CDR_V()  CDR_B()     DEAD_MIDDLE()    XXXXXXX  XXXXXX
         #define DBG_O() &cd LS(F8) F8       // debug: step over, step out
         #define DBG_R() &cd LA(F9) LAG(R)   // debug: run until breakpoint, run until cursor
         #define DBG_B() &cd LG(F8) LA(F8)   // debug: evaluate expression, set breakpoint
-        #define TRM_B() &kp LC(B)           // terminal: page up
-        #define TRM_F() &kp LC(F)           // terminal: page down
 
-TO_BS()  XXXXXXX  &cdn_f   CDN_P()  CDN_D()     DEAD_MIDDLE()    XXXXXXX  DBG_I()  DBG_O()  DBG_R()  DBG_B()
-XXXXXXX  CDN_R()  XXXXXXX  CDN_T()  XXXXXXX     DEAD_MIDDLE()    XXXXXXX  XXXXXXX  CDN_E()  XXXXXXX  CDR_O()
+TO_BS()  XXXXXXX  CDN_F()  CDN_P()  CDN_D()     DEAD_MIDDLE()    XXXXXXX  DBG_I()  DBG_O()  DBG_R()  DBG_B()
+XXXXXXX  CDN_R()  CDN_S()  CDN_T()  XXXXXXX     DEAD_MIDDLE()    XXXXXXX  XXXXXXX  CDN_E()  XXXXXXX  CDR_O()
 XXXXXXX  XXXXXXX  &dif_co  XXXXXXX  &dif_br     DEAD_MIDDLE()    XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX
                   XXXXXXX  XXXXXXX  XXXXXXX     DEAD_THUMBS()    XXXXXXX  XXXXXXX  XXXXXXX
         )
