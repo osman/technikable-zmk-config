@@ -47,7 +47,7 @@
 
 / {
     chosen {
-       zmk,matrix_transform = &mit_transform;
+       zmk,matrix_transform = &ortho_transform;
     };
 
     macros {
@@ -142,11 +142,11 @@
     keymap {
         compatible = "zmk,keymap";
 
-        #define XXXXXXX         &none
-        #define _______         &trans
-        #define TO_BS()         &to BASE
-        #define DEAD_THUMBS()   XXXXXXX
-        #define CHAR(ch)        &kp ch
+        #define XXXXXXX             &none
+        #define _______             &trans
+        #define TO_BS()             &to BASE
+        #define DEAD_THMB_KEYS()    XXXXXXX XXXXXXX
+        #define CHAR(ch)            &kp ch
 
         ZMK_LAYER(base_layer,
         #define HR_G(ch) &hm LCMD ch
@@ -158,10 +158,10 @@
         #define K_SEM()  AS(SEMICOLON)
         #define SYMSP()  &lt SYMS SPACE
 
-&kp ESC  CHAR(Q)  CHAR(W)  CHAR(F)  CHAR(P)  CHAR(D)   CHAR(J)  CHAR(L)  CHAR(U)  CHAR(Y)  K_MIN()  &bspc
-&kp TAB  HR_C(A)  HR_A(R)  HR_G(S)  CHAR(T)  CHAR(G)   CHAR(M)  CHAR(N)  HR_G(E)  HR_A(I)  HR_C(O)  &kp ENTER
-&sft_cw  CHAR(Z)  CHAR(X)  CHAR(C)  CHAR(V)  CHAR(B)   CHAR(K)  CHAR(H)  K_COM()  K_DOT()  K_SEM()  &sft_cw
-                  XXXXXXX  &cd_lyr  SYMSP()    DEAD_THUMBS()    SYMSP()  &cd_lyr  XXXXXXX
+&kp ESC  CHAR(Q)  CHAR(W)  CHAR(F)  CHAR(P)  CHAR(D) /**/ CHAR(J)  CHAR(L)  CHAR(U)  CHAR(Y)  K_MIN()  &bspc
+&kp TAB  HR_C(A)  HR_A(R)  HR_G(S)  CHAR(T)  CHAR(G) /**/ CHAR(M)  CHAR(N)  HR_G(E)  HR_A(I)  HR_C(O)  &kp ENTER
+&sft_cw  CHAR(Z)  CHAR(X)  CHAR(C)  CHAR(V)  CHAR(B) /**/ CHAR(K)  CHAR(H)  K_COM()  K_DOT()  K_SEM()  &sft_cw
+                  DEAD_THMB_KEYS()  &cd_lyr  SYMSP() /**/ SYMSP()  &cd_lyr  DEAD_THMB_KEYS()
         )
 
         ZMK_LAYER(symbols_layer,
@@ -183,10 +183,10 @@
         #define B_CUR()  &as RBRC LBRC
         #define B_SQR()  &as RBKT LBKT
 
-_______  NUMB(1)  NUMB(2)  NUMB(3)  B_CUR()  K_CRT()   XXXXXXX  K_BWD()  NAV_U()  K_FWD()  _______  _______
-_______  NUMB(4)  NUMB(5)  NUMB(6)  B_PAR()  K_DLR()   K_AMP()  NAV_L()  NAV_D()  NAV_R()  XXXXXXX  _______
-_______  NUMB(7)  NUMB(8)  NUMB(9)  B_SQR()  K_PCT()   K_HSH()  K_STR()  _______  _______  _______  _______
-                  NUMB(0)  _______  ADJSP()    DEAD_THUMBS()    ADJSP()  _______  _______
+NUMB(0)  NUMB(1)  NUMB(2)  NUMB(3)  B_CUR()  K_CRT() /**/ XXXXXXX  K_BWD()  NAV_U()  K_FWD()  _______  _______
+_______  NUMB(4)  NUMB(5)  NUMB(6)  B_PAR()  K_DLR() /**/ K_AMP()  NAV_L()  NAV_D()  NAV_R()  XXXXXXX  _______
+_______  NUMB(7)  NUMB(8)  NUMB(9)  B_SQR()  K_PCT() /**/ K_HSH()  K_STR()  _______  _______  _______  _______
+                  DEAD_THMB_KEYS()  _______  ADJSP() /**/ ADJSP()  _______  DEAD_THMB_KEYS()
         )
 
         ZMK_LAYER(adjust_layer,
@@ -200,10 +200,10 @@ _______  NUMB(7)  NUMB(8)  NUMB(9)  B_SQR()  K_PCT()   K_HSH()  K_STR()  _______
         #define BT_S(n)  &bt BT_SEL n
         #define BT_CL()  &bt BT_CLR
 
-TO_BS()  FUNC(1)  FUNC(2)  FUNC(3)  XXXXXXX  XXXXXXX   XXXXXXX  VOL(DN)  VOL(UP)  VMUTE()  XXXXXXX  XXXXXXX
-_______  FUNC(4)  FUNC(5)  FUNC(6)  RCLIK()  XXXXXXX   XXXXXXX  BRI(DN)  BRI(UP)  SNCAP()  CH_KB()  XXXXXXX
-_______  FUNC(7)  FUNC(8)  FUNC(9)  XXXXXXX  XXXXXXX   BT_S(0)  BT_S(1)  BT_S(2)  BT_S(3)  BT_S(4)  BT_CL()
-                  _______  _______  XXXXXXX    DEAD_THUMBS()    XXXXXXX  _______  _______
+TO_BS()  FUNC(1)  FUNC(2)  FUNC(3)  XXXXXXX  XXXXXXX /**/ XXXXXXX  VOL(DN)  VOL(UP)  VMUTE()  XXXXXXX  XXXXXXX
+_______  FUNC(4)  FUNC(5)  FUNC(6)  RCLIK()  XXXXXXX /**/ XXXXXXX  BRI(DN)  BRI(UP)  SNCAP()  CH_KB()  XXXXXXX
+_______  FUNC(7)  FUNC(8)  FUNC(9)  XXXXXXX  XXXXXXX /**/ BT_S(0)  BT_S(1)  BT_S(2)  BT_S(3)  BT_S(4)  BT_CL()
+                  DEAD_THMB_KEYS()  _______  XXXXXXX /**/ XXXXXXX  _______  DEAD_THMB_KEYS()
         )
 
         ZMK_LAYER(code_ref1_layer,
@@ -223,10 +223,10 @@ _______  FUNC(7)  FUNC(8)  FUNC(9)  XXXXXXX  XXXXXXX   BT_S(0)  BT_S(1)  BT_S(2)
         #define CR1_U() &kp LA(UP)         // extend selection by scope
         #define CR1_E() &kp LA(DOWN)       // decrease selection by scope
 
-TO_BS()  XXXXXXX  XXXXXXX  CR1_F()  CR1_P()  XXXXXXX   XXXXXXX  CR1_L()  CR1_U()  XXXXXXX  XXXXXXX  _______
-_______  CR1_A()  CR1_R()  CR1_S()  XXXXXXX  XXXXXXX   CR1_M()  CR1_N()  CR1_E()  CR1_I()  XXXXXXX  CR1_O()
-_______  XXXXXXX  XXXXXXX  CR1_C()  CR1_V()  CR1_B()   XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  _______
-                  XXXXXXX  XXXXXXX  XXXXXXX    DEAD_THUMBS()    XXXXXXX  XXXXXXX  XXXXXXX
+TO_BS()  XXXXXXX  XXXXXXX  CR1_F()  CR1_P()  XXXXXXX /**/ XXXXXXX  CR1_L()  CR1_U()  XXXXXXX  XXXXXXX  _______
+_______  CR1_A()  CR1_R()  CR1_S()  XXXXXXX  XXXXXXX /**/ CR1_M()  CR1_N()  CR1_E()  CR1_I()  XXXXXXX  CR1_O()
+_______  XXXXXXX  XXXXXXX  CR1_C()  CR1_V()  CR1_B() /**/ XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  _______
+                  DEAD_THMB_KEYS()  XXXXXXX  XXXXXXX /**/ XXXXXXX  XXXXXXX  DEAD_THMB_KEYS()
         )
 
         ZMK_LAYER(code_ref2_layer,
@@ -234,10 +234,10 @@ _______  XXXXXXX  XXXXXXX  CR1_C()  CR1_V()  CR1_B()   XXXXXXX  XXXXXXX  XXXXXXX
         #define CR2_U() &cd LSG(UP) LSA(UP)      // move line up, move block up
         #define CR2_E() &cd LSG(DOWN) LSA(DOWN)  // move line down, move block down
 
-TO_BS()  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX   XXXXXXX  XXXXXXX  CR2_U()  XXXXXXX  XXXXXXX  _______
-_______  XXXXXXX  CR2_R()  XXXXXXX  XXXXXXX  XXXXXXX   XXXXXXX  XXXXXXX  CR2_E()  CR1_I()  XXXXXXX  CR1_O()
-_______  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX   XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  _______
-                  XXXXXXX  XXXXXXX  XXXXXXX    DEAD_THUMBS()    XXXXXXX  XXXXXXX  XXXXXXX
+TO_BS()  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX /**/ XXXXXXX  XXXXXXX  CR2_U()  XXXXXXX  XXXXXXX  _______
+_______  XXXXXXX  CR2_R()  XXXXXXX  XXXXXXX  XXXXXXX /**/ XXXXXXX  XXXXXXX  CR2_E()  CR1_I()  XXXXXXX  CR1_O()
+_______  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX /**/ XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  _______
+                  DEAD_THMB_KEYS()  XXXXXXX  XXXXXXX /**/ XXXXXXX  XXXXXXX  DEAD_THMB_KEYS()
         )
 
         ZMK_LAYER(code_nav_layer,
@@ -253,10 +253,10 @@ _______  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX   XXXXXXX  XXXXXXX  XXXXXXX
         #define DBG_R() &cd LA(F9) LAG(R)   // debug: run until breakpoint, run until cursor
         #define DBG_B() &cd LG(F8) LA(F8)   // debug: evaluate expression, set breakpoint
 
-TO_BS()  XXXXXXX  XXXXXXX  CN1_F()  CN1_P()  CN1_D()   XXXXXXX  DBG_I()  DBG_O()  DBG_R()  DBG_B()  _______
-_______  XXXXXXX  CN1_R()  CN1_S()  CN1_T()  XXXXXXX   XXXXXXX  XXXXXXX  CN1_E()  CR1_I()  XXXXXXX  CR1_O()
-_______  XXXXXXX  XXXXXXX  &dif_co  XXXXXXX  &dif_br   XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  _______
-                  XXXXXXX  XXXXXXX  XXXXXXX    DEAD_THUMBS()    XXXXXXX  XXXXXXX  XXXXXXX
+TO_BS()  XXXXXXX  XXXXXXX  CN1_F()  CN1_P()  CN1_D() /**/ XXXXXXX  DBG_I()  DBG_O()  DBG_R()  DBG_B()  _______
+_______  XXXXXXX  CN1_R()  CN1_S()  CN1_T()  XXXXXXX /**/ XXXXXXX  XXXXXXX  CN1_E()  CR1_I()  XXXXXXX  CR1_O()
+_______  XXXXXXX  XXXXXXX  &dif_co  XXXXXXX  &dif_br /**/ XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  _______
+                  DEAD_THMB_KEYS()  XXXXXXX  XXXXXXX /**/ XXXXXXX  XXXXXXX  DEAD_THMB_KEYS()
         )
     };
 };
