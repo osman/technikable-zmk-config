@@ -73,7 +73,7 @@
         ) 
         ZMK_BEHAVIOR(mo_sl, hold_tap,
             flavor = "hold-preferred";
-            tapping-term-ms = <200>;
+            tapping-term-ms = <50>;
             bindings = <&mo>, <&sl>;
         )
         ZMK_BEHAVIOR(hm, hold_tap,
@@ -108,7 +108,7 @@
             tapping-term-ms = <400>; bindings = <&kp LSHIFT>, <&caps_word>; // 1:(shift), 2:(caps word)
         )
         ZMK_BEHAVIOR(cd_lyr, tap_dance,
-            tapping-term-ms = <400>; bindings = <OS(CDR1)>, <OS(CDR2)>, <OS(CDN1)>;
+            tapping-term-ms = <250>; bindings = <OS(CDR1)>, <OS(CDR2)>, <OS(CDN1)>;
         )
     };
 
