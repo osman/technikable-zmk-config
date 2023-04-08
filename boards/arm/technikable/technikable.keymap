@@ -241,12 +241,11 @@ _______  FUNC(7)  FUNC(8)  FUNC(9)  XXXXXXX  XXXXXXX   BT_S(0)  BT_S(1)  BT_S(2)
         #define CR1_B() &cd LG(F9) LSG(F9) // build module, build all
         #define CR1_U() &kp LA(UP)         // extend selection by scope
         #define CR1_E() &kp LA(DOWN)       // decrease selection by scope
-        #define CDR_2() &sl CDR2           // go to CDR2
 
 TO_BS()  XXXXXXX  XXXXXXX  CR1_F()  CR1_P()  XXXXXXX   XXXXXXX  CR1_L()  CR1_U()  XXXXXXX  XXXXXXX  _______
 _______  CR1_A()  CR1_R()  CR1_S()  XXXXXXX  XXXXXXX   CR1_M()  CR1_N()  CR1_E()  CR1_I()  XXXXXXX  CR1_O()
 _______  XXXXXXX  XXXXXXX  CR1_C()  CR1_V()  CR1_B()   XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  _______
-                  XXXXXXX  CDR_2()  XXXXXXX    DEAD_THUMBS()    XXXXXXX  CDR_2()  XXXXXXX
+                  XXXXXXX  XXXXXXX  XXXXXXX    DEAD_THUMBS()    XXXXXXX  XXXXXXX  XXXXXXX
         )
 
         ZMK_LAYER(code_ref2_layer,
