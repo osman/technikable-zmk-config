@@ -208,7 +208,7 @@ _______  FUNC(7)  FUNC(8)  FUNC(9)  XXXXXXX  XXXXXXX /**/ BT_S(0)  BT_S(1)  BT_S
 
         ZMK_LAYER(code_ref1_layer,
         #define CR1_A() &kp F5             // copy (putting it beside R which is rename/move)
-        #define CR1_R() &cd LS(F6) F6      // rename, move
+        #define CR1_R() &cd F6 LS(F6)      // rename, move
         #define CR1_C() &kp LAG(C)         // extract constant
         #define CR1_F() &kp LAG(F)         // extract field
         #define CR1_P() &kp LAG(P)         // extract parameter
