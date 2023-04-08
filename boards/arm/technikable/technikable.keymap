@@ -183,10 +183,10 @@
         #define B_CUR()  &as RBRC LBRC
         #define B_SQR()  &as RBKT LBKT
 
-NUMB(0)  NUMB(1)  NUMB(2)  NUMB(3)  B_CUR()  K_CRT() /**/ XXXXXXX  K_BWD()  NAV_U()  K_FWD()  _______  _______
-_______  NUMB(4)  NUMB(5)  NUMB(6)  B_PAR()  K_DLR() /**/ K_AMP()  NAV_L()  NAV_D()  NAV_R()  XXXXXXX  _______
-_______  NUMB(7)  NUMB(8)  NUMB(9)  B_SQR()  K_PCT() /**/ K_HSH()  K_STR()  _______  _______  _______  _______
-                  DEAD_THMB_KEYS()  _______  ADJSP() /**/ ADJSP()  _______  DEAD_THMB_KEYS()
+_______  B_CUR()  NUMB(1)  NUMB(2)  NUMB(3)  K_CRT() /**/ XXXXXXX  K_BWD()  NAV_U()  K_FWD()  _______  _______
+_______  B_PAR()  NUMB(4)  NUMB(5)  NUMB(6)  K_DLR() /**/ K_AMP()  NAV_L()  NAV_D()  NAV_R()  XXXXXXX  _______
+_______  B_SQR()  NUMB(7)  NUMB(8)  NUMB(9)  K_PCT() /**/ K_HSH()  K_STR()  _______  _______  _______  _______
+                  DEAD_THMB_KEYS()  NUMB(0)  ADJSP() /**/ ADJSP()  _______  DEAD_THMB_KEYS()
         )
 
         ZMK_LAYER(adjust_layer,
@@ -207,8 +207,8 @@ _______  FUNC(7)  FUNC(8)  FUNC(9)  XXXXXXX  XXXXXXX /**/ BT_S(0)  BT_S(1)  BT_S
         )
 
         ZMK_LAYER(code_ref1_layer,
-        #define CR1_A() &kp F5             // copy (putting it beside R which is rename/move)
-        #define CR1_R() &cd F6 LS(F6)      // rename, move
+        #define CR1_A() &kp F6             // move (putting it beside R which is rename/move)
+        #define CR1_R() &kp LS(F6)         // rename
         #define CR1_C() &kp LAG(C)         // extract constant
         #define CR1_F() &kp LAG(F)         // extract field
         #define CR1_P() &kp LAG(P)         // extract parameter
@@ -230,12 +230,13 @@ _______  XXXXXXX  XXXXXXX  CR1_C()  CR1_V()  CR1_B() /**/ XXXXXXX  XXXXXXX  XXXX
         )
 
         ZMK_LAYER(code_ref2_layer,
+        #define CR2_A() &kp F5                   // copy
         #define CR2_R() &kp LG(F6)               // change signature
         #define CR2_U() &cd LSG(UP) LSA(UP)      // move line up, move block up
         #define CR2_E() &cd LSG(DOWN) LSA(DOWN)  // move line down, move block down
 
 TO_BS()  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX /**/ XXXXXXX  XXXXXXX  CR2_U()  XXXXXXX  XXXXXXX  _______
-_______  XXXXXXX  CR2_R()  XXXXXXX  XXXXXXX  XXXXXXX /**/ XXXXXXX  XXXXXXX  CR2_E()  CR1_I()  XXXXXXX  CR1_O()
+_______  CR2_A()  CR2_R()  XXXXXXX  XXXXXXX  XXXXXXX /**/ XXXXXXX  XXXXXXX  CR2_E()  CR1_I()  XXXXXXX  CR1_O()
 _______  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX /**/ XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  _______
                   DEAD_THMB_KEYS()  XXXXXXX  XXXXXXX /**/ XXXXXXX  XXXXXXX  DEAD_THMB_KEYS()
         )
