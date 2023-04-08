@@ -100,7 +100,7 @@
         // Mod Morphs
         ZMK_BEHAVIOR(bspc, mod_morph,
             bindings = <&nav LA(BSPC) BSPC>, <&nav LA(DEL) DEL>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
+            mods = <(MOD_LCTL|MOD_RCTL);
         )
 
         // Tap Dances
@@ -183,8 +183,8 @@
         #define B_CUR()  &as RBRC LBRC
         #define B_SQR()  &as RBKT LBKT
 
-_______  B_CUR()  NUMB(1)  NUMB(2)  NUMB(3)  K_CRT() /**/ XXXXXXX  K_BWD()  NAV_U()  K_FWD()  _______  _______
-_______  B_PAR()  NUMB(4)  NUMB(5)  NUMB(6)  K_DLR() /**/ K_AMP()  NAV_L()  NAV_D()  NAV_R()  XXXXXXX  _______
+_______  B_PAR()  NUMB(1)  NUMB(2)  NUMB(3)  K_CRT() /**/ XXXXXXX  K_BWD()  NAV_U()  K_FWD()  _______  _______
+_______  B_CUR()  NUMB(4)  NUMB(5)  NUMB(6)  K_DLR() /**/ K_AMP()  NAV_L()  NAV_D()  NAV_R()  XXXXXXX  _______
 _______  B_SQR()  NUMB(7)  NUMB(8)  NUMB(9)  K_PCT() /**/ K_HSH()  K_STR()  _______  _______  _______  _______
                   DEAD_THMB_KEYS()  NUMB(0)  ADJSP() /**/ ADJSP()  _______  DEAD_THMB_KEYS()
         )
