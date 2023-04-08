@@ -108,7 +108,7 @@
             tapping-term-ms = <400>; bindings = <&kp LSHIFT>, <&caps_word>; // 1:(shift), 2:(caps word)
         )
         ZMK_BEHAVIOR(cd_lyr, tap_dance,
-            tapping-term-ms = <400>; bindings = <OS(CRD1)>, <OS(CDR2)>, <OS(CDN1)>;
+            tapping-term-ms = <400>; bindings = <OS(CDR1)>, <OS(CDR2)>, <OS(CDN1)>;
         )
     };
 
