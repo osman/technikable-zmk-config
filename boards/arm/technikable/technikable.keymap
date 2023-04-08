@@ -130,8 +130,8 @@
         ZMK_COMBO_ADV(quotes,        AS(SQT),          RT3 RM3,          ALL,   VERT_COMBO_MS)
                                      
         // angled                                   
-        ZMK_COMBO_ADV(fslash,        &kp FSLH,         RM1 RT0,          ALL,   FAST_COMBO_MS)
-        ZMK_COMBO_ADV(bslash,        &kp BSLH,         LM1 LT0,          ALL,   FAST_COMBO_MS)
+        ZMK_COMBO_ADV(bslash,        &kp BSLH,         LM0 LT1,          ALL,   FAST_COMBO_MS)
+        ZMK_COMBO_ADV(fslash,        &kp FSLH,         RM0 RT1,          ALL,   FAST_COMBO_MS)
                                                     
         // admin
         ZMK_COMBO_ADV(lh_boot,       &bootloader,      LH0 LB0 LB1 LB2,  BASE,  SLOW_COMBO_MS)  
