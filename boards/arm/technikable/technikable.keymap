@@ -109,7 +109,7 @@
             tapping-term-ms = <400>; bindings = <&kp LSHIFT>, <&caps_word>; // 1:(shift), 2:(caps word)
         )
         ZMK_BEHAVIOR(cd_fav, tap_dance,
-            tapping-term-ms = <200>; bindings = <&kp LA(ENTER)>, <LAG(L)>; // 1:(suggested actions), 2:(format)
+            tapping-term-ms = <200>; bindings = <&kp LA(ENTER)>, <&kp LAG(L)>; // 1:(suggested actions), 2:(format)
         )
     };
 
