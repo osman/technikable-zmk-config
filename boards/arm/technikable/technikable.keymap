@@ -258,7 +258,7 @@ _______  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  /*****/  XXXXXXX  XXXXXXX 
 TO_BS()  XXXXXXX  XXXXXXX  CN1_F()  CN1_P()  CN1_D()  /*****/  XXXXXXX  DBG_I()  DBG_O()  DBG_R()  DBG_B()  _______
 _______  XXXXXXX  CN1_R()  CN1_S()  CN1_T()  XXXXXXX  /*****/  XXXXXXX  XXXXXXX  CN1_E()  CR1_I()  XXXXXXX  CR1_O()
 _______  XXXXXXX  XXXXXXX  &dif_co  XXXXXXX  &dif_br  /*****/  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  _______
-                           THUMB()  RCLIK()  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  THUMB()
+                           THUMB()  RCLIK()  OS(CD3)  XXXXXXX  OS(CD3)  XXXXXXX  THUMB()
         )
     };
 };
