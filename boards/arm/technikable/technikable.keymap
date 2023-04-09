@@ -47,7 +47,7 @@
 
 / {
     chosen {
-       zmk,matrix_transform = &ortho_transform;
+       zmk,matrix_transform = &mit_transform;
     };
 
     macros {
