@@ -109,7 +109,7 @@
             tapping-term-ms = <400>; bindings = <&kp LSHIFT>, <&caps_word>; // 1:(shift), 2:(caps word)
         )
         ZMK_BEHAVIOR(cd_fav, tap_dance,
-            tapping-term-ms = <200>; bindings = <&kp LA(ENTER)>, <LAG(L)>;
+            tapping-term-ms = <200>; bindings = <&kp LA(ENTER)>, <LAG(L)>; // 1:(suggested actions), 2:(format)
         )
     };
 
@@ -227,7 +227,7 @@ _______  XXXXXXX  FUNC(7)  FUNC(8)  FUNC(9)  XXXXXXX  /*****/  BT_S(0)  BT_S(1) 
 TO_BS()  XXXXXXX  XXXXXXX  CR1_F()  CR1_P()  XXXXXXX  /*****/  XXXXXXX  CR1_L()  CR1_U()  XXXXXXX  XXXXXXX  _______
 _______  CR1_A()  CR1_R()  CR1_S()  XXXXXXX  XXXXXXX  /*****/  CR1_M()  CR1_N()  CR1_E()  CR1_I()  XXXXXXX  CR1_O()
 _______  XXXXXXX  XXXXXXX  CR1_C()  CR1_V()  CR1_B()  /*****/  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  _______
-                           THUMB()  RCLIK()  OS(CR2)  XXXXXXX  OS(CR2)  XXXXXXX  THUMB()
+                           THUMB()  RCLIK()  OS(CD2)  XXXXXXX  OS(CD2)  XXXXXXX  THUMB()
         )
 
         ZMK_LAYER(code_ref2_layer,
