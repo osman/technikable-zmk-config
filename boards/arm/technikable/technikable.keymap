@@ -38,7 +38,7 @@
 };
 
 &sl {
-    release-after-ms = <2000>;
+    release-after-ms = <500>;
 };
 
 &caps_word {
@@ -165,28 +165,29 @@
         )
 
         ZMK_LAYER(symbols_layer,
-        #define ADJSP()  &lt ADJT SPACE
-        #define NUMB(n)  &kp N ## n
-        #define NAV_U()  &kp UP
-        #define NAV_D()  &kp DOWN
-        #define NAV_L()  &nav LA(LEFT) LEFT     // right, right by a word
-        #define NAV_R()  &nav LA(RIGHT) RIGHT   // left, left by a word
-        #define K_BWD()  &nav LG(LBRC) LG(LBKT) // back, move to tab on left
-        #define K_FWD()  &nav LG(RBRC) LG(RBKT) // forwards, move to tab on right
-        #define K_CRT()  &kp CARET
-        #define K_DLR()  &kp DLLR
-        #define K_PCT()  &kp PRCNT
-        #define K_AMP()  &kp AMPS
-        #define K_HSH()  &kp HASH
-        #define K_STR()  &kp STAR
-        #define B_PAR()  &as RPAR LPAR
-        #define B_CUR()  &as RBRC LBRC
-        #define B_SQR()  &as RBKT LBKT
+        #define NUMB(n) &kp N ## n
+        #define NAV_U() &kp UP
+        #define NAV_D() &kp DOWN
+        #define NAV_L() &nav LA(LEFT) LEFT     // right, right by a word
+        #define NAV_R() &nav LA(RIGHT) RIGHT   // left, left by a word
+        #define K_BWD() &nav LG(LBRC) LG(LBKT) // back, move to tab on left
+        #define K_FWD() &nav LG(RBRC) LG(RBKT) // forwards, move to tab on right
+        #define K_CRT() &kp CARET
+        #define K_DLR() &kp DLLR
+        #define K_PCT() &kp PRCNT
+        #define K_AMP() &kp AMPS
+        #define K_HSH() &kp HASH
+        #define K_STR() &kp STAR
+        #define K_SPC() &kp SPACE
+        #define B_PAR() &as RPAR LPAR
+        #define B_CUR() &as RBRC LBRC
+        #define B_SQR() &as RBKT LBKT
+        #define L_ADJ() &mo ADJT
 
 _______  B_PAR()  NUMB(1)  NUMB(2)  NUMB(3)  K_CRT() /**/ XXXXXXX  K_BWD()  NAV_U()  K_FWD()  _______  _______
 _______  B_CUR()  NUMB(4)  NUMB(5)  NUMB(6)  K_DLR() /**/ K_AMP()  NAV_L()  NAV_D()  NAV_R()  XXXXXXX  _______
 _______  B_SQR()  NUMB(7)  NUMB(8)  NUMB(9)  K_PCT() /**/ K_HSH()  K_STR()  _______  _______  _______  _______
-                  DEAD_THMB_KEYS()  NUMB(0)  ADJSP() /**/ ADJSP()  _______  DEAD_THMB_KEYS()
+                  DEAD_THMB_KEYS()  NUMB(0)  K_SPC() /**/ K_SPC()  L_ADJ()  DEAD_THMB_KEYS()
         )
 
         ZMK_LAYER(adjust_layer,
@@ -203,7 +204,7 @@ _______  B_SQR()  NUMB(7)  NUMB(8)  NUMB(9)  K_PCT() /**/ K_HSH()  K_STR()  ____
 TO_BS()  FUNC(1)  FUNC(2)  FUNC(3)  XXXXXXX  XXXXXXX /**/ XXXXXXX  VOL(DN)  VOL(UP)  VMUTE()  XXXXXXX  XXXXXXX
 _______  FUNC(4)  FUNC(5)  FUNC(6)  RCLIK()  XXXXXXX /**/ XXXXXXX  BRI(DN)  BRI(UP)  SNCAP()  CH_KB()  XXXXXXX
 _______  FUNC(7)  FUNC(8)  FUNC(9)  XXXXXXX  XXXXXXX /**/ BT_S(0)  BT_S(1)  BT_S(2)  BT_S(3)  BT_S(4)  BT_CL()
-                  DEAD_THMB_KEYS()  _______  XXXXXXX /**/ XXXXXXX  _______  DEAD_THMB_KEYS()
+                  DEAD_THMB_KEYS()  XXXXXXX  XXXXXXX /**/ XXXXXXX  XXXXXXX  DEAD_THMB_KEYS()
         )
 
         ZMK_LAYER(code_ref1_layer,
