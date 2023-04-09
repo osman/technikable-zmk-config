@@ -148,6 +148,8 @@
         #define TO_BS()   &to BASE
         #define CHAR(ch)  &kp ch
         #define SP(layer) &lt layer SPACE
+        #define THUMB()   XXXXXXX
+        #define RCLIK()   &kp K_CONTEXT_MENU
 
         ZMK_LAYER(base_layer,
         #define HR_G(ch) &hm LCMD ch
@@ -157,7 +159,6 @@
         #define K_COM()  AS(COMMA)
         #define K_DOT()  AS(DOT)
         #define K_SEM()  AS(SEMICOLON)
-        #define RCLIK()  &kp K_CONTEXT_MENU
 
 &kp ESC  CHAR(Q)  CHAR(W)  CHAR(F)  CHAR(P)  CHAR(D)  /*****/  CHAR(J)  CHAR(L)  CHAR(U)  CHAR(Y)  K_MIN()  &bspc
 &kp TAB  HR_C(A)  HR_A(R)  HR_G(S)  CHAR(T)  CHAR(G)  /*****/  CHAR(M)  CHAR(N)  HR_G(E)  HR_A(I)  HR_C(O)  &kp ENTER
