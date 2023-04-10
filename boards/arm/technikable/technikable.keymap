@@ -138,45 +138,44 @@
         #define SP(layer) &lt layer SPACE
         #define THUMB()   XXXXXXX
 
-        #define HR_G(ch)   &hm LCMD ch
-        #define HR_A(ch)   &hm LALT ch
-        #define HR_C(ch)   &hm LCTRL ch
-        #define HR(t,ch)   HR_ ## t (ch)
-        #define HN(t,num)  HR(N ## num)
-
         ZMK_LAYER(base_layer,
+        #define HR_C(ch) &hm LCTRL ch
+        #define HR_A(ch) &hm LALT ch
+        #define HR_G(ch) &hm LCMD ch
         #define K_MIN()  AS(MINUS)
         #define K_COM()  &kp COMMA
         #define K_DOT()  &kp DOT
         #define K_SEM()  &kp SEMICOLON
 
 &kp ESC  CHAR(Q)  CHAR(W)  CHAR(F)  CHAR(P)  CHAR(D) _ CHAR(J)  CHAR(L)  CHAR(U)  CHAR(Y)  K_MIN()  &bspc
-&kp TAB  HR(C,A)  HR(A,R)  HR(G,S)  CHAR(T)  CHAR(G) _ CHAR(M)  CHAR(N)  HR_G(E)  HR_A(I)  HR_C(O)  &kp ENTER
+&kp TAB  HR_C(A)  HR_A(R)  HR_G(S)  CHAR(T)  CHAR(G) _ CHAR(M)  CHAR(N)  HR_G(E)  HR_A(I)  HR_C(O)  &kp ENTER
 &sft_cw  CHAR(Z)  CHAR(X)  CHAR(C)  CHAR(V)  CHAR(B) _ CHAR(K)  CHAR(H)  K_COM()  K_DOT()  K_SEM()  &sft_cw
                      THUMB()  SP(SM2)  OS(CD1) __ SP(SM1) __ OS(CD1)  &cd_fav  THUMB()
         )
 
         ZMK_LAYER(sym1_layer,
-        #define NUMB(n) &kp N ## n
-        #define NAV_U() &kp UP
-        #define NAV_D() &kp DOWN
-        #define NAV_L() &nav LA(LEFT) LEFT     // right, right by a word
-        #define NAV_R() &nav LA(RIGHT) RIGHT   // left, left by a word
-        #define K_BWD() &nav LG(LBRC) LG(LBKT) // back, move to tab on left
-        #define K_FWD() &nav LG(RBRC) LG(RBKT) // forwards, move to tab on right
-        #define K_EXC() HR(C, EXCLAMATION)
-        #define K__AT() &kp AT
-        #define K_CRT() &kp CARET
-        #define K_DLR() &kp DLLR
-        #define K_PCT() &kp PRCNT
-        #define K_AMP() &kp AMPS
-        #define K_HSH() &kp HASH
-        #define K_STR() &kp STAR
-        #define K_SPC() &kp SPACE
-        #define K_SQT() AS(SINGLE_QUOTE)
+        #define NUMB(n)  &kp N ## n
+        #define NAV_U()  &kp UP
+        #define NAV_D()  &kp DOWN
+        #define NAV_L()  &nav LA(LEFT) LEFT     // right, right by a word
+        #define NAV_R()  &nav LA(RIGHT) RIGHT   // left, left by a word
+        #define K_BWD()  &nav LG(LBRC) LG(LBKT) // back, move to tab on left
+        #define K_FWD()  &nav LG(RBRC) LG(RBKT) // forwards, move to tab on right
+        #define K_EXC()  HR_C(EXCLAMATION)
+        #define HN_A(n)  HR_A(N ## n)
+        #define HN_G(n)  HR_G(N ## n)
+        #define K__AT()  &kp AT
+        #define K_CRT()  &kp CARET
+        #define K_DLR()  &kp DLLR
+        #define K_PCT()  &kp PRCNT
+        #define K_AMP()  &kp AMPS
+        #define K_HSH()  &kp HASH
+        #define K_STR()  &kp STAR
+        #define K_SPC()  &kp SPACE
+        #define K_SQT()  AS(SINGLE_QUOTE)
 
 _______  NUMB(0)  NUMB(1)  NUMB(2)  NUMB(3)  K_CRT() _ XXXXXXX  K_BWD()  NAV_U()  K_FWD()  _______  _______
-_______  K_EXC()  HN(A,4)  HN(G,5)  NUMB(6)  K_DLR() _ K_AMP()  NAV_L()  NAV_D()  NAV_R()  K_SQT()  _______
+_______  K_EXC()  HN_A(4)  HN_G(5)  NUMB(6)  K_DLR() _ K_AMP()  NAV_L()  NAV_D()  NAV_R()  K_SQT()  _______
 _______  K__AT()  NUMB(7)  NUMB(8)  NUMB(9)  K_PCT() _ K_HSH()  K_STR()  _______  _______  _______  _______
                      THUMB()  _______  XXXXXXX __ XXXXXXX __ XXXXXXX  XXXXXXX  THUMB()
         )
