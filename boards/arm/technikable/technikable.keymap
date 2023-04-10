@@ -196,8 +196,8 @@ _______  K__AT()  NUMB(7)  NUMB(8)  NUMB(9)  K_PCT() _ K_HSH()  K_STR()  _______
         #define K_FSH()  &as QUESTION SLASH
         #define K_BSH()  &as PIPE BACKSLASH
 
-TO_BS()  K_GRV()  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX _ XXXXXXX  BK_R(L)  BK_R(R)  K_FSH()  K_BSH()  _______
-LCK_S()  XXXXXXX  VMUTE()  VOL(DN)  VOL(UP)  XXXXXXX _ XXXXXXX  BK_C(L)  BK_C(R)  BK_S(L)  BK_S(R)  _______
+_______  K_GRV()  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX _ XXXXXXX  BK_R(L)  BK_R(R)  K_FSH()  K_BSH()  _______
+_______  XXXXXXX  VMUTE()  VOL(DN)  VOL(UP)  XXXXXXX _ XXXXXXX  BK_C(L)  BK_C(R)  BK_S(L)  BK_S(R)  _______
 _______  XXXXXXX  SNCAP()  BRI(DN)  BRI(UP)  XXXXXXX _ XXXXXXX  BK_A(L)  BK_A(G)  _______  _______  _______
                      THUMB()  XXXXXXX  MO(ADM) __ XXXXXXX __ XXXXXXX  CH_KB()  THUMB()
         )
@@ -211,7 +211,7 @@ _______  XXXXXXX  SNCAP()  BRI(DN)  BRI(UP)  XXXXXXX _ XXXXXXX  BK_A(L)  BK_A(G)
 TO_BS()  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  BT_S(3) _ BT_S(0)  FUNC(1)  FUNC(2)  FUNC(3)  XXXXXXX  BT_CL()
 XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  BT_S(4) _ BT_S(1)  FUNC(4)  FUNC(5)  FUNC(6)  XXXXXXX  XXXXXXX
 XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  BT_S(5) _ BT_S(2)  FUNC(7)  FUNC(8)  FUNC(9)  XXXXXXX  RESET()
-                     THUMB()  XXXXXXX  XXXXXXX __ XXXXXXX __ XXXXXXX  XXXXXXX  THUMB()
+                     THUMB()  XXXXXXX  XXXXXXX __ XXXXXXX __ XXXXXXX  LCK_S()  THUMB()
         )
 
         ZMK_LAYER(code_ref1_layer,
