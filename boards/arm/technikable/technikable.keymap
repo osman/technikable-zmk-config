@@ -114,17 +114,18 @@
         )
     };
 
-    // combos {
-    //     compatible = "zmk,combos";
-    // 
-    //     #define FAST_COMBO_MS 30
+    combos {
+        compatible = "zmk,combos";
+    
+        #define FAST_COMBO_MS 30
 
-    //     // horizontal
-    //     ZMK_COMBO_ADV(escape,        &kp ESC,     LT2 LT3,   ALL,   FAST_COMBO_MS)
-    //     ZMK_COMBO_ADV(tab,           &kp TAB,     LM2 LM3,   ALL,   FAST_COMBO_MS)
-    //     ZMK_COMBO_ADV(enter,         &kp ENTER,   RM2 RM3,   ALL,   FAST_COMBO_MS)
-    //     ZMK_COMBO_ADV(backspace,     &bspc,       RT2 RT3,   ALL,   FAST_COMBO_MS)
-    // };
+        // horizontal
+        // ZMK_COMBO_ADV(escape,        &kp ESC,     LT2 LT3,   ALL,   FAST_COMBO_MS)
+        // ZMK_COMBO_ADV(tab,           &kp TAB,     LM2 LM3,   ALL,   FAST_COMBO_MS)
+        // ZMK_COMBO_ADV(enter,         &kp ENTER,   RM2 RM3,   ALL,   FAST_COMBO_MS)
+        // ZMK_COMBO_ADV(backspace,     &bspc,       RT2 RT3,   ALL,   FAST_COMBO_MS)
+        ZMK_COMBO_ADV(equal_plus,    AS(EQUAL),     LT3 LT4,   ALL,   FAST_COMBO_MS)
+    };
 
     keymap {
         compatible = "zmk,keymap";
@@ -174,7 +175,7 @@
         #define K_SPC()  &kp SPACE
         #define K_SQT()  AS(SINGLE_QUOTE)
 
-_______  NUMB(0)  NUMB(1)  NUMB(2)  NUMB(3)  K_CRT() _ XXXXXXX  K_BWD()  NAV_U()  K_FWD()  _______  _______
+_______  NUMB(0)  NUMB(1)  NUMB(2)  NUMB(3)  K_CRT() _ K_BWD()  K_FWD()  NAV_U()  XXXXXXX  _______  _______
 _______  K_EXC()  HN_A(4)  HN_G(5)  NUMB(6)  K_DLR() _ K_AMP()  NAV_L()  NAV_D()  NAV_R()  K_SQT()  _______
 _______  K__AT()  NUMB(7)  NUMB(8)  NUMB(9)  K_PCT() _ K_HSH()  K_STR()  _______  _______  _______  _______
                      THUMB()  _______  XXXXXXX __ XXXXXXX __ XXXXXXX  XXXXXXX  THUMB()
@@ -191,13 +192,12 @@ _______  K__AT()  NUMB(7)  NUMB(8)  NUMB(9)  K_PCT() _ K_HSH()  K_STR()  _______
         #define BK_C(d)  AS(d ## BRC)        // curly brackets, square brackets
         #define BK_A(d)  &kp d ## T          // angle brackets
         #define K_GRV()  &as TILDE GRAVE
-        #define K_EQU()  &as PLUS EQUAL
         #define K_FSH()  &as QUESTION SLASH
         #define K_BSH()  &as PIPE BACKSLASH
 
-TO_BS()  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX _ XXXXXXX  BK_R(L)  BK_R(R)  K_MIN()  K_EQU()  _______
-XXXXXXX  K_GRV()  VMUTE()  VOL(DN)  VOL(UP)  XXXXXXX _ XXXXXXX  BK_C(L)  BK_C(R)  K_FSH()  K_BSH()  _______
-LCK_S()  XXXXXXX  SNCAP()  BRI(DN)  BRI(UP)  XXXXXXX _ XXXXXXX  BK_A(L)  BK_A(G)  _______  _______  _______
+TO_BS()  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX _ XXXXXXX  BK_R(L)  BK_R(R)  K_FSH()  K_BSH()  _______
+LCK_S()  K_GRV()  VMUTE()  VOL(DN)  VOL(UP)  XXXXXXX _ XXXXXXX  BK_C(L)  BK_C(R)  XXXXXXX  XXXXXXX  _______
+_______  XXXXXXX  SNCAP()  BRI(DN)  BRI(UP)  XXXXXXX _ XXXXXXX  BK_A(L)  BK_A(G)  _______  _______  _______
                      THUMB()  XXXXXXX  MO(ADM) __ XXXXXXX __ XXXXXXX  CH_KB()  THUMB()
         )
 
@@ -222,15 +222,15 @@ XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  BT_S(5) _ BT_S(2)  FUNC(7)  FUNC(8)
         #define CR1_V() &kp LAG(V)         // extract variable
         #define CR1_N() &kp LAG(N)         // inline
         #define CR1_M() &kp LAG(M)         // extract method
-        #define CR1_L() &kp LAG(L)         // format
         #define CR1_I() &kp LAG(L)         // format (qwerty position)
         #define CR1_S() &kp LAG(T)         // surround
         #define CR1_O() &kp LA(ENTER)      // suggested actions
         #define CR1_B() &cd LG(F9) LSG(F9) // build module, build all
         #define CR1_U() &kp LA(UP)         // extend selection by scope
         #define CR1_E() &kp LA(DOWN)       // decrease selection by scope
+        #define CR_TC() &kp LG(SLASH)      // toggle comments
 
-TO_BS()  XXXXXXX  XXXXXXX  CR1_F()  CR1_P()  XXXXXXX _ XXXXXXX  CR1_L()  CR1_U()  XXXXXXX  XXXXXXX  _______
+TO_BS()  XXXXXXX  XXXXXXX  CR1_F()  CR1_P()  XXXXXXX _ K_BWD()  K_FWD()  CR1_U()  CR_TC()  XXXXXXX  _______
 _______  CR1_A()  CR1_R()  CR1_S()  XXXXXXX  XXXXXXX _ CR1_M()  CR1_N()  CR1_E()  CR1_I()  XXXXXXX  CR1_O()
 _______  XXXXXXX  XXXXXXX  CR1_C()  CR1_V()  CR1_B() _ XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  _______
                      THUMB()  XXXXXXX  OS(CD2) __ XXXXXXX __ OS(CD2)  XXXXXXX  THUMB()
