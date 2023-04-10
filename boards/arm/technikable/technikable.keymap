@@ -148,13 +148,13 @@
         #define TO_BS()   &to BASE
         #define CHAR(ch)  &kp ch
         #define SP(layer) &lt layer SPACE
+        #define HR_G(ch)  &hm LCMD ch
+        #define HR_A(ch)  &hm LALT ch
+        #define HR_C(ch)  &hm LCTRL ch
         #define THUMB()   XXXXXXX
         #define RCLIK()   &kp K_CONTEXT_MENU
 
         ZMK_LAYER(base_layer,
-        #define HR_G(ch) &hm LCMD ch
-        #define HR_A(ch) &hm LALT ch
-        #define HR_C(ch) &hm LCTRL ch
         #define K_MIN()  AS(MINUS)
         #define K_COM()  AS(COMMA)
         #define K_DOT()  AS(DOT)
@@ -186,7 +186,7 @@
         #define B_SQR() &as RBKT LBKT
 
 _______  B_PAR()  NUMB(1)  NUMB(2)  NUMB(3)  K_CRT()  /*****/  XXXXXXX  K_BWD()  NAV_U()  K_FWD()  _______  _______
-_______  B_CUR()  NUMB(4)  NUMB(5)  NUMB(6)  K_DLR()  /*****/  K_AMP()  NAV_L()  NAV_D()  NAV_R()  XXXXXXX  _______
+_______  B_CUR()  HR_A(4)  HR_C(5)  NUMB(6)  K_DLR()  /*****/  K_AMP()  NAV_L()  NAV_D()  NAV_R()  XXXXXXX  _______
 _______  B_SQR()  NUMB(7)  NUMB(8)  NUMB(9)  K_PCT()  /*****/  K_HSH()  K_STR()  _______  _______  _______  _______
                            THUMB()  NUMB(0)  MO(ADJ)  XXXXXXX  MO(ADJ)  XXXXXXX  THUMB()
         )
