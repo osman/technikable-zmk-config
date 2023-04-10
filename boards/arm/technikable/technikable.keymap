@@ -195,8 +195,8 @@ _______  K__AT()  NUMB(7)  NUMB(8)  NUMB(9)  K_PCT() _ K_HSH()  K_STR()  _______
         #define K_FSH()  &as QUESTION SLASH
         #define K_BSH()  &as PIPE BACKSLASH
 
-TO_BS()  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX _ XXXXXXX  BK_R(L)  BK_R(R)  K_FSH()  K_BSH()  _______
-LCK_S()  K_GRV()  VMUTE()  VOL(DN)  VOL(UP)  XXXXXXX _ XXXXXXX  BK_C(L)  BK_C(R)  XXXXXXX  XXXXXXX  _______
+TO_BS()  K_GRV()  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX _ XXXXXXX  BK_R(L)  BK_R(R)  K_FSH()  K_BSH()  _______
+LCK_S()  XXXXXXX  VMUTE()  VOL(DN)  VOL(UP)  XXXXXXX _ XXXXXXX  BK_C(L)  BK_C(R)  XXXXXXX  XXXXXXX  _______
 _______  XXXXXXX  SNCAP()  BRI(DN)  BRI(UP)  XXXXXXX _ XXXXXXX  BK_A(L)  BK_A(G)  _______  _______  _______
                      THUMB()  XXXXXXX  MO(ADM) __ XXXXXXX __ XXXXXXX  CH_KB()  THUMB()
         )
