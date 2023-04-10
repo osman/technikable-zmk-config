@@ -8,11 +8,12 @@
 
 // Layers
 #define BASE 0
-#define SYM  1
-#define ADJ  2
-#define CD1  3
-#define CD2  4
-#define CD3  5
+#define SM1  1
+#define SM2  2
+#define ADM  3
+#define CD1  4
+#define CD2  5
+#define CD3  6
 
 // Modifier Combos
 #define LSG(kc) LS(LG(kc))
@@ -113,60 +114,49 @@
         )
     };
 
-    combos {
-        compatible = "zmk,combos";
-    
-        // #undef COMBO_HOOK
-        // #define COMBO_HOOK global-quick-tap-ms = <75>;
-        #define FAST_COMBO_MS 30
-        #define VERT_COMBO_MS 38
-        #define SLOW_COMBO_MS 60
+    // combos {
+    //     compatible = "zmk,combos";
+    // 
+    //     #define FAST_COMBO_MS 30
 
-        // horizontal
-        ZMK_COMBO_ADV(tilde,         AS(GRAVE),        LT4 LT3,          ALL,   FAST_COMBO_MS)
-        ZMK_COMBO_ADV(equal,         AS(EQUAL),        RT3 RT4,          ALL,   FAST_COMBO_MS)
-        
-        // vertical
-        ZMK_COMBO_ADV(pipe_qmark,    &as QMARK PIPE,   LT3 LM3,          ALL,   VERT_COMBO_MS)
-        ZMK_COMBO_ADV(quotes,        AS(SQT),          RT3 RM3,          ALL,   VERT_COMBO_MS)
-                                     
-        // angled                                   
-        ZMK_COMBO_ADV(bslash,        &kp BSLH,         LM0 LT1,          ALL,   FAST_COMBO_MS)
-        ZMK_COMBO_ADV(fslash,        &kp FSLH,         RM0 RT1,          ALL,   FAST_COMBO_MS)
-                                                    
-        // admin
-        ZMK_COMBO_ADV(lh_boot,       &bootloader,      LH0 LB0 LB1 LB2,  BASE,  SLOW_COMBO_MS)  
-        ZMK_COMBO_ADV(lh_lock_scrn,  &kp LCG(Q),       LT1 LT2 LT3 LT4,  BASE,  SLOW_COMBO_MS)  
-        ZMK_COMBO_ADV(rh_lock_scrn,  &kp LCG(Q),       RT1 RT2 RT3 RT4,  BASE,  SLOW_COMBO_MS)  
-    };
+    //     // horizontal
+    //     ZMK_COMBO_ADV(escape,        &kp ESC,     LT2 LT3,   ALL,   FAST_COMBO_MS)
+    //     ZMK_COMBO_ADV(tab,           &kp TAB,     LM2 LM3,   ALL,   FAST_COMBO_MS)
+    //     ZMK_COMBO_ADV(enter,         &kp ENTER,   RM2 RM3,   ALL,   FAST_COMBO_MS)
+    //     ZMK_COMBO_ADV(backspace,     &bspc,       RT2 RT3,   ALL,   FAST_COMBO_MS)
+    // };
 
     keymap {
         compatible = "zmk,keymap";
 
+        #define _
+        #define __ 
         #define XXXXXXX   &none
         #define _______   &trans
         #define TO_BS()   &to BASE
         #define CHAR(ch)  &kp ch
         #define SP(layer) &lt layer SPACE
-        #define HR_G(ch)  &hm LCMD ch
-        #define HR_A(ch)  &hm LALT ch
-        #define HR_C(ch)  &hm LCTRL ch
         #define THUMB()   XXXXXXX
-        #define RCLIK()   &kp K_CONTEXT_MENU
+
+        #define HR_G(ch)   &hm LCMD ch
+        #define HR_A(ch)   &hm LALT ch
+        #define HR_C(ch)   &hm LCTRL ch
+        #define HR(t,ch)   HR_ ## t (ch)
+        #define HN(t,num)  HR(N ## num)
 
         ZMK_LAYER(base_layer,
         #define K_MIN()  AS(MINUS)
-        #define K_COM()  AS(COMMA)
-        #define K_DOT()  AS(DOT)
-        #define K_SEM()  AS(SEMICOLON)
+        #define K_COM()  &kp COMMA
+        #define K_DOT()  &kp DOT
+        #define K_SEM()  &kp SEMICOLON
 
-&kp ESC  CHAR(Q)  CHAR(W)  CHAR(F)  CHAR(P)  CHAR(D)  /*****/  CHAR(J)  CHAR(L)  CHAR(U)  CHAR(Y)  K_MIN()  &bspc
-&kp TAB  HR_C(A)  HR_A(R)  HR_G(S)  CHAR(T)  CHAR(G)  /*****/  CHAR(M)  CHAR(N)  HR_G(E)  HR_A(I)  HR_C(O)  &kp ENTER
-&sft_cw  CHAR(Z)  CHAR(X)  CHAR(C)  CHAR(V)  CHAR(B)  /*****/  CHAR(K)  CHAR(H)  K_COM()  K_DOT()  K_SEM()  &sft_cw
-                           THUMB()  RCLIK()  OS(CD1)  SP(SYM)  OS(CD1)  &cd_fav  THUMB()
+&kp ESC  CHAR(Q)  CHAR(W)  CHAR(F)  CHAR(P)  CHAR(D) _ CHAR(J)  CHAR(L)  CHAR(U)  CHAR(Y)  K_MIN()  &bspc
+&kp TAB  HR(C,A)  HR(A,R)  HR(G,S)  CHAR(T)  CHAR(G) _ CHAR(M)  CHAR(N)  HR_G(E)  HR_A(I)  HR_C(O)  &kp ENTER
+&sft_cw  CHAR(Z)  CHAR(X)  CHAR(C)  CHAR(V)  CHAR(B) _ CHAR(K)  CHAR(H)  K_COM()  K_DOT()  K_SEM()  &sft_cw
+                     THUMB()  SP(SM2)  OS(CD1) __ SP(SM1) __ OS(CD1)  &cd_fav  THUMB()
         )
 
-        ZMK_LAYER(symbols_layer,
+        ZMK_LAYER(sym1_layer,
         #define NUMB(n) &kp N ## n
         #define NAV_U() &kp UP
         #define NAV_D() &kp DOWN
@@ -174,6 +164,8 @@
         #define NAV_R() &nav LA(RIGHT) RIGHT   // left, left by a word
         #define K_BWD() &nav LG(LBRC) LG(LBKT) // back, move to tab on left
         #define K_FWD() &nav LG(RBRC) LG(RBKT) // forwards, move to tab on right
+        #define K_EXC() HR(C, EXCLAMATION)
+        #define K__AT() &kp AT
         #define K_CRT() &kp CARET
         #define K_DLR() &kp DLLR
         #define K_PCT() &kp PRCNT
@@ -181,30 +173,45 @@
         #define K_HSH() &kp HASH
         #define K_STR() &kp STAR
         #define K_SPC() &kp SPACE
-        #define B_PAR() &as RPAR LPAR
-        #define B_CUR() &as RBRC LBRC
-        #define B_SQR() &as RBKT LBKT
+        #define K_SQT() AS(SINGLE_QUOTE)
 
-_______  B_PAR()  NUMB(1)  NUMB(2)  NUMB(3)  K_CRT()  /*****/  XXXXXXX  K_BWD()  NAV_U()  K_FWD()  _______  _______
-_______  B_CUR()  HR_A(4)  HR_C(5)  NUMB(6)  K_DLR()  /*****/  K_AMP()  NAV_L()  NAV_D()  NAV_R()  XXXXXXX  _______
-_______  B_SQR()  NUMB(7)  NUMB(8)  NUMB(9)  K_PCT()  /*****/  K_HSH()  K_STR()  _______  _______  _______  _______
-                           THUMB()  NUMB(0)  MO(ADJ)  XXXXXXX  MO(ADJ)  XXXXXXX  THUMB()
+_______  NUMB(0)  NUMB(1)  NUMB(2)  NUMB(3)  K_CRT() _ XXXXXXX  K_BWD()  NAV_U()  K_FWD()  _______  _______
+_______  K_EXC()  HN(A,4)  HN(G,5)  NUMB(6)  K_DLR() _ K_AMP()  NAV_L()  NAV_D()  NAV_R()  K_SQT()  _______
+_______  K__AT()  NUMB(7)  NUMB(8)  NUMB(9)  K_PCT() _ K_HSH()  K_STR()  _______  _______  _______  _______
+                     THUMB()  _______  XXXXXXX __ XXXXXXX __ XXXXXXX  XXXXXXX  THUMB()
         )
 
-        ZMK_LAYER(adjust_layer,
+        ZMK_LAYER(sym2_layer,
+        #define LCK_S()  &kp LCG(Q)          // lock screen
+        #define VOL(dir) &kp C_VOL_ ## dir   // volume
+        #define VMUTE()  &kp C_MUTE          // mute
+        #define BRI(dir) &kp C_BRI_ ## dir   // brightness
+        #define SNCAP()  &kp LSG(N4)         // screen capture
+        #define CH_KB()  &kp LCA(SPACE)      // change layout
+        #define BK_R(d)  &kp d ## PAR        // round brackets
+        #define BK_C(d)  AS(d ## BRC)        // curly brackets, square brackets
+        #define BK_A(d)  &kp d ## T          // angle brackets
+        #define K_GRV()  &as TILDE GRAVE
+        #define K_EQU()  &as PLUS EQUAL
+        #define K_FSH()  &as QUESTION SLASH
+        #define K_BSH()  &as PIPE BACKSLASH
+
+TO_BS()  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX _ XXXXXXX  BK_R(L)  BK_R(R)  K_MIN()  K_EQU()  _______
+XXXXXXX  K_GRV()  VMUTE()  VOL(DN)  VOL(UP)  XXXXXXX _ XXXXXXX  BK_C(L)  BK_C(R)  K_FSH()  K_BSH()  _______
+LCK_S()  XXXXXXX  SNCAP()  BRI(DN)  BRI(UP)  XXXXXXX _ XXXXXXX  BK_A(L)  BK_A(G)  _______  _______  _______
+                     THUMB()  XXXXXXX  MO(ADM) __ XXXXXXX __ XXXXXXX  CH_KB()  THUMB()
+        )
+
+        ZMK_LAYER(admin_layer,
         #define FUNC(n)  &kp F ## n
-        #define VMUTE()  &kp C_MUTE 
-        #define CH_KB()  &kp LCA(SPACE)
-        #define SNCAP()  &kp LSG(N4)
-        #define VOL(dir) &kp C_VOL_ ## dir
-        #define BRI(dir) &kp C_BRI_ ## dir
         #define BT_S(n)  &bt BT_SEL n
         #define BT_CL()  &bt BT_CLR
+        #define RESET()  &bootloader
 
-TO_BS()  XXXXXXX  FUNC(1)  FUNC(2)  FUNC(3)  XXXXXXX  /*****/  XXXXXXX  VOL(DN)  VOL(UP)  VMUTE()  XXXXXXX  XXXXXXX
-_______  XXXXXXX  FUNC(4)  FUNC(5)  FUNC(6)  XXXXXXX  /*****/  XXXXXXX  BRI(DN)  BRI(UP)  SNCAP()  CH_KB()  XXXXXXX
-_______  XXXXXXX  FUNC(7)  FUNC(8)  FUNC(9)  XXXXXXX  /*****/  BT_S(0)  BT_S(1)  BT_S(2)  BT_S(3)  BT_S(4)  BT_CL()
-                           THUMB()  RCLIK()  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  THUMB()
+TO_BS()  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  BT_S(3) _ BT_S(0)  FUNC(1)  FUNC(2)  FUNC(3)  XXXXXXX  BT_CL()
+XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  BT_S(4) _ BT_S(1)  FUNC(4)  FUNC(5)  FUNC(6)  XXXXXXX  XXXXXXX
+XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  BT_S(5) _ BT_S(2)  FUNC(7)  FUNC(8)  FUNC(9)  XXXXXXX  RESET()
+                     THUMB()  XXXXXXX  XXXXXXX __ XXXXXXX __ XXXXXXX  XXXXXXX  THUMB()
         )
 
         ZMK_LAYER(code_ref1_layer,
@@ -224,10 +231,10 @@ _______  XXXXXXX  FUNC(7)  FUNC(8)  FUNC(9)  XXXXXXX  /*****/  BT_S(0)  BT_S(1) 
         #define CR1_U() &kp LA(UP)         // extend selection by scope
         #define CR1_E() &kp LA(DOWN)       // decrease selection by scope
 
-TO_BS()  XXXXXXX  XXXXXXX  CR1_F()  CR1_P()  XXXXXXX  /*****/  XXXXXXX  CR1_L()  CR1_U()  XXXXXXX  XXXXXXX  _______
-_______  CR1_A()  CR1_R()  CR1_S()  XXXXXXX  XXXXXXX  /*****/  CR1_M()  CR1_N()  CR1_E()  CR1_I()  XXXXXXX  CR1_O()
-_______  XXXXXXX  XXXXXXX  CR1_C()  CR1_V()  CR1_B()  /*****/  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  _______
-                           THUMB()  RCLIK()  OS(CD2)  XXXXXXX  OS(CD2)  XXXXXXX  THUMB()
+TO_BS()  XXXXXXX  XXXXXXX  CR1_F()  CR1_P()  XXXXXXX _ XXXXXXX  CR1_L()  CR1_U()  XXXXXXX  XXXXXXX  _______
+_______  CR1_A()  CR1_R()  CR1_S()  XXXXXXX  XXXXXXX _ CR1_M()  CR1_N()  CR1_E()  CR1_I()  XXXXXXX  CR1_O()
+_______  XXXXXXX  XXXXXXX  CR1_C()  CR1_V()  CR1_B() _ XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  _______
+                     THUMB()  XXXXXXX  OS(CD2) __ XXXXXXX __ OS(CD2)  XXXXXXX  THUMB()
         )
 
         ZMK_LAYER(code_ref2_layer,
@@ -236,10 +243,10 @@ _______  XXXXXXX  XXXXXXX  CR1_C()  CR1_V()  CR1_B()  /*****/  XXXXXXX  XXXXXXX 
         #define CR2_U() &cd LSG(UP) LSA(UP)      // move line up, move block up
         #define CR2_E() &cd LSG(DOWN) LSA(DOWN)  // move line down, move block down
 
-TO_BS()  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  /*****/  XXXXXXX  XXXXXXX  CR2_U()  XXXXXXX  XXXXXXX  _______
-_______  CR2_A()  CR2_R()  XXXXXXX  XXXXXXX  XXXXXXX  /*****/  XXXXXXX  XXXXXXX  CR2_E()  CR1_I()  XXXXXXX  CR1_O()
-_______  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  /*****/  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  _______
-                           THUMB()  RCLIK()  OS(CD3)  XXXXXXX  OS(CD3)  XXXXXXX  THUMB()
+TO_BS()  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX _ XXXXXXX  XXXXXXX  CR2_U()  XXXXXXX  XXXXXXX  _______
+_______  CR2_A()  CR2_R()  XXXXXXX  XXXXXXX  XXXXXXX _ XXXXXXX  XXXXXXX  CR2_E()  CR1_I()  XXXXXXX  CR1_O()
+_______  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX _ XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  _______
+                     THUMB()  XXXXXXX  OS(CD3) __ XXXXXXX __ OS(CD3)  XXXXXXX  THUMB()
         )
 
         ZMK_LAYER(code_nav_layer,
@@ -255,10 +262,10 @@ _______  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  /*****/  XXXXXXX  XXXXXXX 
         #define DBG_R() &cd LA(F9) LAG(R)   // debug: run until breakpoint, run until cursor
         #define DBG_B() &cd LG(F8) LA(F8)   // debug: evaluate expression, set breakpoint
 
-TO_BS()  XXXXXXX  XXXXXXX  CN1_F()  CN1_P()  CN1_D()  /*****/  XXXXXXX  DBG_I()  DBG_O()  DBG_R()  DBG_B()  _______
-_______  XXXXXXX  CN1_R()  CN1_S()  CN1_T()  XXXXXXX  /*****/  XXXXXXX  XXXXXXX  CN1_E()  CR1_I()  XXXXXXX  CR1_O()
-_______  XXXXXXX  XXXXXXX  &dif_co  XXXXXXX  &dif_br  /*****/  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  _______
-                           THUMB()  RCLIK()  OS(CD3)  XXXXXXX  OS(CD3)  XXXXXXX  THUMB()
+TO_BS()  XXXXXXX  XXXXXXX  CN1_F()  CN1_P()  CN1_D() _ XXXXXXX  DBG_I()  DBG_O()  DBG_R()  DBG_B()  _______
+_______  XXXXXXX  CN1_R()  CN1_S()  CN1_T()  XXXXXXX _ XXXXXXX  XXXXXXX  CN1_E()  CR1_I()  XXXXXXX  CR1_O()
+_______  XXXXXXX  XXXXXXX  &dif_co  XXXXXXX  &dif_br _ XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  _______
+                     THUMB()  XXXXXXX  OS(CD3) __ XXXXXXX __ OS(CD3)  XXXXXXX  THUMB()
         )
     };
 };
