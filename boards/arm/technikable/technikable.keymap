@@ -124,7 +124,7 @@
         // ZMK_COMBO_ADV(tab,           &kp TAB,     LM2 LM3,   ALL,   FAST_COMBO_MS)
         // ZMK_COMBO_ADV(enter,         &kp ENTER,   RM2 RM3,   ALL,   FAST_COMBO_MS)
         // ZMK_COMBO_ADV(backspace,     &bspc,       RT2 RT3,   ALL,   FAST_COMBO_MS)
-        ZMK_COMBO_ADV(equal_plus,    AS(EQUAL),     LT3 LT4,   ALL,   FAST_COMBO_MS)
+        ZMK_COMBO_ADV(equal_plus,    AS(EQUAL),     RT3 RT4,   ALL,   FAST_COMBO_MS)
     };
 
     keymap {
