@@ -189,14 +189,15 @@ _______  K__AT()  NUMB(7)  NUMB(8)  NUMB(9)  K_PCT() _ K_HSH()  K_STR()  _______
         #define SNCAP()  &kp LSG(N4)         // screen capture
         #define CH_KB()  &kp LCA(SPACE)      // change layout
         #define BK_R(d)  &kp d ## PAR        // round brackets
-        #define BK_C(d)  AS(d ## BRC)        // curly brackets, square brackets
+        #define BK_C(d)  AS(d ## BRC)        // curly braces
+        #define BK_S(d)  AS(d ## BKT)        // square brackets
         #define BK_A(d)  &kp d ## T          // angle brackets
         #define K_GRV()  &as TILDE GRAVE
         #define K_FSH()  &as QUESTION SLASH
         #define K_BSH()  &as PIPE BACKSLASH
 
 TO_BS()  K_GRV()  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX _ XXXXXXX  BK_R(L)  BK_R(R)  K_FSH()  K_BSH()  _______
-LCK_S()  XXXXXXX  VMUTE()  VOL(DN)  VOL(UP)  XXXXXXX _ XXXXXXX  BK_C(L)  BK_C(R)  XXXXXXX  XXXXXXX  _______
+LCK_S()  XXXXXXX  VMUTE()  VOL(DN)  VOL(UP)  XXXXXXX _ XXXXXXX  BK_C(L)  BK_C(R)  BK_S(L)  BK_S(R)  _______
 _______  XXXXXXX  SNCAP()  BRI(DN)  BRI(UP)  XXXXXXX _ XXXXXXX  BK_A(L)  BK_A(G)  _______  _______  _______
                      THUMB()  XXXXXXX  MO(ADM) __ XXXXXXX __ XXXXXXX  CH_KB()  THUMB()
         )
