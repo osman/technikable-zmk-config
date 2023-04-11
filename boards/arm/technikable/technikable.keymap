@@ -261,7 +261,7 @@ _______  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX _ XXXXXXX  XXXXXXX  XXXXXXX
         #define DBG_B() &cd LG(F8) LA(F8)   // debug: evaluate expression, set breakpoint
 
 TO_BS()  XXXXXXX  CN1_W()  CN1_F()  CN1_P()  CN1_D() _ XXXXXXX  DBG_I()  DBG_O()  DBG_R()  DBG_B()  _______
-_______  XXXXXXX  CN1_R()  CN1_S()  CN1_T()  XXXXXXX _ XXXXXXX  XXXXXXX  CN1_E()  CR1_I()  CN1_A()  CR_SA()
+_______  XXXXXXX  CN1_R()  CN1_S()  CN1_T()  XXXXXXX _ XXXXXXX  XXXXXXX  CN1_E()  CR1_I()  XXXXXXX  CR_SA()
 _______  XXXXXXX  XXXXXXX  &dif_co  XXXXXXX  &dif_br _ XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  _______
                      THUMB()  OS(CD3)  XXXXXXX __ XXXXXXX __ XXXXXXX  OS(CD3)  THUMB()
         )
