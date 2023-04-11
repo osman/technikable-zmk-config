@@ -61,9 +61,9 @@
     };
 
     behaviors {
-        #define AS(kc) &as LS(kc) kc            // Auto-Shift Key-press
-        #define OS(layer) &mo_sl layer layer    // One-Shot Layer
+        #define AS(kc)    &as LS(kc) kc         // Auto-Shift Key-press for Alphas
         #define MO(layer) &mo layer             // Momentary Layer
+        #define OS(layer) &mo_sl layer layer    // One-Shot Layer
 
         // Hold Taps
         ZMK_BEHAVIOR(as, hold_tap,
@@ -109,9 +109,6 @@
         ZMK_BEHAVIOR(sft_cw, tap_dance,
             tapping-term-ms = <400>; bindings = <&kp LSHIFT>, <&caps_word>; // 1:(shift), 2:(caps word)
         )
-        ZMK_BEHAVIOR(cd_fav, tap_dance,
-            tapping-term-ms = <200>; bindings = <&kp LA(ENTER)>, <&kp LAG(L)>; // 1:(suggested actions), 2:(format)
-        )
     };
 
     combos {
@@ -146,12 +143,12 @@
         #define K_MIN()  AS(MINUS)
         #define K_COM()  &kp COMMA
         #define K_DOT()  &kp DOT
-        #define K_SEM()  &kp SEMICOLON
+        #define K_SEM()  AS(SEMICOLON)
 
 &kp ESC  CHAR(Q)  CHAR(W)  CHAR(F)  CHAR(P)  CHAR(D) _ CHAR(J)  CHAR(L)  CHAR(U)  CHAR(Y)  K_MIN()  &bspc
 &kp TAB  HR_C(A)  HR_A(R)  HR_G(S)  CHAR(T)  CHAR(G) _ CHAR(M)  CHAR(N)  HR_G(E)  HR_A(I)  HR_C(O)  &kp ENTER
 &sft_cw  CHAR(Z)  CHAR(X)  CHAR(C)  CHAR(V)  CHAR(B) _ CHAR(K)  CHAR(H)  K_COM()  K_DOT()  K_SEM()  &sft_cw
-                     THUMB()  SP(SM2)  OS(CD1) __ SP(SM1) __ OS(CD1)  &cd_fav  THUMB()
+                     THUMB()  OS(CD1)  SP(SM2) __ SP(SM1) __ SP(SM2)  OS(CD1)  THUMB()
         )
 
         ZMK_LAYER(sym1_layer,
@@ -178,7 +175,7 @@
 _______  NUMB(0)  NUMB(1)  NUMB(2)  NUMB(3)  K_CRT() _ K_BWD()  K_FWD()  NAV_U()  XXXXXXX  _______  _______
 _______  K_EXC()  HN_A(4)  HN_G(5)  NUMB(6)  K_DLR() _ K_AMP()  NAV_L()  NAV_D()  NAV_R()  K_SQT()  _______
 _______  K__AT()  NUMB(7)  NUMB(8)  NUMB(9)  K_PCT() _ K_HSH()  K_STR()  _______  _______  _______  _______
-                     THUMB()  _______  XXXXXXX __ XXXXXXX __ XXXXXXX  XXXXXXX  THUMB()
+                     THUMB()  OS(CD1)  SP(SM2) __ SP(SM1) __ SP(SM2)  OS(CD1)  THUMB()
         )
 
         ZMK_LAYER(sym2_layer,
@@ -199,7 +196,7 @@ _______  K__AT()  NUMB(7)  NUMB(8)  NUMB(9)  K_PCT() _ K_HSH()  K_STR()  _______
 _______  K_GRV()  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX _ XXXXXXX  BK_R(L)  BK_R(R)  K_FSH()  K_BSH()  _______
 _______  XXXXXXX  VMUTE()  VOL(DN)  VOL(UP)  XXXXXXX _ XXXXXXX  BK_C(L)  BK_C(R)  BK_S(L)  BK_S(R)  _______
 _______  XXXXXXX  SNCAP()  BRI(DN)  BRI(UP)  XXXXXXX _ XXXXXXX  BK_A(L)  BK_A(G)  _______  _______  _______
-                     THUMB()  XXXXXXX  MO(ADM) __ XXXXXXX __ XXXXXXX  CH_KB()  THUMB()
+                     THUMB()  MO(ADM)  XXXXXXX __ SP(SM1) __ XXXXXXX  CH_KB()  THUMB()
         )
 
         ZMK_LAYER(admin_layer,
@@ -208,14 +205,13 @@ _______  XXXXXXX  SNCAP()  BRI(DN)  BRI(UP)  XXXXXXX _ XXXXXXX  BK_A(L)  BK_A(G)
         #define BT_CL()  &bt BT_CLR
         #define RESET()  &bootloader
 
-TO_BS()  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  BT_S(3) _ BT_S(0)  FUNC(1)  FUNC(2)  FUNC(3)  XXXXXXX  BT_CL()
-XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  BT_S(4) _ BT_S(1)  FUNC(4)  FUNC(5)  FUNC(6)  XXXXXXX  XXXXXXX
-XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  BT_S(5) _ BT_S(2)  FUNC(7)  FUNC(8)  FUNC(9)  XXXXXXX  RESET()
+TO_BS()  XXXXXXX  XXXXXXX  XXXXXXX  BT_S(3)  BT_S(0) _ XXXXXXX  FUNC(1)  FUNC(2)  FUNC(3)  XXXXXXX  BT_CL()
+XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  BT_S(4)  BT_S(1) _ XXXXXXX  FUNC(4)  FUNC(5)  FUNC(6)  XXXXXXX  XXXXXXX
+XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  BT_S(5)  BT_S(2) _ XXXXXXX  FUNC(7)  FUNC(8)  FUNC(9)  XXXXXXX  RESET()
                      THUMB()  XXXXXXX  XXXXXXX __ XXXXXXX __ XXXXXXX  LCK_S()  THUMB()
         )
 
         ZMK_LAYER(code_ref1_layer,
-        #define CR1_A() &kp F6             // move (putting it beside R which is rename/move)
         #define CR1_R() &kp LS(F6)         // rename
         #define CR1_C() &kp LAG(C)         // extract constant
         #define CR1_F() &kp LAG(F)         // extract field
@@ -225,47 +221,49 @@ XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  BT_S(5) _ BT_S(2)  FUNC(7)  FUNC(8)
         #define CR1_M() &kp LAG(M)         // extract method
         #define CR1_I() &kp LAG(L)         // format (qwerty position)
         #define CR1_S() &kp LAG(T)         // surround
-        #define CR1_O() &kp LA(ENTER)      // suggested actions
         #define CR1_B() &cd LG(F9) LSG(F9) // build module, build all
         #define CR1_U() &kp LA(UP)         // extend selection by scope
         #define CR1_E() &kp LA(DOWN)       // decrease selection by scope
+        #define CR_SA() &kp LA(ENTER)      // suggested actions
         #define CR_TC() &kp LG(SLASH)      // toggle comments
 
-TO_BS()  XXXXXXX  XXXXXXX  CR1_F()  CR1_P()  XXXXXXX _ K_BWD()  K_FWD()  CR1_U()  CR_TC()  XXXXXXX  _______
-_______  CR1_A()  CR1_R()  CR1_S()  XXXXXXX  XXXXXXX _ CR1_M()  CR1_N()  CR1_E()  CR1_I()  XXXXXXX  CR1_O()
+TO_BS()  XXXXXXX  XXXXXXX  CR1_F()  CR1_P()  XXXXXXX _ XXXXXXX  XXXXXXX  CR1_U()  CR_TC()  XXXXXXX  _______
+_______  CR1_A()  CR1_R()  CR1_S()  XXXXXXX  XXXXXXX _ CR1_M()  CR1_N()  CR1_E()  CR1_I()  XXXXXXX  CR_SA()
 _______  XXXXXXX  XXXXXXX  CR1_C()  CR1_V()  CR1_B() _ XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  _______
-                     THUMB()  XXXXXXX  OS(CD2) __ XXXXXXX __ OS(CD2)  XXXXXXX  THUMB()
+                     THUMB()  OS(CD2)  MO(ADM) __ XXXXXXX __ XXXXXXX  OS(CD2)  THUMB()
         )
 
         ZMK_LAYER(code_ref2_layer,
-        #define CR2_A() &kp F5                   // copy
+        #define CR2_A() &as F5 F6                // move, copy
         #define CR2_R() &kp LG(F6)               // change signature
         #define CR2_U() &cd LSG(UP) LSA(UP)      // move line up, move block up
         #define CR2_E() &cd LSG(DOWN) LSA(DOWN)  // move line down, move block down
 
 TO_BS()  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX _ XXXXXXX  XXXXXXX  CR2_U()  XXXXXXX  XXXXXXX  _______
-_______  CR2_A()  CR2_R()  XXXXXXX  XXXXXXX  XXXXXXX _ XXXXXXX  XXXXXXX  CR2_E()  CR1_I()  XXXXXXX  CR1_O()
+_______  CR2_A()  CR2_R()  XXXXXXX  XXXXXXX  XXXXXXX _ XXXXXXX  XXXXXXX  CR2_E()  CR1_I()  XXXXXXX  CR_SA()
 _______  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX _ XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  _______
-                     THUMB()  XXXXXXX  OS(CD3) __ XXXXXXX __ OS(CD3)  XXXXXXX  THUMB()
+                     THUMB()  OS(CD3)  XXXXXXX __ XXXXXXX __ XXXXXXX  OS(CD3)  THUMB()
         )
 
         ZMK_LAYER(code_nav_layer,
+        #define CR1_A() &as LSG(A)          // find actions
+        #define CN1_W() &cd LS(F2) F2       // go to next/last error
         #define CN1_F() &cd LSG(R) LSG(F)   // find in project, replace in project
         #define CN1_P() &kp LG(N1)          // project tree tab
         #define CN1_S() &kp LG(F12)         // find symbol in file
         #define CN1_T() &kp LSG(T)          // navigate to/from tests
-        #define CN1_E() &cd LS(F2) F2       // go to next/last error
         #define CN1_R() &cd LG(N4) LSC(R)   // run tests, open run window
         #define CN1_D() &cd LG(N5) LSC(D)   // run tests in debug mode, open debug window
+        #define CN1_E() &cd LSG(E) LG(E)    // recent files, recent locations
         #define DBG_I() &cd F7 LS(F7)       // debug: smart step into, step into
         #define DBG_O() &cd LS(F8) F8       // debug: step over, step out
         #define DBG_R() &cd LA(F9) LAG(R)   // debug: run until breakpoint, run until cursor
         #define DBG_B() &cd LG(F8) LA(F8)   // debug: evaluate expression, set breakpoint
 
-TO_BS()  XXXXXXX  XXXXXXX  CN1_F()  CN1_P()  CN1_D() _ XXXXXXX  DBG_I()  DBG_O()  DBG_R()  DBG_B()  _______
-_______  XXXXXXX  CN1_R()  CN1_S()  CN1_T()  XXXXXXX _ XXXXXXX  XXXXXXX  CN1_E()  CR1_I()  XXXXXXX  CR1_O()
+TO_BS()  XXXXXXX  CN1_W()  CN1_F()  CN1_P()  CN1_D() _ XXXXXXX  DBG_I()  DBG_O()  DBG_R()  DBG_B()  _______
+_______  XXXXXXX  CN1_R()  CN1_S()  CN1_T()  XXXXXXX _ XXXXXXX  XXXXXXX  CN1_E()  CR1_I()  CN1_A()  CR_SA()
 _______  XXXXXXX  XXXXXXX  &dif_co  XXXXXXX  &dif_br _ XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  _______
-                     THUMB()  XXXXXXX  OS(CD3) __ XXXXXXX __ OS(CD3)  XXXXXXX  THUMB()
+                     THUMB()  OS(CD3)  XXXXXXX __ XXXXXXX __ XXXXXXX  OS(CD3)  THUMB()
         )
     };
 };
