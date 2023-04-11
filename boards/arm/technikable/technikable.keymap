@@ -212,6 +212,7 @@ XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  BT_S(5)  BT_S(2) _ XXXXXXX  FUNC(7)  FUNC(8)
         )
 
         ZMK_LAYER(code_ref1_layer,
+        #define CR1_A() &kp LSG(A)         // find actions
         #define CR1_R() &kp LS(F6)         // rename
         #define CR1_C() &kp LAG(C)         // extract constant
         #define CR1_F() &kp LAG(F)         // extract field
@@ -246,7 +247,6 @@ _______  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX _ XXXXXXX  XXXXXXX  XXXXXXX
         )
 
         ZMK_LAYER(code_nav_layer,
-        #define CR1_A() &as LSG(A)          // find actions
         #define CN1_W() &cd LS(F2) F2       // go to next/last error
         #define CN1_F() &cd LSG(R) LSG(F)   // find in project, replace in project
         #define CN1_P() &kp LG(N1)          // project tree tab
