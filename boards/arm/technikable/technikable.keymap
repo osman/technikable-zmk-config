@@ -179,10 +179,10 @@ _______  K__AT()  NUMB(7)  NUMB(8)  NUMB(9)  K_PCT() _ K_HSH()  K_STR()  _______
         )
 
         ZMK_LAYER(sym2_layer,
-        #define VOL(dir) &kp C_VOL_ ## dir   // volume
         #define VMUTE()  &kp C_MUTE          // mute
-        #define BRI(dir) &kp C_BRI_ ## dir   // brightness
         #define SNCAP()  &kp LSG(N4)         // screen capture
+        #define VOL(dir) &kp C_VOL_ ## dir   // volume
+        #define BRI(dir) &kp C_BRI_ ## dir   // brightness
         #define BK_R(d)  &kp d ## PAR        // round brackets
         #define BK_C(d)  &kp d ## BRC        // curly braces
         #define BK_S(d)  &kp d ## BKT        // square brackets
@@ -191,9 +191,9 @@ _______  K__AT()  NUMB(7)  NUMB(8)  NUMB(9)  K_PCT() _ K_HSH()  K_STR()  _______
         #define K_FSH()  &as QUESTION SLASH
         #define K_BSH()  &as PIPE BACKSLASH
 
-_______  K_GRV()  XXXXXXX  BK_S(L)  BK_S(R)  XXXXXXX _ BK_A(R)  BK_A(L)  K_FSH()  K_BSH()  XXXXXXX  _______
-_______  XXXXXXX  VMUTE()  VOL(DN)  VOL(UP)  XXXXXXX _ BK_R(R)  BK_R(L)  K_BWD()  K_FWD()  K_SQT()  _______
-_______  XXXXXXX  SNCAP()  BRI(DN)  BRI(UP)  XXXXXXX _ BK_C(G)  BK_C(L)  XXXXXXX  _______  _______  _______
+_______  K_GRV()  XXXXXXX  VOL(DN)  VOL(UP)  VMUTE() _ BK_A(G)  BK_A(L)  K_FSH()  K_BSH()  _______  _______
+_______  K_EXC()  XXXXXXX  XXXXXXX  BK_S(L)  BK_S(R) _ BK_R(R)  BK_R(L)  K_BWD()  K_FWD()  K_SQT()  _______
+_______  K__AT()  XXXXXXX  BRI(DN)  BRI(UP)  SNCAP() _ BK_C(R)  BK_C(L)  XXXXXXX  _______  _______  _______
                      THUMB()  MO(ADM)  XXXXXXX __ SP(SM1) __ XXXXXXX  XXXXXXX  THUMB()
         )
 
