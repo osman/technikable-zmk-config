@@ -10,10 +10,10 @@
 #define BASE 0
 #define SM1  1
 #define SM2  2
-#define ADM  3
-#define CD1  4
-#define CD2  5
-#define CD3  6
+#define CD1  3
+#define CD2  4
+#define CD3  5
+#define ADM  6
 
 // Modifier Combos
 #define LSG(kc) LS(LG(kc))
@@ -172,63 +172,50 @@
         #define K_SPC()  &kp SPACE
         #define K_SQT()  AS(SINGLE_QUOTE)
 
-_______  NUMB(0)  NUMB(1)  NUMB(2)  NUMB(3)  K_CRT() _ K_BWD()  K_FWD()  NAV_U()  XXXXXXX  _______  _______
+_______  NUMB(0)  NUMB(1)  NUMB(2)  NUMB(3)  K_CRT() _ XXXXXXX  XXXXXXX  NAV_U()  XXXXXXX  _______  _______
 _______  K_EXC()  HN_A(4)  HN_G(5)  NUMB(6)  K_DLR() _ K_AMP()  NAV_L()  NAV_D()  NAV_R()  K_SQT()  _______
 _______  K__AT()  NUMB(7)  NUMB(8)  NUMB(9)  K_PCT() _ K_HSH()  K_STR()  _______  _______  _______  _______
                      THUMB()  OS(CD1)  SP(SM2) __ SP(SM1) __ SP(SM2)  OS(CD1)  THUMB()
         )
 
         ZMK_LAYER(sym2_layer,
-        #define LCK_S()  &kp LCG(Q)          // lock screen
         #define VOL(dir) &kp C_VOL_ ## dir   // volume
         #define VMUTE()  &kp C_MUTE          // mute
         #define BRI(dir) &kp C_BRI_ ## dir   // brightness
         #define SNCAP()  &kp LSG(N4)         // screen capture
-        #define CH_KB()  &kp LCA(SPACE)      // change layout
         #define BK_R(d)  &kp d ## PAR        // round brackets
-        #define BK_C(d)  AS(d ## BRC)        // curly braces
-        #define BK_S(d)  AS(d ## BKT)        // square brackets
+        #define BK_C(d)  &kp d ## BRC        // curly braces
+        #define BK_S(d)  &kp d ## BKT        // square brackets
         #define BK_A(d)  &kp d ## T          // angle brackets
         #define K_GRV()  &as TILDE GRAVE
         #define K_FSH()  &as QUESTION SLASH
         #define K_BSH()  &as PIPE BACKSLASH
 
-_______  K_GRV()  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX _ XXXXXXX  BK_R(L)  BK_R(R)  K_FSH()  K_BSH()  _______
-_______  XXXXXXX  VMUTE()  VOL(DN)  VOL(UP)  XXXXXXX _ XXXXXXX  BK_C(L)  BK_C(R)  BK_S(L)  BK_S(R)  _______
-_______  XXXXXXX  SNCAP()  BRI(DN)  BRI(UP)  XXXXXXX _ XXXXXXX  BK_A(L)  BK_A(G)  _______  _______  _______
-                     THUMB()  MO(ADM)  XXXXXXX __ SP(SM1) __ XXXXXXX  CH_KB()  THUMB()
-        )
-
-        ZMK_LAYER(admin_layer,
-        #define FUNC(n)  &kp F ## n
-        #define BT_S(n)  &bt BT_SEL n
-        #define BT_CL()  &bt BT_CLR
-        #define RESET()  &bootloader
-
-TO_BS()  XXXXXXX  XXXXXXX  XXXXXXX  BT_S(3)  BT_S(0) _ XXXXXXX  FUNC(1)  FUNC(2)  FUNC(3)  XXXXXXX  BT_CL()
-XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  BT_S(4)  BT_S(1) _ XXXXXXX  FUNC(4)  FUNC(5)  FUNC(6)  XXXXXXX  XXXXXXX
-XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  BT_S(5)  BT_S(2) _ XXXXXXX  FUNC(7)  FUNC(8)  FUNC(9)  XXXXXXX  RESET()
-                     THUMB()  XXXXXXX  XXXXXXX __ XXXXXXX __ XXXXXXX  LCK_S()  THUMB()
+_______  K_GRV()  XXXXXXX  BK_S(L)  BK_S(R)  XXXXXXX _ BK_A(R)  BK_A(L)  K_FSH()  K_BSH()  XXXXXXX  _______
+_______  XXXXXXX  VMUTE()  VOL(DN)  VOL(UP)  XXXXXXX _ BK_R(R)  BK_R(L)  K_BWD()  K_FWD()  K_SQT()  _______
+_______  XXXXXXX  SNCAP()  BRI(DN)  BRI(UP)  XXXXXXX _ BK_C(G)  BK_C(L)  XXXXXXX  _______  _______  _______
+                     THUMB()  MO(ADM)  XXXXXXX __ SP(SM1) __ XXXXXXX  XXXXXXX  THUMB()
         )
 
         ZMK_LAYER(code_ref1_layer,
+        #define CR_SA() &kp LA(ENTER)      // suggested actions
+        #define CR_TC() &kp LG(SLASH)      // toggle comments
+        #define CR1_W() &cd LS(F2) F2      // go to next/last error (similar positon to F2)
         #define CR1_A() &kp LSG(A)         // find actions
         #define CR1_R() &kp LS(F6)         // rename
         #define CR1_C() &kp LAG(C)         // extract constant
         #define CR1_F() &kp LAG(F)         // extract field
         #define CR1_P() &kp LAG(P)         // extract parameter
         #define CR1_V() &kp LAG(V)         // extract variable
-        #define CR1_N() &kp LAG(N)         // inline
         #define CR1_M() &kp LAG(M)         // extract method
+        #define CR1_N() &kp LAG(N)         // inline
         #define CR1_I() &kp LAG(L)         // format (qwerty position)
         #define CR1_S() &kp LAG(T)         // surround
         #define CR1_B() &cd LG(F9) LSG(F9) // build module, build all
         #define CR1_U() &kp LA(UP)         // extend selection by scope
         #define CR1_E() &kp LA(DOWN)       // decrease selection by scope
-        #define CR_SA() &kp LA(ENTER)      // suggested actions
-        #define CR_TC() &kp LG(SLASH)      // toggle comments
 
-TO_BS()  XXXXXXX  XXXXXXX  CR1_F()  CR1_P()  XXXXXXX _ XXXXXXX  XXXXXXX  CR1_U()  CR_TC()  XXXXXXX  _______
+TO_BS()  XXXXXXX  CR1_W()  CR1_F()  CR1_P()  XXXXXXX _ XXXXXXX  XXXXXXX  CR1_U()  CR_TC()  XXXXXXX  _______
 _______  CR1_A()  CR1_R()  CR1_S()  XXXXXXX  XXXXXXX _ CR1_M()  CR1_N()  CR1_E()  CR1_I()  XXXXXXX  CR_SA()
 _______  XXXXXXX  XXXXXXX  CR1_C()  CR1_V()  CR1_B() _ XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  _______
                      THUMB()  OS(CD2)  MO(ADM) __ XXXXXXX __ XXXXXXX  OS(CD2)  THUMB()
@@ -247,7 +234,6 @@ _______  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX _ XXXXXXX  XXXXXXX  XXXXXXX
         )
 
         ZMK_LAYER(code_nav_layer,
-        #define CN1_W() &cd LS(F2) F2       // go to next/last error
         #define CN1_F() &cd LSG(R) LSG(F)   // find in project, replace in project
         #define CN1_P() &kp LG(N1)          // project tree tab
         #define CN1_S() &kp LG(F12)         // find symbol in file
@@ -260,10 +246,24 @@ _______  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX _ XXXXXXX  XXXXXXX  XXXXXXX
         #define DBG_R() &cd LA(F9) LAG(R)   // debug: run until breakpoint, run until cursor
         #define DBG_B() &cd LG(F8) LA(F8)   // debug: evaluate expression, set breakpoint
 
-TO_BS()  XXXXXXX  CN1_W()  CN1_F()  CN1_P()  CN1_D() _ XXXXXXX  DBG_I()  DBG_O()  DBG_R()  DBG_B()  _______
+TO_BS()  XXXXXXX  XXXXXXX  CN1_F()  CN1_P()  CN1_D() _ XXXXXXX  DBG_I()  DBG_O()  DBG_R()  DBG_B()  _______
 _______  XXXXXXX  CN1_R()  CN1_S()  CN1_T()  XXXXXXX _ XXXXXXX  XXXXXXX  CN1_E()  CR1_I()  XXXXXXX  CR_SA()
 _______  XXXXXXX  XXXXXXX  &dif_co  XXXXXXX  &dif_br _ XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  _______
                      THUMB()  OS(CD3)  XXXXXXX __ XXXXXXX __ XXXXXXX  OS(CD3)  THUMB()
+        )
+
+        ZMK_LAYER(admin_layer,
+        #define FUNC(n)  &kp F ## n
+        #define BT_S(n)  &bt BT_SEL n
+        #define BT_CL()  &bt BT_CLR
+        #define RESET()  &bootloader
+        #define CH_KB()  &kp LCA(SPACE)      // change layout
+        #define LCK_S()  &kp LCG(Q)          // lock screen
+
+TO_BS()  XXXXXXX  XXXXXXX  XXXXXXX  BT_S(3)  BT_S(0) _ XXXXXXX  FUNC(1)  FUNC(2)  FUNC(3)  XXXXXXX  BT_CL()
+XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  BT_S(4)  BT_S(1) _ XXXXXXX  FUNC(4)  FUNC(5)  FUNC(6)  XXXXXXX  XXXXXXX
+XXXXXXX  XXXXXXX  XXXXXXX  XXXXXXX  BT_S(5)  BT_S(2) _ XXXXXXX  FUNC(7)  FUNC(8)  FUNC(9)  XXXXXXX  RESET()
+                     THUMB()  XXXXXXX  XXXXXXX __ XXXXXXX __ CH_KB()  LCK_S()  THUMB()
         )
     };
 };
